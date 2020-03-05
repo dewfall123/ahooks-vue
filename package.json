@@ -1,0 +1,21 @@
+{
+  "name": "vue3-hooks",
+  "version": "0.0.1",
+  "description": "vue3 hooks ",
+  "main": "index.js",
+  "repository": "https://github.com/dewfall123/vue3-hooks.git",
+  "author": "zuofenghua <11100776@bbktel.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup --config",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "rollup": "^1.32.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^3.8.3",
+    "vue": "3.0.0-alpha.7"
+  }
+}
