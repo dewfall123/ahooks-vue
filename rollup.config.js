@@ -1,5 +1,5 @@
 import tsPlugin from 'rollup-plugin-typescript2';
-import nodeResolve from '@rollup/plugin-node-resolve'
+import nodeResolve from '@rollup/plugin-node-resolve';
 
 export default {
   input: 'src/index.ts',
@@ -7,11 +7,6 @@ export default {
     file: 'dist/index.js',
     format: 'esm',
   },
-  external: [
-    'vue'
-  ],
-  plugins: [
-    nodeResolve(),
-    tsPlugin(),
-  ],
+  external: ['vue'],
+  plugins: [nodeResolve(), tsPlugin()],
 };

@@ -20,7 +20,7 @@
     "types": ["jest", "node"],
     "rootDir": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
     }
   },
   "include": [
