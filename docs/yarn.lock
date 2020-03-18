@@ -10258,7 +10258,7 @@ uuid@^3.0.1, uuid@^3.3.2:
 
 "v-hooks@https://gitlab.vmic.xyz/stability/v-hooks.git":
   version "0.0.1"
-  resolved "https://gitlab.vmic.xyz/stability/v-hooks.git#26fb4532cc099473e1d8705d5f7162cb4e18e969"
+  resolved "https://gitlab.vmic.xyz/stability/v-hooks.git#ebd149be6e855583c2355f513d0204dc7d8ed427"
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
