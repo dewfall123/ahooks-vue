@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "v-hooks": "D:\\Code\\github\\vue3-hooks",
+    "v-hooks": "https://gitlab.vmic.xyz/stability/v-hooks.git",
     "vue": "^3.0.0-alpha.8"
   },
   "devDependencies": {
