@@ -11,7 +11,8 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "v-hooks": "https://gitlab.vmic.xyz/stability/v-hooks.git",
-    "vue": "^3.0.0-alpha.8"
+    "vue": "^3.0.0-alpha.8",
+    "vue-router": "git+https://gitlab.vmic.xyz/stability/vue-router-next.git"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",

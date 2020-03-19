@@ -10258,7 +10258,7 @@ uuid@^3.0.1, uuid@^3.3.2:
 
 "v-hooks@https://gitlab.vmic.xyz/stability/v-hooks.git":
   version "0.0.1"
-  resolved "https://gitlab.vmic.xyz/stability/v-hooks.git#c6fc9b06c8d97014837937fb079a04102b7c2334"
+  resolved "https://gitlab.vmic.xyz/stability/v-hooks.git#a2a65302fc4dbf21d8e653b30dabe1b948a81547"
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
@@ -10374,6 +10374,10 @@ vue-loader@^16.0.0-alpha.1:
     loader-utils "^1.2.3"
     merge-source-map "^1.1.0"
     source-map "^0.6.1"
+
+"vue-router@git+https://gitlab.vmic.xyz/stability/vue-router-next.git":
+  version "4.0.0-alpha.3"
+  resolved "git+https://gitlab.vmic.xyz/stability/vue-router-next.git#823fb34474f29e5e113b17fd5e45a7b77d2c1a1e"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
