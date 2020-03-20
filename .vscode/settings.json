@@ -1,7 +1,9 @@
 {
-    "editor.tabSize": 2,
-    "workingDirectories": [
-        "./",
-        "./docs"
-    ]
+  "editor.tabSize": 2,
+  // "workingDirectories": [
+  //     "./",
+  //     "./docs"
+  // ]
+
+  "eslint.options": { "configFile": "D:/Code/github/vue3-hooks/.eslintrc.js" }
 }

@@ -1,4 +1,4 @@
-import useToggle from './useToggle';
+import useToggle from './hooks/use-toggle';
 
 export default {
   useToggle,
