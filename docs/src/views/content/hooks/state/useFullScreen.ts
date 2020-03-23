@@ -1,5 +1,5 @@
 import { h } from 'vue';
-import {  } from 'v-hooks';
+import { useF } from 'v-hooks';
 
 export default {
   setup() {
