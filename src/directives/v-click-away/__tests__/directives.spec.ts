@@ -1,7 +1,7 @@
 import { withDirectives, h, render } from 'vue';
 import vClickAway from '../index'
 
-describe('v-click-away', async () => {
+describe('v-click-away', () => {
 
   it('should be defined', () => {
     expect(vClickAway).toBeDefined();
@@ -26,11 +26,14 @@ describe('v-click-away', async () => {
   
   it('test on dom optional', async () => {
     const id = 'target';
+    const innerId = 'inner';
     let state: number = 0;
     const component = {
       setup() {
         return () => (withDirectives(
-          h('div', { id }),
+          h('div', { id }, [
+            h('p', { id: innerId })
+          ]),
           [
             [ vClickAway, () => state++ ],
           ]
@@ -42,7 +45,13 @@ describe('v-click-away', async () => {
     document.body.click();
     expect(state).toEqual(1);
 
-    document.getElementById(id)?.click();
+    (document.getElementById(id) as NonNullable<HTMLElement >).click();
     expect(state).toEqual(1);
+
+    (document.getElementById(innerId) as NonNullable<HTMLElement >).click();
+    expect(state).toEqual(1);
+
+    document.body.click();
+    expect(state).toEqual(2);
   });
 });

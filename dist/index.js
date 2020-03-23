@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 function useToggle(defaultValue = false, reverseValue) {
     const state = ref(defaultValue);
@@ -29,9 +29,56 @@ function useToggle(defaultValue = false, reverseValue) {
     };
 }
 
+const useBoolean = (defaultValue = false) => {
+    const { state, toggle } = useToggle(defaultValue);
+    const setTrue = () => toggle(true);
+    const setFalse = () => toggle(false);
+    return {
+        state,
+        toggle,
+        setTrue,
+        setFalse,
+    };
+};
+
+const screenfull = require('screenfull');
+var useFullScreen = (options) => {
+    const { dom, onExitFull, onFull } = options || {};
+    const element = ref(null);
+    const passedInElement = typeof dom === 'function' ? dom() : dom;
+    const { state, toggle, setTrue, setFalse } = useBoolean(false);
+    function handleStateChange() {
+        const targetElemnt = passedInElement || element.value;
+        if (!targetElemnt) {
+            return;
+        }
+        if (!screenfull.isEnabled) {
+            return;
+        }
+        const { isFullscreen } = screenfull;
+        if (state.value && !isFullscreen) {
+            screenfull.request(targetElemnt);
+            onFull && onFull();
+        }
+        if (!state.value && isFullscreen) {
+            screenfull.exit();
+            onExitFull && onExitFull();
+        }
+    }
+    watch(state, handleStateChange);
+    const result = {
+        isFullscreen: !!state,
+        setFull: setTrue,
+        exitFull: setFalse,
+        toggleFull: toggle,
+    };
+    return result;
+};
+
 var index = {
     useToggle,
+    useFullScreen,
 };
 
 export default index;
-export { useToggle };
+export { useFullScreen, useToggle };
