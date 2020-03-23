@@ -9,7 +9,8 @@
   "license": "MIT",
   "files": [
     "src",
-    "dist"
+    "dist",
+    "package.json"
   ],
   "scripts": {
     "dev": "cd ./docs && yarn serve",
