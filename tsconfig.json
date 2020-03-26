@@ -21,17 +21,17 @@
     "types": ["jest", "node"],
     "rootDir": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["packages/*"],
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "src/**/__tests__",
+    "packages/**/__tests__",
   ]
 }

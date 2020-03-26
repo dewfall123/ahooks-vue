@@ -9,7 +9,7 @@ export interface Options<T> {
 }
 
 export interface Result<T> {
-  isFullscreen: boolean;
+  isFullscreen: Ref<boolean>;
   setFull: () => void;
   exitFull: () => void;
   toggleFull: () => void;
@@ -19,12 +19,10 @@ export interface Result<T> {
 export default <T extends HTMLElement = HTMLElement>(options?: Options<T>): Result<T> => {
   const { dom, onExitFull, onFull } = options || {};
 
+  const passedInElement = typeof dom === 'function' ? dom() : dom;
   const element = ref(null);
 
-  const passedInElement = typeof dom === 'function' ? dom() : dom;
-  
   const { state, toggle, setTrue, setFalse } = useBoolean(false);
-
 
   function handleStateChange() {
     const targetElemnt = passedInElement || element.value;
@@ -39,22 +37,29 @@ export default <T extends HTMLElement = HTMLElement>(options?: Options<T>): Resu
       screenfull.request(targetElemnt);
       onFull && onFull();
     }
-    
+
     if (!state.value && isFullscreen) {
       screenfull.exit();
       onExitFull && onExitFull();
     }
   }
 
+  screenfull.onchange(() => {
+    const { isFullscreen } = screenfull;
+    state.value = isFullscreen;
+  });
+
   watch(state, handleStateChange);
 
-
   const result: Result<T> = {
-    isFullscreen: !!state,
+    isFullscreen: state,
     setFull: setTrue,
     exitFull: setFalse,
     toggleFull: toggle,
   };
+  if (!passedInElement && result.ref) {
+    result.ref = element;
+  }
 
   return result;
 };

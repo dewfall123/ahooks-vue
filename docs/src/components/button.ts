@@ -1,13 +1,13 @@
 import { h, SetupContext, Slots } from 'vue';
 
 export default {
-  setup(_: any, { slots, }: SetupContext) {
-    console.log({...slots})
+  setup(_: any, { slots }: SetupContext) {
+    const className = 'border border-gary-700 rounded p-1';
     return () =>
       h(
         'button',
         {
-          class: '',
+          class: className,
         },
         [slots.default && slots.default()],
       );

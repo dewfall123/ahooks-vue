@@ -1,18 +1,13 @@
-import { h } from 'vue'
+import { h } from 'vue';
 
 interface DemoBlockProps {
-  path: string,
+  path: string;
 }
 
 export default {
   setup(props: DemoBlockProps) {
-
     const component = require.context('@/views/content/hooks', true, /\.ts$/);
 
-    return () => (
-      h('div', {}, [
-
-      ])
-    )
-  }
-}
+    return () => h('div', {}, []);
+  },
+};

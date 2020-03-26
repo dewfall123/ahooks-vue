@@ -1,15 +1,17 @@
 import useToggle from '../use-toggle';
 
-const useBoolean = (defaultValue: boolean = false) => {
+const useBoolean = (defaultValue = false) => {
   const { state, toggle } = useToggle(defaultValue);
 
   const setTrue = () => toggle(true);
 
   const setFalse = () => toggle(false);
 
+  const toggleBoolean = () => toggle();
+
   return {
     state,
-    toggle,
+    toggle: toggleBoolean,
     setTrue,
     setFalse,
   };

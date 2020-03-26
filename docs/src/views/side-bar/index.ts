@@ -1,10 +1,9 @@
 import { h } from 'vue';
 import { Link } from 'vue-router';
-import { navTree } from '@/plugins/router/nav'
+import { navTree } from '@/plugins/router/nav';
 
 export default {
   setup() {
-
     return () =>
       h('aside', {}, [
         h('div', {}, [

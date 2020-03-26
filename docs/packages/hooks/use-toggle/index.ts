@@ -40,7 +40,7 @@ function useToggle<D extends IState = IState, R extends IState = IState>(
 
   // 切换返回值
   const toggle = (value: D | R) => {
-    if (!value) {
+    if (value === undefined) {
       value = state.value === defaultValue ? reverseValueOrigin : defaultValue;
     }
     setState(value);

@@ -40,45 +40,10 @@ const useBoolean = (defaultValue = false) => {
         setFalse,
     };
 };
-
-const screenfull = require('screenfull');
-var useFullScreen = (options) => {
-    const { dom, onExitFull, onFull } = options || {};
-    const element = ref(null);
-    const passedInElement = typeof dom === 'function' ? dom() : dom;
-    const { state, toggle, setTrue, setFalse } = useBoolean(false);
-    function handleStateChange() {
-        const targetElemnt = passedInElement || element.value;
-        if (!targetElemnt) {
-            return;
-        }
-        if (!screenfull.isEnabled) {
-            return;
-        }
-        const { isFullscreen } = screenfull;
-        if (state.value && !isFullscreen) {
-            screenfull.request(targetElemnt);
-            onFull && onFull();
-        }
-        if (!state.value && isFullscreen) {
-            screenfull.exit();
-            onExitFull && onExitFull();
-        }
-    }
-    watch(state, handleStateChange);
-    const result = {
-        isFullscreen: !!state,
-        setFull: setTrue,
-        exitFull: setFalse,
-        toggleFull: toggle,
-    };
-    return result;
-};
-
 var index = {
     useToggle,
-    useFullScreen,
 };
 
+const a = 'aaaa'
 export default index;
-export { useFullScreen, useToggle };
+export {  useToggle, a };
