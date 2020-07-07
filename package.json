@@ -13,8 +13,7 @@
     "package.json"
   ],
   "scripts": {
-    "fork-dev": "cd ./docs && node ../../pr/vitepress/bin/vitepress.js",
-    "dev": "cd ./docs && yarn serve",
+    "dev": "vitepress dev",
     "test": "jest",
     "build": "rollup --config"
   },
@@ -34,9 +33,8 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
-    "vitepress": "^0.2.0",
-    "vue": "3.0.0-beta.14",
-    "vuepress": "^1.4.0"
+    "vitepress": "^0.4.1",
+    "vue": "3.0.0-beta.14"
   },
   "dependencies": {
     "screenfull": "^5.0.2"

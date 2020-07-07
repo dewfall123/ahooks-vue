@@ -1,4 +1,4 @@
-const screenfull = require('screenfull');
+import screenfull from 'screenfull';
 import useBoolean from '../use-boolean';
 import { ref, Ref, watch } from 'vue';
 

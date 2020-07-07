@@ -22,6 +22,7 @@
     "rootDir": ".",
     "paths": {
       "@/*": ["packages/*"],
+      "vue3-hooks": ["packages/*"],
     }
   },
   "include": [
