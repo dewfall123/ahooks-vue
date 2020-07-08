@@ -1,9 +1,12 @@
+---
+title: vue3-utilites
+---
+
 # Hello VuePress!
 
 ## title
 
 <script>
-import ToggleDemo from './packages/hooks/use-toggle/demo';
+console.log('test');
+export default {}
 </script>
-
-<toggle-demo />
