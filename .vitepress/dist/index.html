@@ -1,0 +1,38 @@
+<html lang="en-US">
+  <head>
+    <title>vhooks | VitePress</title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.7b514048.css">
+    <link rel="modulepreload" href="/_assets/common-b795db0c.js">
+    <link rel="modulepreload" href="/_assets/index.md.58d81397.lean.js">
+    <link rel="modulepreload" href="/_assets/app.70a0c7f8.js">
+    
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header><!--[--><a class="title" aria-label="VitePress, back to home" href="/"><!----><span>VitePress</span></a><!----><!--]--></header><aside><ul class="sidebar"><!--[--><!--]--></ul></aside><main><div class="content"><div><h1 id="hello-vuepress"><a class="header-anchor" href="#hello-vuepress" aria-hidden="true">#</a> Hello VuePress!</h1><h2 id="title"><a class="header-anchor" href="#title" aria-hidden="true">#</a> title</h2><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>测试内容</p></div><p><article class="demo" src="./packages/hooks/use-toggle/demo/use-toggle.vue"><div class="demo-slot"><!--[--><div><p>false</p><button>点击</button></div><!--]--></div><div class="demo-actions"><div class="demo-platforms"></div><div class="deme-buttons"><span class="demo-actions-copy" title="复制"><svg t="1596458734865" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4898" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M68.608 962.56V206.848h740.864V962.56H68.608zM746.496 271.36H131.584v629.248h614.912V271.36zM131.584 262.144" p-id="4899" fill="#666"></path><path d="M219.136 65.024v116.224h62.976V129.536h614.912v629.248h-60.416v61.952h123.392V65.024z" p-id="4900" fill="#666"></path></svg></span><span class="demo-actions-expand" title="展开123"><svg t="1596458647160" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2840" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22"><path d="M311.1 739c-6.1 0-12.2-2.3-16.8-7L69.7 507.4l224.6-224.6c9.3-9.3 24.3-9.3 33.6 0s9.3 24.3 0 33.6l-191 191 191 191c9.3 9.3 9.3 24.3 0 33.6-4.6 4.7-10.7 7-16.8 7zM711.5 739c-6.1 0-12.2-2.3-16.8-7-9.3-9.3-9.3-24.3 0-33.6l191-191-191-191c-9.3-9.3-9.3-24.3 0-33.6s24.3-9.3 33.6 0L953 507.4 728.3 732c-4.6 4.7-10.7 7-16.8 7zM418.5 814.7c-2.4 0-4.8-0.4-7.2-1.1-12.5-4-19.4-17.3-15.5-29.8l179.6-567.1c4-12.5 17.3-19.4 29.8-15.5 12.5 4 19.4 17.3 15.5 29.8L441.1 798.1a23.73 23.73 0 0 1-22.6 16.6z" fill="#666" p-id="2841"></path></svg></span></div></div><div style="display:none;" class="language-ts extra-class"><pre v-pre class=""><span class="token operator">&lt;</span>template<span class="token operator">></span>
+  <span class="token operator">&lt;</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"toggle()"</span><span class="token operator">></span>点击<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script lang<span class="token operator">=</span><span class="token string">"ts"</span><span class="token operator">></span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useToggle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../../'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> toggle <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      state<span class="token punctuation">,</span>
+      toggle<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</pre></div></article></p></div></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"58d81397\",\"docs_index.md\":\"3410818f\",\"packages_readme.md\":\"e6fa0564\",\"packages_hooks_use-toggle_readme.md\":\"20abb0ae\"}")</script>
+    <script type="module" async src="/_assets/app.70a0c7f8.js"></script>
+  </body>
+</html>

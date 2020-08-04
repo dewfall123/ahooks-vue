@@ -1,5 +1,5 @@
 {
-  "name": "vue3-utilities",
+  "name": "vhooks",
   "version": "0.0.1",
   "description": "vue3 hooks ",
   "main": "dist/index.js",
@@ -14,6 +14,8 @@
   ],
   "scripts": {
     "dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "build-view": "http-server .vitepress/dist",
     "test": "jest",
     "build": "rollup --config"
   },
@@ -27,14 +29,15 @@
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.2.2",
+    "http-server": "^0.12.3",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "rollup": "^1.32.0",
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
-    "vitepress": "^0.4.1",
-    "vue": "3.0.0-beta.14"
+    "vitepress": "^0.5.0",
+    "vue": "3.0.0-rc.5"
   },
   "dependencies": {
     "screenfull": "^5.0.2"
