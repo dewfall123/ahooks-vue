@@ -1,7 +1,7 @@
 const hooksPrefix = '/packages/hooks';
 
 module.exports = {
-  title: 'vue3-utilities',
+  title: 'vhooks',
   description: 'vue3 工具',
   head: [['link', { href: '/doc' }, '文档']],
   themeConfig: {
@@ -11,6 +11,7 @@ module.exports = {
     ],
     sidebar: [
       {link: `${hooksPrefix}/use-toggle/readme`, text: 'use-toggle'},
+      {link: `${hooksPrefix}/use-fullscreen/readme`, text: 'use-fullscreen'},
     ],
   },
 };

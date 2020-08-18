@@ -1,7 +1,7 @@
 {
   "name": "vhooks",
   "version": "0.0.1",
-  "description": "vue3 hooks ",
+  "description": "vue3 hooks",
   "main": "dist/index.js",
   "types": "dist/src",
   "repository": "https://github.com/dewfall123/vue3-hooks.git",

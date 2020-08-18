@@ -4,4 +4,5 @@ sidebar: '123'
 
 # use-toggle
 
-<code src="./demo" />
+
+<demo src="./demo/demo.vue" language="vue" ></demo>
