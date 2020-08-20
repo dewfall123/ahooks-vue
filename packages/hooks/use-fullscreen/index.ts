@@ -1,9 +1,9 @@
 import screenfull from 'screenfull';
 import useBoolean from '../use-boolean';
-import { ref, Ref, watch } from 'vue';
+import { Ref, watch, onMounted } from 'vue';
+import { BasicTarget, getTargetElement } from '../../utils/dom';
 
 export interface Options<T> {
-  dom?: T | (() => T) | null;
   onExitFull?: () => void;
   onFull?: () => void;
 }
@@ -16,40 +16,50 @@ export interface Result<T> {
   ref?: Ref;
 }
 
-export default <T extends HTMLElement = HTMLElement>(options?: Options<T>): Result<T> => {
-  const { dom, onExitFull, onFull } = options || {};
-
-  const passedInElement = typeof dom === 'function' ? dom() : dom;
-  const element = ref(null);
+export default <T extends HTMLElement = HTMLElement>(
+  target: BasicTarget,
+  options?: Options<T>,
+): Result<T> => {
+  const { onExitFull, onFull } = options || {};
 
   const { state, toggle, setTrue, setFalse } = useBoolean(false);
 
-  function handleStateChange() {
-    const targetElemnt = passedInElement || element.value;
-    if (!targetElemnt) {
-      return;
-    }
-    if (!screenfull.isEnabled) {
-      return;
-    }
-    const { isFullscreen } = screenfull;
-    if (state.value && !isFullscreen) {
-      screenfull.request(targetElemnt);
-      onFull && onFull();
+  onMounted(() => {
+    function handleStateChange() {
+      const targetElemnt = getTargetElement(target);
+
+      if (!targetElemnt) {
+        console.warn('target is not available!');
+        return;
+      }
+
+      if (!screenfull.isEnabled) {
+        console.warn('fullscreen is not enabled!');
+        return;
+      }
+      const { isFullscreen } = screenfull;
+      if (state.value && !isFullscreen) {
+        screenfull.request(targetElemnt as HTMLElement);
+        onFull && onFull();
+      }
+
+      if (!state.value && isFullscreen) {
+        screenfull.exit();
+        onExitFull && onExitFull();
+      }
     }
 
-    if (!state.value && isFullscreen) {
-      screenfull.exit();
-      onExitFull && onExitFull();
+    if (screenfull.isEnabled) {
+      screenfull.on('change', () => {
+        if (screenfull.isEnabled) {
+          const { isFullscreen } = screenfull;
+          state.value = isFullscreen;
+        }
+      });
     }
-  }
 
-  screenfull.onchange(() => {
-    const { isFullscreen } = screenfull;
-    state.value = isFullscreen;
+    watch(state, handleStateChange);
   });
-
-  watch(state, handleStateChange);
 
   const result: Result<T> = {
     isFullscreen: state,
@@ -57,9 +67,6 @@ export default <T extends HTMLElement = HTMLElement>(options?: Options<T>): Resu
     exitFull: setFalse,
     toggleFull: toggle,
   };
-  if (!passedInElement && result.ref) {
-    result.ref = element;
-  }
 
   return result;
 };

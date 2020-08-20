@@ -6,12 +6,13 @@ module.exports = {
   head: [['link', { href: '/doc' }, '文档']],
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Home1', link: '/' },
       { text: '文档', link: '/doc' },
     ],
     sidebar: [
-      {link: `${hooksPrefix}/use-toggle/readme`, text: 'use-toggle'},
-      {link: `${hooksPrefix}/use-fullscreen/readme`, text: 'use-fullscreen'},
+      { link: `${hooksPrefix}/use-toggle/readme`, text: 'use-toggle' },
+      { link: `${hooksPrefix}/use-fullscreen/readme`, text: 'use-fullscreen' },
     ],
   },
+  alias: { '@dewfall/vhooks': '/packages', '@/': '/packages/' },
 };

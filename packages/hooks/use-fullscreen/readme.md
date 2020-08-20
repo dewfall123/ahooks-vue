@@ -6,3 +6,6 @@
 
 ### 基本用法
 
+<demo src="./demo/demo1.vue" language="vue" ></demo>
+
+<demo src="./demo/demo2.vue" language="vue" ></demo>

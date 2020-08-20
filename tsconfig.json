@@ -22,7 +22,7 @@
     "rootDir": ".",
     "paths": {
       "@/*": ["packages/*"],
-      "vue3-hooks": ["packages/*"],
+      "@dewfall/vhooks": ["packages/index.ts"],
     }
   },
   "include": [

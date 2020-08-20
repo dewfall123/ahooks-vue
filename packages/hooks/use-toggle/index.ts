@@ -32,12 +32,16 @@ function useToggle<D extends IState = IState, R extends IState = IState>(
   defaultValue: D = false as D,
   reverseValue?: R,
 ) {
-  const state = ref(defaultValue);
+  const state = ref<D | R>(defaultValue);
+
   const setState = (value: D | R) => {
-    state.value = value;
+    // TODO
+    state.value = value as any;
   };
-  
-  const reverseValueOrigin = (reverseValue === undefined ? !defaultValue : reverseValue) as D | R;
+
+  const reverseValueOrigin = (reverseValue === undefined
+    ? !defaultValue
+    : reverseValue) as D | R;
 
   // 切换返回值
   const toggle = (value: D | R) => {

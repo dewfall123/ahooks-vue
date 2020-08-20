@@ -1,1 +1,0 @@
-import{d as e,c as t,B as l}from"./common-b795db0c.js";var s={components:{}};const a='{"title":"vhooks","frontmatter":{"title":"vhooks"},"headers":[{"level":2,"title":"title","slug":"title"}],"lastUpdated":1596528474950.1245}',r=l('',3);s.render=function(l,s,a,o,i,d){return t(),e("div",null,[r])};export default s;export{a as __pageData};
