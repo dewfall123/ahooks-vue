@@ -1,12 +1,11 @@
-import useToggle from './hooks/use-toggle';
-import useFullScreen from './hooks/use-fullscreen';
+import useToggle from './hooks/useToggle';
+import useFullScreen from './hooks/useFullscreen';
+import useLocalState from './hooks/useLocalState';
 
 export default {
   useToggle,
   useFullScreen,
-}
-
-export {
-  useToggle,
-  useFullScreen,
+  useLocalState,
 };
+
+export { useToggle, useFullScreen, useLocalState };

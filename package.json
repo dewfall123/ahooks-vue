@@ -22,6 +22,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@types/jest": "^25.1.3",
+    "@types/lodash": "^4.14.159",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.23.0",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -39,9 +40,12 @@
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
     "vitepress": "^0.5.0",
-    "vue": "3.0.0-rc.5"
+    "vue": "3.0.0-rc.6"
   },
   "dependencies": {
+    "dayjs": "^1.8.34",
+    "localforage": "^1.9.0",
+    "lodash": "^4.17.20",
     "screenfull": "^5.0.2"
   }
 }

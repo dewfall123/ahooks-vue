@@ -1,5 +1,5 @@
 import screenfull from 'screenfull';
-import useBoolean from '../use-boolean';
+import useBoolean from '../useBoolean';
 import { Ref, watch, onMounted } from 'vue';
 import { BasicTarget, getTargetElement } from '../../utils/dom';
 
@@ -16,10 +16,10 @@ export interface Result<T> {
   ref?: Ref;
 }
 
-export default <T extends HTMLElement = HTMLElement>(
+function useFullscreen<T extends HTMLElement = HTMLElement>(
   target: BasicTarget,
   options?: Options<T>,
-): Result<T> => {
+): Result<T> {
   const { onExitFull, onFull } = options || {};
 
   const { state, toggle, setTrue, setFalse } = useBoolean(false);
@@ -69,4 +69,6 @@ export default <T extends HTMLElement = HTMLElement>(
   };
 
   return result;
-};
+}
+
+export default useFullscreen;

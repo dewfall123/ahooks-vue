@@ -1,4 +1,4 @@
-import useToggle from '../use-toggle';
+import useToggle from '../useToggle';
 
 const useBoolean = (defaultValue = false) => {
   const { state, toggle } = useToggle(defaultValue);
