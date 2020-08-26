@@ -16,7 +16,7 @@ export interface Result<T> {
   ref?: Ref;
 }
 
-function useFullscreen<T extends HTMLElement = HTMLElement>(
+export function useFullscreen<T extends HTMLElement = HTMLElement>(
   target: BasicTarget,
   options?: Options<T>,
 ): Result<T> {
@@ -29,7 +29,6 @@ function useFullscreen<T extends HTMLElement = HTMLElement>(
       const targetElemnt = getTargetElement(target);
 
       if (!targetElemnt) {
-        console.warn('target is not available!');
         return;
       }
 

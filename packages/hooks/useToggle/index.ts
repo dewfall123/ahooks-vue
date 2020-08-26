@@ -2,14 +2,14 @@ import { ref, Ref } from 'vue';
 
 type IState = string | number | boolean | undefined;
 
-function useToggle<T = boolean | undefined>(): {
+export function useToggle<T = boolean | undefined>(): {
   state: Ref<boolean>;
   toggle: (value?: T) => void;
   setLeft: () => void;
   setRight: () => void;
 };
 
-function useToggle<T = IState>(
+export function useToggle<T = IState>(
   defaultValue: T,
 ): {
   state: Ref<T>;
@@ -18,7 +18,7 @@ function useToggle<T = IState>(
   setRight: () => void;
 };
 
-function useToggle<T = IState, U = IState>(
+export function useToggle<T = IState, U = IState>(
   defaultValue: T,
   reverseValue: U,
 ): {
@@ -28,7 +28,7 @@ function useToggle<T = IState, U = IState>(
   setRight: () => void;
 };
 
-function useToggle<D extends IState = IState, R extends IState = IState>(
+export function useToggle<D extends IState = IState, R extends IState = IState>(
   defaultValue: D = false as D,
   reverseValue?: R,
 ) {

@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts">
-import { useFullScreen } from '@dewfall/vhooks';
+import { useFullscreen } from '@dewfall/vhooks';
 export default {
   setup() {
-    const { isFullscreen, toggleFull, setFull, exitFull } = useFullScreen(() =>
+    const { isFullscreen, toggleFull, setFull, exitFull } = useFullscreen(() =>
       document.getElementById('container'),
     );
 

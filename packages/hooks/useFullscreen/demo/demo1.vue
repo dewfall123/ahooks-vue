@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts">
-import { useFullScreen } from '@dewfall/vhooks';
+import { useFullscreen } from '@dewfall/vhooks';
 import { ref } from 'vue';
 
 export default {
   setup() {
     const elementRef = ref(null);
-    const { isFullscreen, toggleFull } = useFullScreen(elementRef);
+    const { isFullscreen, toggleFull } = useFullscreen(elementRef);
 
     return {
       isFullscreen,

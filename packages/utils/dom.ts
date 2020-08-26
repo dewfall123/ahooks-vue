@@ -1,4 +1,4 @@
-import { Ref, unref } from 'vue';
+import { Ref, unref, isRef } from 'vue';
 
 export type BasicTarget<T = HTMLElement> =
   | (() => T | null)
@@ -6,7 +6,7 @@ export type BasicTarget<T = HTMLElement> =
   | null
   | Ref<T | null | undefined>;
 
-type TargetElement = HTMLElement | Document | Window;
+export type TargetElement = HTMLElement | Document | Window;
 
 export function getTargetElement(
   target?: BasicTarget<TargetElement>,
@@ -18,10 +18,21 @@ export function getTargetElement(
 
   let targetElement: TargetElement | undefined | null;
 
+  if (isRef(target)) {
+    targetElement = unref(target);
+  }
+
   if (typeof target === 'function') {
     targetElement = target();
-  } else {
-    targetElement = unref(target);
+  }
+  // else if ('current' in target) {
+  //   targetElement = target.current;
+  // } else {
+  //   targetElement = target;
+  // }
+
+  if (!targetElement) {
+    console.error('target is not available!');
   }
 
   return targetElement;
