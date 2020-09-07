@@ -6,3 +6,4 @@ export { useDocumentVisibility } from './hooks/useDocumentVisibility';
 export { useHover } from './hooks/useHover';
 export { useInViewport } from './hooks/useInViewport';
 export { useSize } from './hooks/useSize';
+export { useWorkerFunction } from './hooks/useWorkerFunction';

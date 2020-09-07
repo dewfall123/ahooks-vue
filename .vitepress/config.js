@@ -23,6 +23,14 @@ const sideBar = [
       text: hookName,
     })),
   },
+  {
+    link: '/woker',
+    text: 'worker',
+    children: ['useWorkerFunction'].map(hookName => ({
+      link: `${hooksPrefix}/${hookName}/readme`,
+      text: hookName,
+    })),
+  },
 ];
 
 module.exports = {
