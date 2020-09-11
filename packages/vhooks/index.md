@@ -1,6 +1,6 @@
 ## 轻松上手
 
-```bash
+```js
 // 安装依赖
 npm i ahooks --save
 

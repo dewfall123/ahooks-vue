@@ -37,7 +37,7 @@ const sideBar = [
 
 module.exports = {
   title: 'vhooks',
-  description: 'vue3 工具',
+  description: 'vue3 hooks',
   head: [['link', { href: '/doc' }, '文档']],
   themeConfig: {
     nav: [

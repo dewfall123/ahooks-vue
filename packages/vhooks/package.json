@@ -51,13 +51,12 @@
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
     "vitepress": "^0.5.0",
-    "vue": "3.0.0-rc.6",
+    "vue": "^3.0.0-rc.10",
     "vue-router": "^4.0.0-beta.7"
   },
   "dependencies": {
     "dayjs": "^1.8.34",
     "intersection-observer": "^0.11.0",
-    "lerna": "^3.22.1",
     "localforage": "^1.9.0",
     "lodash-es": "^4.17.15",
     "resize-observer-polyfill": "^1.5.1",

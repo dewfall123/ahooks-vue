@@ -26,6 +26,6 @@
       "@dewfall/vhooks": ["src/"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist", "src/**/__tests__"]
 }

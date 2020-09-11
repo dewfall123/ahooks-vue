@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { useCube } from '@dewfall/vhooks';
-import { data } from '../lib/data';
+import { data } from './data';
 
 export default {
   setup() {

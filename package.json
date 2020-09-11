@@ -1,10 +1,10 @@
 {
   "name": "@dewfall/vhooks",
   "version": "0.1.1",
-  "description": "vue3 hooks like react ahooks",
+  "description": "vue3 hooks like ahooks",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/dewfall123/vue3-hooks.git",
+  "repository": "https://github.com/dewfall123/vhooks.git",
   "author": "dewfall",
   "license": "MIT",
   "files": [
