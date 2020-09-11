@@ -32,8 +32,8 @@ export interface Filter {
   value: string | number;
 }
 
-export type dataSource = Ref<Record<string, any>[]> | Record<string, any>[];
-export type dataSourceRef = Ref<Record<string, any>[]>;
+export type SourceData = Ref<Record<string, any>[]> | Record<string, any>[];
+export type SourceDataRef = Ref<Record<string, any>[]>;
 
 export type Columns = Ref<Record<string, string>> | Record<string, string>;
 export type ColumnsRef = Ref<Record<string, string>>;

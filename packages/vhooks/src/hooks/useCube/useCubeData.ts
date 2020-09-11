@@ -1,9 +1,9 @@
 import { Ref, computed } from 'vue';
-import { Filter, dataSourceRef, CubeSettings } from './type';
+import { Filter, SourceDataRef, CubeSettings } from './type';
 import { operatorFn } from './constants';
 
 export function useCubeData(
-  data: dataSourceRef,
+  data: SourceDataRef,
   filters: Ref<Filter[]>,
   cubeSettings: Ref<CubeSettings>,
 ) {

@@ -1,19 +1,21 @@
 import { isRef, ref, computed } from '@vue/composition-api';
 import {
-  dataSource,
+  SourceData,
   Columns,
   Options,
   CubeSettings,
-  dataSourceRef,
+  SourceDataRef,
 } from './type';
 import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export type { OPERATOR, dataSource, Columns, Options, CubeSettings } from './type';
+export type {  SourceData, Columns, Options, CubeSettings };
+export { OPERATOR } from './type'
+
 
 export function useCube(
-  data: dataSource,
+  data: SourceData,
   setting: {
     columns?: Columns;
     options?: Options;
@@ -21,12 +23,12 @@ export function useCube(
   } = {},
 ) {
   if (!isRef(data)) {
-    data = ref(data) as dataSourceRef;
+    data = ref(data) as SourceDataRef;
   }
 
   if (!setting.columns) {
     setting.columns = computed(() =>
-      Object.keys((data as dataSourceRef).value[0] ?? []).reduce((obj, i) => {
+      Object.keys((data as SourceDataRef).value[0] ?? []).reduce((obj, i) => {
         obj[i] = i;
         return obj;
       }, {} as Record<string, string>),

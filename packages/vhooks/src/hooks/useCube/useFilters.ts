@@ -1,7 +1,7 @@
 import { reactive, toRefs, computed } from 'vue';
-import { dataSourceRef, Columns, OPERATOR, Filter } from './type';
+import { SourceDataRef, Columns, OPERATOR, Filter } from './type';
 
-export function useFilters(data: dataSourceRef, columns: Columns) {
+export function useFilters(data: SourceDataRef, columns: Columns) {
   const state = reactive({
     list: [] as Filter[],
     cur: {
