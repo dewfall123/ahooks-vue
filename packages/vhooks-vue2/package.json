@@ -17,8 +17,7 @@
     "docs:build": "vitepress build",
     "build-view": "http-server .vitepress/dist",
     "test": "jest",
-    "build": "rollup -c",
-    "gulp": "gulp"
+    "build": "rollup -c"
   },
   "keywords": [
     "vue",

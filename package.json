@@ -13,7 +13,10 @@
     "dist-v2",
     "package.json"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "lerna run gulp && lerna run build",
+    "pub": "lerna publish"
+  },
   "keywords": [
     "vue",
     "hooks",
