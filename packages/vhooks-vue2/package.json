@@ -1,23 +1,30 @@
 {
-  "name": "@dewfall/vhooks",
+  "name": "@dewfall/vhooks-vue2",
   "version": "0.1.1",
-  "description": "vue3 hooks like react ahooks",
+  "description": "vue2 hooks like ahooks",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": "https://github.com/dewfall123/vue3-hooks.git",
+  "types": "dist/src/index.d.ts",
+  "repository": "https://github.com/dewfall123/vhooks.git",
   "author": "dewfall",
   "license": "MIT",
   "files": [
     "src",
     "dist",
-    "dist-v2",
     "package.json"
   ],
-  "scripts": {},
+  "scripts": {
+    "dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "build-view": "http-server .vitepress/dist",
+    "test": "jest",
+    "build": "rollup -c",
+    "gulp": "gulp"
+  },
   "keywords": [
     "vue",
     "hooks",
-    "worker"
+    "vue2",
+    "ahooks"
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.1.1",
@@ -32,6 +39,8 @@
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.2.2",
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.0.0",
     "http-server": "^0.12.3",
     "jest": "^25.1.0",
     "npm-run-all": "^4.1.5",
@@ -43,10 +52,10 @@
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
     "vitepress": "^0.5.0",
-    "vue": "3.0.0-rc.6",
     "vue-router": "^4.0.0-beta.7"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.0.0-beta.11",
     "dayjs": "^1.8.34",
     "intersection-observer": "^0.11.0",
     "lerna": "^3.22.1",

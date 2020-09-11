@@ -22,9 +22,10 @@
     "types": ["jest", "node"],
     "rootDir": ".",
     "paths": {
-      "@/*": ["packages/*"]
+      "@/*": ["src/*"],
+      "@dewfall/vhooks-vue2": ["src/"]
     }
   },
-  "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue"],
-  "exclude": ["node_modules", "dist", "packages/**/__tests__"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "src/**/__tests__"]
 }
