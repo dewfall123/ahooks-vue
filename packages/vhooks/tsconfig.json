@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "removeComments": false,
     "declaration": true,
+    "isolatedModules": true,
     "declarationDir": "dist",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],

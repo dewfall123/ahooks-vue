@@ -14,6 +14,7 @@
     "package.json"
   ],
   "scripts": {
+    "dev": "cd packages/vhooks && yarn dev",
     "build": "lerna run gulp && lerna run build",
     "pub": "lerna publish"
   },

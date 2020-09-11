@@ -10,7 +10,7 @@ import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export { OPERATOR, dataSource, Columns, Options, CubeSettings } from './type';
+export type { OPERATOR, dataSource, Columns, Options, CubeSettings } from './type';
 
 export function useCube(
   data: dataSource,
