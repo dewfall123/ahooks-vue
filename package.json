@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "vue3 hooks like react ahooks",
   "main": "dist/index.js",
-  "types": "dist/src",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/dewfall123/vue3-hooks.git",
   "author": "dewfall",
   "license": "MIT",
@@ -57,6 +57,7 @@
   "dependencies": {
     "dayjs": "^1.8.34",
     "intersection-observer": "^0.11.0",
+    "lerna": "^3.22.1",
     "localforage": "^1.9.0",
     "lodash-es": "^4.17.15",
     "resize-observer-polyfill": "^1.5.1",

@@ -18,10 +18,12 @@ const sideBar = [
   {
     link: '/state',
     text: 'State',
-    children: ['useUrlState', 'useToggle', 'useLocalState'].map(hookName => ({
-      link: `${hooksPrefix}/${hookName}/readme`,
-      text: hookName,
-    })),
+    children: ['useUrlState', 'useToggle', 'useLocalState', 'useThrottle'].map(
+      hookName => ({
+        link: `${hooksPrefix}/${hookName}/readme`,
+        text: hookName,
+      }),
+    ),
   },
   {
     link: '/woker',
@@ -47,4 +49,5 @@ module.exports = {
     searchMaxSuggestions: 10,
   },
   alias: { '@dewfall/vhooks': '/packages' },
+  viteOptions: {},
 };

@@ -7,3 +7,6 @@ export { useHover } from './hooks/useHover';
 export { useInViewport } from './hooks/useInViewport';
 export { useSize } from './hooks/useSize';
 export { useWorkerFunction } from './hooks/useWorkerFunction';
+export { useThrottle } from './hooks/useThrottle';
+export { usePage } from './hooks/usePage';
+export { useCube } from './hooks/useCube';
