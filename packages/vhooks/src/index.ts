@@ -9,4 +9,4 @@ export { useSize } from './hooks/useSize';
 export { useWorkerFunction } from './hooks/useWorkerFunction';
 export { useThrottle } from './hooks/useThrottle';
 export { usePage } from './hooks/usePage';
-export * from './hooks/useCube';
+export * from './hooks/useOLAP';

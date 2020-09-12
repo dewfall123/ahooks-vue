@@ -10,13 +10,12 @@ import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export type {  SourceData, Columns, Options, CubeSettings };
-export { OPERATOR } from './type'
+// export type { SourceData, SourceDataRef, Columns, Options, CubeSettings };
+export { OPERATOR } from './type';
 
-
-export function useCube(
+export function useOLAP<T>(
   data: SourceData,
-  setting: {
+  options: {
     columns?: Columns;
     options?: Options;
     defaultValues?: CubeSettings;
