@@ -1,10 +1,16 @@
 import { reactive, toRefs, computed, isRef, watch } from 'vue';
-import { Options, CubeSettings, ColumnsRef } from './type';
+import {
+  Options,
+  CubeSettings,
+  ColumnsRef,
+  COUNT_FIELD,
+  CountField,
+} from './type';
 
-export function useCubeSettings(
-  columns: ColumnsRef,
+export function useCubeSettings<T>(
+  columns: ColumnsRef<T>,
   passedOptions: Options = {},
-  defaultValues: CubeSettings = {},
+  defaultValues: CubeSettings<T> = {},
 ) {
   const state = reactive({
     settings: {
@@ -12,8 +18,8 @@ export function useCubeSettings(
       measure: defaultValues.measure,
       series: defaultValues.series,
       bySeries: defaultValues.bySeries ?? false,
-      countField: defaultValues.countField ?? '_count',
-    } as CubeSettings,
+      countField: defaultValues.countField ?? COUNT_FIELD,
+    } as CubeSettings<T>,
   });
 
   const dimensionOptions = computed(() => {
@@ -32,9 +38,9 @@ export function useCubeSettings(
         : passedOptions.measures;
     }
     return {
-      [state.settings.countField as string]: '次数',
+      [COUNT_FIELD]: '次数',
       ...columns.value,
-    };
+    } as Record<CountField | keyof T, string>;
   });
 
   const seriesOptions = computed(() => {
@@ -51,9 +57,11 @@ export function useCubeSettings(
     () => {
       if (
         !state.settings.dimension ||
-        !dimensionOptions.value[state.settings.dimension]
+        !dimensionOptions.value[state.settings.dimension as string]
       ) {
-        state.settings.dimension = Object.keys(dimensionOptions.value ?? {})[0];
+        state.settings.dimension = Object.keys(
+          dimensionOptions.value ?? {},
+        )[0] as any;
       }
     },
     { immediate: true },
@@ -64,9 +72,11 @@ export function useCubeSettings(
     () => {
       if (
         !state.settings.measure ||
-        !measureOptions.value[state.settings.measure]
+        !measureOptions.value[state.settings.measure as string]
       ) {
-        state.settings.measure = Object.keys(measureOptions.value ?? {})[0];
+        state.settings.measure = Object.keys(
+          measureOptions.value ?? {},
+        )[0] as any;
       }
     },
     { immediate: true },
@@ -77,9 +87,11 @@ export function useCubeSettings(
     () => {
       if (
         !state.settings.series ||
-        !seriesOptions.value[state.settings.series]
+        !seriesOptions.value[state.settings.series as string]
       ) {
-        state.settings.series = Object.keys(seriesOptions.value ?? {})[0];
+        state.settings.series = Object.keys(
+          seriesOptions.value ?? {},
+        )[0] as any;
       }
     },
     { immediate: true },

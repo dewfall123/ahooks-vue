@@ -1,14 +1,14 @@
 import { reactive, toRefs, computed } from 'vue';
-import { SourceDataRef, Columns, OPERATOR, Filter } from './type';
+import { SourceDataRef, OPERATOR, Filter, ColumnsRef } from './type';
 
-export function useFilters(data: SourceDataRef, columns: Columns) {
+export function useFilters<T>(data: SourceDataRef<T>, columns: ColumnsRef<T>) {
   const state = reactive({
-    list: [] as Filter[],
+    list: [] as Filter<T>[],
     cur: {
       field: '',
       operator: OPERATOR.等于,
       value: '',
-    } as Filter,
+    } as Filter<T>,
   });
 
   const fieldOptions = computed(() => {
@@ -24,7 +24,7 @@ export function useFilters(data: SourceDataRef, columns: Columns) {
     return Array.from(
       new Set(
         data.value
-          .map(item => item[(state.cur.field as unknown) as string])
+          .map(item => item[state.cur.field as keyof T])
           .filter(filedValue => filedValue !== undefined),
       ),
     );
@@ -43,7 +43,7 @@ export function useFilters(data: SourceDataRef, columns: Columns) {
   function addFilter() {
     if (canAddFilter.value) {
       state.list.push({
-        field: (state.cur.field as unknown) as string,
+        field: state.cur.field,
         operator: state.cur.operator,
         value: (state.cur.value as unknown) as string,
       });

@@ -1,3 +1,11 @@
+export interface DataSchema {
+  date: string;
+  name: string;
+  age: number;
+  action: 'push' | 'pull';
+  score?: number;
+}
+
 export const data = [
   { date: '2020-08-05', name: 'a', age: 18, action: 'push', score: 13 },
   { date: '2020-08-05', name: 'b', age: 20, action: 'pull', score: 0 },
@@ -10,18 +18,20 @@ export const data = [
   { date: '2020-08-08', name: 'a', age: 18, action: 'push', score: 1 },
   { date: '2020-08-08', name: 'd', age: 22, action: 'pull', score: 17 },
   { date: '2020-08-09', name: 'a', age: 18, action: 'push' },
-];
+] as DataSchema[];
 
 export const dimensionOptionsArg = {
   date: '日期',
   action: '操作',
-};
+} as Record<keyof DataSchema, string>;
+
 export const measureOptionsArg = {
   score: '得分',
-};
+} as Record<keyof DataSchema, string>;
+
 export const seriesOptionsArg = {
   name: '名称',
-};
+} as Record<keyof DataSchema, string>;
 
 export const columns = {
   date: '日期',
@@ -29,7 +39,7 @@ export const columns = {
   age: '年龄',
   action: '操作',
   score: '得分',
-};
+} as Record<keyof DataSchema, string>;
 
 export const date__count = [
   { date: '2020-08-05', _count: 4 },

@@ -1,4 +1,4 @@
-import { useCube, OPERATOR } from '../index';
+import { useOLAP, OPERATOR } from '../index';
 import {
   data,
   columns,
@@ -12,19 +12,21 @@ import {
   measureOptionsArg,
   seriesOptionsArg,
   date__count_filtered_age,
+  DataSchema,
 } from '../demo/data';
 import { ref, nextTick } from 'vue';
+import { COUNT_FIELD } from '../type';
 
-describe('useCube', () => {
+describe('useOLAP', () => {
   it('should be defined', () => {
-    expect(useCube).toBeDefined();
+    expect(useOLAP).toBeDefined();
   });
 
   it('should work with only one arg', () => {
-    const { cube, cubeSettings } = useCube(data);
+    const { cube, cubeSettings } = useOLAP<DataSchema>(data);
 
     expect(cubeSettings.settings.value.dimension).toEqual('date');
-    expect(cubeSettings.settings.value.measure).toEqual('_count');
+    expect(cubeSettings.settings.value.measure).toEqual(COUNT_FIELD);
     expect(cubeSettings.settings.value.series).toEqual('date');
 
     expect(cubeSettings.options.value.dimension).toEqual(
@@ -47,7 +49,7 @@ describe('useCube', () => {
   });
 
   it('the default values arg should work', () => {
-    const { cube, cubeSettings } = useCube(data, {
+    const { cube, cubeSettings } = useOLAP<DataSchema>(data, {
       columns,
       defaultValues: {
         dimension: 'name',
@@ -67,7 +69,7 @@ describe('useCube', () => {
   });
 
   it('the options arg should work', () => {
-    const { cube, cubeSettings } = useCube(data, {
+    const { cube, cubeSettings } = useOLAP<DataSchema>(data, {
       columns,
       options: {
         dimensions: dimensionOptionsArg,
@@ -88,7 +90,7 @@ describe('useCube', () => {
   });
 
   it('should work with filter', () => {
-    const { cube, filter } = useCube(data);
+    const { cube, filter } = useOLAP<DataSchema>(data);
 
     expect(cube.value).toEqual(date__count);
 
@@ -120,7 +122,7 @@ describe('useCube', () => {
 
   it('should work with data ref', () => {
     const dataRef = ref([] as any[]);
-    const { cube } = useCube(dataRef);
+    const { cube } = useOLAP<DataSchema>(dataRef);
 
     expect(cube.value).toEqual([]);
 
@@ -136,11 +138,11 @@ describe('useCube', () => {
     const measureOptionsRef = ref(measureOptionsArg);
     const seriesOptionsRef = ref(seriesOptionsArg);
 
-    const { cube, cubeSettings } = useCube(dataRef, {
+    const { cube, cubeSettings } = useOLAP<DataSchema>(dataRef, {
       options: {
         dimensions: dimensionOptionsRef,
-        measures: measureOptionsRef,
         series: seriesOptionsRef,
+        measures: measureOptionsRef,
       },
     });
 

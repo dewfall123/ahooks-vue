@@ -2,16 +2,16 @@ import { Ref, computed } from 'vue';
 import { Filter, SourceDataRef, CubeSettings } from './type';
 import { operatorFn } from './constants';
 
-export function useCubeData(
-  data: SourceDataRef,
-  filters: Ref<Filter[]>,
-  cubeSettings: Ref<CubeSettings>,
+export function useCubeData<T>(
+  data: SourceDataRef<T>,
+  filters: Ref<Filter<T>[]>,
+  cubeSettings: Ref<CubeSettings<T>>,
 ) {
   const cube = computed(() => {
-    const filteredData = data.value.filter((dataItem) => {
+    const filteredData = data.value.filter(dataItem => {
       for (const { field, operator, value } of filters.value) {
         const opFn = operatorFn[operator];
-        if (!opFn(dataItem[field], value)) {
+        if (!opFn(dataItem[field as keyof T], value)) {
           return false;
         }
       }
@@ -47,12 +47,12 @@ export function useCubeData(
     // agg by series
     const cube = [];
     if (bySeries) {
-      let cubeTree = {} as Record<string, any>;
+      let cubeTree = {} as Record<any, any>;
       for (const item of filteredData) {
-        if (!item.hasOwnProperty(dimension as string)) {
+        if (!(dimension in item)) {
           continue;
         }
-        const dimensionValue = item[dimension as string] as string;
+        const dimensionValue = item[dimension] as any;
         if (cubeTree[dimensionValue]) {
           cubeTree[dimensionValue].push(item);
         } else {
@@ -81,10 +81,10 @@ export function useCubeData(
     } else {
       const cubeTree = {} as Record<string, number>;
       for (const item of filteredData) {
-        if (!item.hasOwnProperty(dimension)) {
+        if (!(dimension in item)) {
           continue;
         }
-        setMeasure(cubeTree, item[dimension], item);
+        setMeasure(cubeTree, item[dimension] as any, item);
       }
 
       for (const dimensionValue in cubeTree) {

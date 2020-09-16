@@ -1,41 +1,43 @@
-import { isRef, ref, computed } from 'vue';
+import { isRef, ref, computed, Ref } from 'vue';
 import {
   SourceData,
   Columns,
   Options,
   CubeSettings,
   SourceDataRef,
+  ColumnsRef,
 } from './type';
 import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-// export type { SourceData, SourceDataRef, Columns, Options, CubeSettings };
-export { OPERATOR } from './type';
+export type {  SourceData, Columns, Options, CubeSettings };
+export { OPERATOR } from './type'
+
 
 export function useOLAP<T>(
-  data: SourceData,
-  options: {
-    columns?: Columns;
+  data: SourceData<T>,
+  setting: {
+    columns?: Columns<T>;
+    defaultValues?: CubeSettings<T>;
     options?: Options;
-    defaultValues?: CubeSettings;
   } = {},
 ) {
   if (!isRef(data)) {
-    data = ref(data) as SourceDataRef;
+    data = ref(data) as SourceDataRef<T>;
   }
 
   if (!setting.columns) {
     setting.columns = computed(() =>
-      Object.keys((data as SourceDataRef).value[0] ?? []).reduce((obj, i) => {
-        obj[i] = i;
+      Object.keys((data as SourceDataRef<T>).value[0] ?? []).reduce((obj, i) => {
+        obj[i as keyof T] = i;
         return obj;
-      }, {} as Record<string, string>),
+      }, {} as Record<keyof T , string>),
     );
   }
 
   if (!isRef(setting.columns)) {
-    setting.columns = ref(setting.columns);
+    setting.columns = ref(setting.columns) as ColumnsRef<T>;
   }
 
   const filter = useFilters(data, setting.columns);
@@ -46,7 +48,7 @@ export function useOLAP<T>(
     setting.defaultValues,
   );
 
-  const { cube } = useCubeData(data, filter.list, cubeSettings.settings);
+  const { cube } = useCubeData<T>(data, filter.list as any, cubeSettings.settings as Ref<CubeSettings<T>>);
 
   return {
     cube,
@@ -56,4 +58,4 @@ export function useOLAP<T>(
   };
 }
 
-export default useCube;
+export default useOLAP;

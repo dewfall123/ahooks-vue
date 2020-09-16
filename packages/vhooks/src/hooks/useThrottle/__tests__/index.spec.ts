@@ -14,7 +14,7 @@ describe('useThrottle', () => {
     count.value++;
     expect(count.value).toEqual(2);
     expect(throttledCount.value).toEqual(0);
-    sleep(250);
+    await sleep(300);
     expect(throttledCount.value).toEqual(2);
   });
 });

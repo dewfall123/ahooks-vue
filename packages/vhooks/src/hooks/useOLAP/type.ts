@@ -9,33 +9,40 @@ export enum OPERATOR {
   '不等于' = '!=',
 }
 
-export type DimensionOptions = Record<string, string | number>;
+export type DimensionOptions =
+  | Ref<Record<string, string>>
+  | Record<string, string>;
+
+export type CountField = '_count';
+export const COUNT_FIELD = '_count';
+
+export type MeasuresOptions =
+  | Ref<Record<string, string>>
+  | Record<string, string>;
 
 export interface Options {
-  dimensions?: Ref<DimensionOptions> | DimensionOptions;
-  measures?: Ref<DimensionOptions> | DimensionOptions;
-  series?: Ref<DimensionOptions> | DimensionOptions;
+  dimensions?: DimensionOptions;
+  series?: DimensionOptions;
+  measures?: MeasuresOptions;
 }
 
-export interface CubeSettings {
-  dimension?: string;
-  measure?: string;
-  series?: string;
+export interface CubeSettings<T> {
+  dimension?: keyof T;
+  series?: keyof T;
+  measure?: keyof T | CountField;
   //
   bySeries?: boolean;
   countField?: string;
 }
 
-export interface Filter {
-  field: string;
+export interface Filter<T> {
+  field: keyof T | '';
   operator: OPERATOR;
-  value: string | number;
+  value: any;
 }
 
-export type SourceData<T> = Ref<Record<string, any>[]> | Record<string, any>[];
-export type SourceDataRef = Ref<Record<string, any>[]>;
+export type SourceData<T> = Ref<T[]> | T[];
+export type SourceDataRef<T> = Ref<T[]>;
 
-export type Columns = Ref<Record<string, string>> | Record<string, string>;
-export type ColumnsRef = Ref<Record<string, string>>;
-
-export default {};
+export type Columns<T> = Ref<Record<keyof T, string>> | Record<keyof T, string>;
+export type ColumnsRef<T> = Ref<Record<keyof T, string>>;
