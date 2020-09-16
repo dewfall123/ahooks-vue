@@ -1,6 +1,9 @@
 import useToggle from '../index';
 
+// vue2-import-slot
+
 describe('useToggle', () => {
+  // vue2-beforeAll-slot
   it('should be defined', () => {
     expect(useToggle).toBeDefined();
   });
@@ -13,31 +16,31 @@ describe('useToggle', () => {
   it('test on methods', async () => {
     const { state, toggle, setLeft, setRight } = useToggle('Hello');
     expect(state.value).toEqual('Hello');
-    
-    toggle()
+
+    toggle();
     expect(state.value).toBeFalsy();
-    
-    toggle()
-    expect(state.value).toEqual('Hello');
-    
-    setLeft()
+
+    toggle();
     expect(state.value).toEqual('Hello');
 
-    setRight()
+    setLeft();
+    expect(state.value).toEqual('Hello');
+
+    setRight();
     expect(state.value).toBeFalsy();
   });
-  
+
   it('test on optional', () => {
     const { state, toggle, setLeft, setRight } = useToggle('Hello', 'Word');
     expect(state.value).toEqual('Hello');
 
-    toggle()
+    toggle();
     expect(state.value).toEqual('Word');
 
-    setLeft()
+    setLeft();
     expect(state.value).toEqual('Hello');
 
-    setRight()
-    expect(state.value).toEqual('Word')
-  })
-})
+    setRight();
+    expect(state.value).toEqual('Word');
+  });
+});

@@ -2,7 +2,10 @@ import { useThrottle } from '../index';
 import { ref } from 'vue';
 import { sleep } from '../../../utils';
 
+// vue2-import-slot
+
 describe('useThrottle', () => {
+  // vue2-beforeAll-slot
   it('should be defined', () => {
     expect(useThrottle).toBeDefined();
   });

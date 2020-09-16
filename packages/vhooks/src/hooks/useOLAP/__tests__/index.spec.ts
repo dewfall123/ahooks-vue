@@ -17,7 +17,10 @@ import {
 import { ref, nextTick } from 'vue';
 import { COUNT_FIELD } from '../type';
 
+// vue2-import-slot
+
 describe('useOLAP', () => {
+  // vue2-beforeAll-slot
   it('should be defined', () => {
     expect(useOLAP).toBeDefined();
   });
