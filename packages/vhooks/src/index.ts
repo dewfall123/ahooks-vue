@@ -10,3 +10,5 @@ export { useWorkerFunction } from './hooks/useWorkerFunction';
 export { useThrottle } from './hooks/useThrottle';
 export { usePage } from './hooks/usePage';
 export { useOLAP } from './hooks/useOLAP';
+//
+export * from './hooks/useOLAP';
