@@ -9,9 +9,11 @@ async function delVue2Src() {
   });
 }
 
+const Vue3OnlyHooks = ['useUrlState'];
+
 async function transformToVue2() {
   await gulp
-    .src('src/**')
+    .src(`src/**`)
     .pipe(replace(`'vue'`, `'@vue/composition-api'`))
     .pipe(replace(`'@dewfall/vhooks'`, `'@dewfall/vhooks-vue2'`))
     .pipe(
@@ -26,6 +28,18 @@ async function transformToVue2() {
         `beforeAll(() => {\n\t\tVue.use(VueCompositionAPI);\n\t});\n`,
       ),
     )
+    .pipe(
+      replace(
+        new RegExp(
+          Vue3OnlyHooks.map(
+            hooksName =>
+              `(export { ${hooksName} } from './hooks/${hooksName}';\n)`,
+          ).join('|'),
+          'g',
+        ),
+        '',
+      ),
+    )
     .pipe(gulp.dest('../vhooks-vue2/src'));
 }
 
@@ -36,4 +50,15 @@ async function copyFiles() {
   });
 }
 
-exports.default = gulp.series(delVue2Src, transformToVue2, copyFiles);
+async function delHooksNotSupportVue2() {
+  await del(['../vhooks-vue2/src/hooks/useUrlState/**'], {
+    force: true,
+  });
+}
+
+exports.default = gulp.series(
+  delVue2Src,
+  transformToVue2,
+  copyFiles,
+  delHooksNotSupportVue2,
+);
