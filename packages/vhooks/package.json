@@ -17,7 +17,7 @@
     "docs:build": "vitepress build",
     "build-view": "http-server .vitepress/dist",
     "test": "jest",
-    "build": "rollup -c",
+    "build": "rimraf dist/ && rollup -c",
     "gulp": "gulp"
   },
   "keywords": [
