@@ -3,18 +3,26 @@ const gulp = require('gulp');
 const replace = require('gulp-replace');
 const del = require('del');
 
-async function delVue2Src() {
-  await del(['../vhooks-vue2/src/**'], {
-    force: true,
-  });
-}
-
 // 需要手动改写的Hooks
 const DiffHooks = ['useUrlState'];
 
+async function delVue2Src() {
+  await del(
+    [
+      '../vhooks-vue2/src/**',
+      // ...DiffHooks.map(i => `!../vhooks-vue2/src/hooks/${i}/**`),
+      `!../vhooks-vue2/src/hooks/useUrlState/`,
+      `!../vhooks-vue2/src/hooks/useUrlState/index.ts`,
+    ],
+    {
+      force: true,
+    },
+  );
+}
+
 async function transformToVue2() {
   await gulp
-    .src([`src/**`, ...DiffHooks.map(i => `!src/hooks/${i}/`)])
+    .src([`src/**`, ...DiffHooks.map(i => `!src/hooks/${i}/**`)])
     .pipe(replace(`'vue'`, `'@vue/composition-api'`))
     .pipe(replace(`'@dewfall/vhooks'`, `'@dewfall/vhooks-vue2'`))
     .pipe(
@@ -34,9 +42,7 @@ async function transformToVue2() {
 
 async function copyFiles() {
   const copyFiles = ['./jest.config.js'];
-  copyFiles.forEach(async f => {
-    await gulp.src(f).pipe(gulp.dest('../vhooks-vue2/src'));
-  });
+  gulp.src(copyFiles).pipe(gulp.dest('../vhooks-vue2/src'));
 }
 
 // async function delHooksNotSupportVue2() {
@@ -46,7 +52,7 @@ async function copyFiles() {
 // }
 
 exports.default = gulp.series(
-  delVue2Src,
+  // delVue2Src,
   transformToVue2,
   copyFiles,
   // delHooksNotSupportVue2,
