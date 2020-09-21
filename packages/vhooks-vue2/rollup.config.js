@@ -7,7 +7,7 @@ export default {
   input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
-    format: 'cjs',
+    format: 'esm',
   },
   external: ['@vue/composition-api', 'vue', 'vue-router'],
   plugins: [
