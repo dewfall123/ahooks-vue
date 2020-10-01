@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "dev": "cd packages/vhooks && yarn dev",
+    "dev:2": "cd packages/vhooks-vue2 && yarn dev",
     "build": "lerna run gulp && lerna run build",
     "pub": "lerna publish"
   },
