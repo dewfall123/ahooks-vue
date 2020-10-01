@@ -52,7 +52,7 @@
     "typescript": "^3.8.3",
     "vitepress": "^0.5.0",
     "vue": "^3.0.0-rc.10",
-    "vue-router": "^4.0.0-beta.7"
+    
   },
   "dependencies": {
     "dayjs": "^1.8.34",
@@ -60,7 +60,8 @@
     "localforage": "^1.9.0",
     "lodash-es": "^4.17.15",
     "resize-observer-polyfill": "^1.5.1",
-    "screenfull": "^5.0.2"
+    "screenfull": "^5.0.2",
+    "vue-router": "^4.0.0-beta.7"
   },
   "publishConfig": {
     "access": "public"
