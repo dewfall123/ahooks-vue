@@ -2190,10 +2190,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-doc-the-lib@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/doc-the-lib/-/doc-the-lib-0.1.2.tgz#05ca27a434d59967240ca6f8ded71148ab75b045"
-  integrity sha512-MWh8EdpU14RMIHcNrVo39ysU6ESU6l6oQzsNulkgVNVNAESgu05cr2lwTF3f3uyrMQYI06I1Mox6EaYWPWJ5uw==
+doc-the-lib@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/doc-the-lib/-/doc-the-lib-0.2.0.tgz#0e6329df83b4defa785566d3846f16f4942d1e11"
+  integrity sha512-8gEWKzIYt7eyWLyh1gPCXhPzUI6i0T1G1ymXtmkL1uKhSTsGU0o/IZmGNZ1ilFf/TkxFHAQM+6bN7LRu0gS/XQ==
   dependencies:
     "@vue/compiler-sfc" "^3.0.0-rc.11"
     "@vue/server-renderer" "^3.0.0-rc.11"

@@ -41,7 +41,7 @@ module.exports = {
   head: [['link', { href: '/doc' }, '文档']],
   themeConfig: {
     nav: [
-      { text: 'Home1', link: '/' },
+      { text: 'Home', link: '/' },
       { text: '文档', link: hooksPrefix },
     ],
     sidebar: sideBar,
@@ -51,7 +51,7 @@ module.exports = {
   alias: { '@dewfall/vhooks': '/src' },
   outDir: 'docs',
   // TODO
-  // base: './',
+  base: '/vhooks',
   viteOptions: {
   },
 };
