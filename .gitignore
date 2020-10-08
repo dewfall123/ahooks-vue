@@ -1,6 +1,7 @@
 # dist/
 doc/dist/
 dist/
+docs/
 dist-v2/
 node_modules/
 yarn-error.log

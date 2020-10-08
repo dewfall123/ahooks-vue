@@ -49,9 +49,9 @@ module.exports = {
     searchMaxSuggestions: 10,
   },
   alias: { '@dewfall/vhooks': '/src' },
-  outDir: '../../docs',
+  outDir: 'docs',
   // TODO
-  base: './',
+  // base: './',
   viteOptions: {
   },
 };
