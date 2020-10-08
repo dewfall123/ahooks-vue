@@ -1,1 +1,0 @@
-import{x as t}from"./common-15adca4d.js";function o(o=!1,e){const a=t(o),s=t=>{a.value=t},i=void 0===e?!o:e;return{state:a,toggle:t=>{void 0===t&&(t=a.value===o?i:o),s(t)},setLeft:()=>{s(o)},setRight:()=>{s(i)}}}export{o as u};
