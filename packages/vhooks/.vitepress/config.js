@@ -49,5 +49,7 @@ module.exports = {
     searchMaxSuggestions: 10,
   },
   alias: { '@dewfall/vhooks': '/src' },
-  viteOptions: {},
+  viteOptions: {
+    'optimizeDeps.allowNodeBuiltins': true,
+  },
 };

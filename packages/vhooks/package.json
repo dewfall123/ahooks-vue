@@ -13,8 +13,8 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "dev": "doc-the-lib dev",
+    "docs:build": "doc-the-lib build",
     "build-view": "http-server .vitepress/dist",
     "test": "jest",
     "build": "rimraf dist/ && rollup -c",
@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^2.23.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "doc-the-lib": "^0.1.1",
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.2.2",
@@ -50,7 +51,6 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
-    "vitepress": "^0.5.0",
     "vue": "^3.0.0-rc.10",
     "vue-router": "^4.0.0-beta.7"
   },
