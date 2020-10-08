@@ -16,6 +16,7 @@
   "scripts": {
     "dev": "cd packages/vhooks && yarn dev",
     "build": "lerna run gulp && lerna run build",
+    "docs:build": "cd packages/vhooks && yarn docs:build",
     "pub": "lerna publish"
   },
   "keywords": [

@@ -3458,10 +3458,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-doc-the-lib@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/doc-the-lib/-/doc-the-lib-0.1.1.tgz#25b2727d19ad5484ef61910847b4e4dc2483e8f2"
-  integrity sha512-TJ0ZwXbuytsRQdeEM7Y92GUwSbXBDwqZ+hmRhE6BG5dqz/JZIhRym8y6ulMJuRsTaVX/R3BjaoI5fAgusuV1Nw==
+doc-the-lib@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/doc-the-lib/-/doc-the-lib-0.1.2.tgz#05ca27a434d59967240ca6f8ded71148ab75b045"
+  integrity sha512-MWh8EdpU14RMIHcNrVo39ysU6ESU6l6oQzsNulkgVNVNAESgu05cr2lwTF3f3uyrMQYI06I1Mox6EaYWPWJ5uw==
   dependencies:
     "@vue/compiler-sfc" "^3.0.0-rc.11"
     "@vue/server-renderer" "^3.0.0-rc.11"

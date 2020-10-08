@@ -2,8 +2,6 @@
 
 [![npm](https://img.shields.io/npm/v/@dewfall/vhooks)](https://www.npmjs.com/package/@dewfall/vhooks)
 
-> A doc generator tool for libiary. based on vhooks.
-
 **Note this is early WIP!
 
 # Quick start
