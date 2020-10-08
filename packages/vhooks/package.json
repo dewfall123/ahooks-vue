@@ -14,9 +14,9 @@
   ],
   "scripts": {
     "dev": "doc-the-lib dev",
-    "gh": "gh-pages -d docs",
-    "docs:build": "doc-the-lib build",
-    "build-view": "http-server ./docs",
+    "predeploy": "doc-the-lib build",
+    "deploy": "gh-pages -d docs",
+    "deploy-view": "http-server ./docs",
     "test": "jest",
     "build": "rimraf dist/ && rollup -c",
     "gulp": "gulp"
