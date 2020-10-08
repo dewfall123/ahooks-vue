@@ -1,8 +1,0 @@
-# dist/
-doc/dist/
-dist/
-docs/
-dist-v2/
-node_modules/
-yarn-error.log
-# packages/vhooks-vue2/src/

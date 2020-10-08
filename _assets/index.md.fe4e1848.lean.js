@@ -1,0 +1,1 @@
+import{d as a,c as s,E as n}from"./common-a14a00e4.js";var e={components:{}};const t='{"title":"轻松上手","frontmatter":{},"headers":[{"level":2,"title":"轻松上手","slug":"轻松上手"}],"relativePath":"index.md","lastUpdated":1602162468484.021}',o=n('',2);e.render=function(n,e,t,p,r,c){return s(),a("div",null,[o])};export default e;export{t as __pageData};
