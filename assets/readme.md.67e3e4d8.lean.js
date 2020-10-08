@@ -1,0 +1,1 @@
+import{d as e,c as a,E as s}from"./common-15adca4d.js";var n={components:{}};const o='{"title":"(WIP) vhooks","frontmatter":{},"headers":[{"level":3,"title":"vue2 version","slug":"vue2-version"}],"relativePath":"readme.md","lastUpdated":1602162468488.023}',r=s('',7);n.render=function(s,n,o,t,i,l){return a(),e("div",null,[r])};export default n;export{o as __pageData};
