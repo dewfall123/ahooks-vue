@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "doc-the-lib dev",
     "docs:build": "doc-the-lib build",
-    "build-view": "http-server .vitepress/dist",
+    "build-view": "http-server ../../docs",
     "test": "jest",
     "build": "rimraf dist/ && rollup -c",
     "gulp": "gulp"

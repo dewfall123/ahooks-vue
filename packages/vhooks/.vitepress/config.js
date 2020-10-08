@@ -50,6 +50,8 @@ module.exports = {
   },
   alias: { '@dewfall/vhooks': '/src' },
   outDir: '../../docs',
+  // TODO
+  // base: '/vhooks',
   viteOptions: {
   },
 };

@@ -49,10 +49,10 @@ export function useCubeData<T>(
     if (bySeries) {
       let cubeTree = {} as Record<any, any>;
       for (const item of filteredData) {
-        if (!(dimension in item)) {
+        if (!((dimension as string) in item)) {
           continue;
         }
-        const dimensionValue = item[dimension] as any;
+        const dimensionValue = item[dimension as keyof T] as any;
         if (cubeTree[dimensionValue]) {
           cubeTree[dimensionValue].push(item);
         } else {
@@ -81,10 +81,10 @@ export function useCubeData<T>(
     } else {
       const cubeTree = {} as Record<string, number>;
       for (const item of filteredData) {
-        if (!(dimension in item)) {
+        if (!((dimension as string) in item)) {
           continue;
         }
-        setMeasure(cubeTree, item[dimension] as any, item);
+        setMeasure(cubeTree, item[dimension as keyof T] as any, item);
       }
 
       for (const dimensionValue in cubeTree) {
