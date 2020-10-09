@@ -1,6 +1,6 @@
 {
   "name": "@dewfall/vhooks-vue2",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "vue2 hooks like ahooks",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
@@ -64,6 +64,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {}
+  }
 }
