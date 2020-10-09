@@ -10,10 +10,10 @@
 
 ```
 // 安装依赖
-npm i @dewfall/vhooks --save
+npm i @dewfall/vhooks-vue2 --save
 
 // 使用 Hooks
 import { useRequest } from '@dewfall/vhooks';
 ```
 
-[vue2 version](https://www.npmjs.com/package/@dewfall/vhooks-vue2)
+[vue3 version](https://www.npmjs.com/package/@dewfall/vhooks)
