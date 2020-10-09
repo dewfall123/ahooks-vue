@@ -12,7 +12,7 @@
 
 ```
 // 安装依赖
-npm i @dewfall/vhooks --save
+yarn add @dewfall/vhooks vue-router@next
 
 // 使用 Hooks
 import { useRequest } from '@dewfall/vhooks';

@@ -51,7 +51,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-beta.13"
   },
   "homepage": "https://dewfall123.github.io/vhooks/",
   "dependencies": {
@@ -65,8 +67,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-beta.13"
-  }
+  "peerDependencies": {}
 }
