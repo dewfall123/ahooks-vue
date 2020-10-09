@@ -1,6 +1,6 @@
 {
   "name": "@dewfall/vhooks-vue2",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "vue2 hooks like ahooks",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
