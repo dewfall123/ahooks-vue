@@ -10,7 +10,7 @@
 
 ```
 // 安装依赖
-npm i @dewfall/vhooks --save
+yarn add @dewfall/vhooks vue-router@next
 
 // 使用 Hooks
 import { useRequest } from '@dewfall/vhooks';
@@ -19,11 +19,10 @@ import { useRequest } from '@dewfall/vhooks';
 ### vue2 version
 
 ```
-// 安装依赖
-npm i @dewfall/vhooks-vue2 --save
+yarn add @dewfall/vhooks-vue2 @vue/composition-api vue-router
 
 // 使用 Hooks
-import { useRequest } from '@dewfall/vhooks-vue2';
+import { useRequest } from '@dewfall/vhooks';
 ```
 
 # Contributing
