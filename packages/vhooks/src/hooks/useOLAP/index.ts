@@ -14,7 +14,6 @@ import { useCubeData } from './useCubeData';
 export type {  SourceData, Columns, Options, CubeSettings };
 export { OPERATOR } from './type'
 
-
 export function useOLAP<T>(
   data: SourceData<T>,
   setting: {

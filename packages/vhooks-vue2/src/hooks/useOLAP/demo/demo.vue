@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import { useCube } from '@dewfall/vhooks-vue2';
+import { useOLAP } from '@dewfall/vhooks-vue2';
 import { data } from './data';
 
 export default {
   setup() {
-    const { cube, cubeSettings } = useCube(data);
+    const { cube, cubeSettings } = useOLAP(data);
 
     return {
       cube,

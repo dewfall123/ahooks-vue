@@ -1,4 +1,4 @@
-import { Ref } from '@vue/composition-api';
+import { Ref, UnwrapRef } from '@vue/composition-api';
 
 export enum OPERATOR {
   '等于' = '=',
@@ -27,9 +27,9 @@ export interface Options {
 }
 
 export interface CubeSettings<T> {
-  dimension?: keyof T;
-  series?: keyof T;
-  measure?: keyof T | CountField;
+  dimension?: keyof T | UnwrapRef<keyof T>;
+  series?: keyof T | UnwrapRef<keyof T>;
+  measure?: keyof T | UnwrapRef<keyof T> | CountField;
   //
   bySeries?: boolean;
   countField?: string;
