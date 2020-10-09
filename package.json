@@ -64,6 +64,7 @@
     "screenfull": "^5.0.2"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://www.npmjs.com/package/@dewfall/vhooks"
   }
 }
