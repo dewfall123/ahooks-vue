@@ -4,7 +4,9 @@
 
 **Note this is early WIP!
 
-[document](https://dewfall123.github.io/vhooks/)
+[document|文档](https://dewfall123.github.io/vhooks/)
+
+[vue3 version](https://www.npmjs.com/package/@dewfall/vhooks)
 
 # Quick start
 
@@ -16,4 +18,3 @@ npm i @dewfall/vhooks-vue2 --save
 import { useRequest } from '@dewfall/vhooks';
 ```
 
-[vue3 version](https://www.npmjs.com/package/@dewfall/vhooks)
