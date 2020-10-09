@@ -67,8 +67,6 @@
     "screenfull": "^5.0.2"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://www.npmjs.com/package"
-  },
-  "gitHead": "20540259907bc8c9c2300fb2d2aad59f02db6b46"
+    "access": "public"
+  }
 }
