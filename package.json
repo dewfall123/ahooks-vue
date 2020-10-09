@@ -8,9 +8,7 @@
   "author": "dewfall",
   "license": "MIT",
   "files": [
-    "src",
     "dist",
-    "dist-v2",
     "package.json"
   ],
   "scripts": {
