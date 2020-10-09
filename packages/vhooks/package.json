@@ -67,6 +67,6 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://www.npmjs.com/package/@dewfall/vhooks"
+    "registry": "https://www.npmjs.com/package"
   }
 }

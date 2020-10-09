@@ -68,6 +68,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://www.npmjs.com/package/@dewfall/vhooks-vue2"
-  }
+    "registry": "https://www.npmjs.com/package"
+  },
+  "gitHead": "20540259907bc8c9c2300fb2d2aad59f02db6b46"
 }
