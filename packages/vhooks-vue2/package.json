@@ -12,9 +12,6 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "doc-the-lib dev",
-    "docs:build": "doc-the-lib build",
-    "build-view": "http-server .vitepress/dist",
     "test": "jest",
     "build": "rimraf dist && rollup -c"
   },
@@ -51,12 +48,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.3"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@vue/composition-api": "^1.0.0-beta.11",
     "dayjs": "^1.8.34",
     "intersection-observer": "^0.11.0",
     "lerna": "^3.22.1",
@@ -67,5 +61,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-beta.15",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.6"
   }
 }
