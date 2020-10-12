@@ -2,6 +2,16 @@ const hooksPrefix = '/src/hooks';
 
 const sideBar = [
   {
+    link:'/async',
+    text:'Aysnc',
+    children:[
+      'useAsync'
+    ].map(hookName => ({
+      link: `${hooksPrefix}/${hookName}/readme`,
+      text: hookName,
+    })),
+  },
+  {
     link: '/dom',
     text: 'Dom',
     children: [
