@@ -4,22 +4,13 @@
 
 **Note this is early WIP!
 
-[document](https://dewfall123.github.io/vhooks/)
+[document | 文档](https://dewfall123.github.io/vhooks/)
 
 # Quick start
 
 ```
 // 安装依赖
 yarn add @dewfall/vhooks vue-router@next
-
-// 使用 Hooks
-import { useRequest } from '@dewfall/vhooks';
-```
-
-### vue2 version
-
-```
-yarn add @dewfall/vhooks-vue2 @vue/composition-api vue-router
 
 // 使用 Hooks
 import { useRequest } from '@dewfall/vhooks';

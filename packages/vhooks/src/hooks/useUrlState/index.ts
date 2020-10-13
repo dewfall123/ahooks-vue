@@ -1,5 +1,5 @@
 import { useRoute, Router } from 'vue-router';
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue-demi';
 
 interface Options<T> {
   defaultValue?: T;

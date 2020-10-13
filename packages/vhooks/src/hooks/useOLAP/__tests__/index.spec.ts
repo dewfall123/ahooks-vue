@@ -14,7 +14,7 @@ import {
   date__count_filtered_age,
   DataSchema,
 } from '../demo/data';
-import { ref, nextTick } from 'vue';
+import { ref, nextTick } from 'vue-demi';
 import { COUNT_FIELD } from '../type';
 
 // vue2-import-slot
@@ -26,28 +26,28 @@ describe('useOLAP', () => {
   });
 
   it('should work with only one arg', () => {
-    const { cube, cubeSettings } = useOLAP<DataSchema>(data);
+    const { cube, cubeSettings, cubeOptions } = useOLAP<DataSchema>(data);
 
-    expect(cubeSettings.settings.value.dimension).toEqual('date');
-    expect(cubeSettings.settings.value.measure).toEqual(COUNT_FIELD);
-    expect(cubeSettings.settings.value.series).toEqual('date');
+    expect(cubeSettings.dimension).toEqual('date');
+    expect(cubeSettings.measure).toEqual(COUNT_FIELD);
+    expect(cubeSettings.series).toEqual('date');
 
-    expect(cubeSettings.options.value.dimension).toEqual(
+    expect(cubeOptions.value.dimension).toEqual(
       Object.keys(data[0]).reduce((obj, i) => ({ [i]: i, ...obj }), {}),
     );
 
     expect(cube.value).toEqual(date__count);
 
-    cubeSettings.settings.value.dimension = 'name';
+    cubeSettings.dimension = 'name';
     expect(cube.value).toEqual(name__count);
 
-    cubeSettings.settings.value.measure = 'score';
+    cubeSettings.measure = 'score';
     expect(cube.value).toEqual(name_score);
 
-    cubeSettings.settings.value.bySeries = true;
-    cubeSettings.settings.value.series = 'name';
-    cubeSettings.settings.value.measure = 'score';
-    cubeSettings.settings.value.dimension = 'date';
+    cubeSettings.bySeries = true;
+    cubeSettings.series = 'name';
+    cubeSettings.measure = 'score';
+    cubeSettings.dimension = 'date';
     expect(cube.value).toEqual(date_name_score);
   });
 
@@ -61,18 +61,18 @@ describe('useOLAP', () => {
       },
     });
 
-    expect(cubeSettings.settings.value.dimension).toEqual('name');
-    expect(cubeSettings.settings.value.measure).toEqual('score');
-    expect(cubeSettings.settings.value.series).toEqual('date');
+    expect(cubeSettings.dimension).toEqual('name');
+    expect(cubeSettings.measure).toEqual('score');
+    expect(cubeSettings.series).toEqual('date');
 
     expect(cube.value).toEqual(name_score);
 
-    cubeSettings.settings.value.bySeries = true;
+    cubeSettings.bySeries = true;
     expect(cube.value).toEqual(name_date_score);
   });
 
   it('the options arg should work', () => {
-    const { cube, cubeSettings } = useOLAP<DataSchema>(data, {
+    const { cube, cubeSettings, cubeOptions } = useOLAP<DataSchema>(data, {
       columns,
       options: {
         dimensions: dimensionOptionsArg,
@@ -81,13 +81,13 @@ describe('useOLAP', () => {
       },
     });
 
-    expect(cubeSettings.settings.value.dimension).toEqual('date');
-    expect(cubeSettings.settings.value.measure).toEqual('score');
-    expect(cubeSettings.settings.value.series).toEqual('name');
+    expect(cubeSettings.dimension).toEqual('date');
+    expect(cubeSettings.measure).toEqual('score');
+    expect(cubeSettings.series).toEqual('name');
 
-    expect(cubeSettings.options.value.dimension).toEqual(dimensionOptionsArg);
-    expect(cubeSettings.options.value.measure).toEqual(measureOptionsArg);
-    expect(cubeSettings.options.value.series).toEqual(seriesOptionsArg);
+    expect(cubeOptions.value.dimension).toEqual(dimensionOptionsArg);
+    expect(cubeOptions.value.measure).toEqual(measureOptionsArg);
+    expect(cubeOptions.value.series).toEqual(seriesOptionsArg);
 
     expect(cube.value).toEqual(date_score);
   });
@@ -150,14 +150,14 @@ describe('useOLAP', () => {
     });
 
     expect(cube.value).toEqual([]);
-    expect(cubeSettings.settings.value.dimension).toEqual(undefined);
-    expect(cubeSettings.settings.value.measure).toEqual('score');
+    expect(cubeSettings.dimension).toEqual(undefined);
+    expect(cubeSettings.measure).toEqual('score');
 
     dimensionOptionsRef.value = dimensionOptionsArg;
     dataRef.value = data;
 
     nextTick(() => {
-      expect(cubeSettings.settings.value.dimension).toEqual('date');
+      expect(cubeSettings.dimension).toEqual('date');
       expect(cube.value).toEqual(date_score);
     });
   });

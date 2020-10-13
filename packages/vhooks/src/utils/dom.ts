@@ -1,4 +1,4 @@
-import { Ref, unref, isRef } from 'vue';
+import { Ref, unref, isRef } from 'vue-demi';
 
 export type BasicTarget<T = HTMLElement> =
   | (() => T | null)

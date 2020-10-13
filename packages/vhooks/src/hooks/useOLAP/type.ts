@@ -1,4 +1,4 @@
-import { Ref, UnwrapRef } from 'vue';
+import { Ref, UnwrapRef } from 'vue-demi';
 
 export enum OPERATOR {
   '等于' = '=',

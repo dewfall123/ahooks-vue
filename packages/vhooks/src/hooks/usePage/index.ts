@@ -1,4 +1,4 @@
-import { computed, reactive, toRefs, Ref, watch } from 'vue';
+import { computed, reactive, toRefs, Ref, watch } from 'vue-demi';
 import { merge } from 'lodash-es';
 import { useThrottle } from '../useThrottle';
 

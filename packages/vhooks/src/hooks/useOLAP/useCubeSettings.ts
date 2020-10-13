@@ -1,4 +1,4 @@
-import { reactive, toRefs, computed, isRef, watch } from 'vue';
+import { reactive, computed, isRef, watch } from 'vue-demi';
 import {
   Options,
   CubeSettings,
@@ -12,15 +12,13 @@ export function useCubeSettings<T>(
   passedOptions: Options = {},
   defaultValues: CubeSettings<T> = {},
 ) {
-  const state = reactive({
-    settings: {
-      dimension: defaultValues.dimension,
-      measure: defaultValues.measure,
-      series: defaultValues.series,
-      bySeries: defaultValues.bySeries ?? false,
-      countField: defaultValues.countField ?? COUNT_FIELD,
-    } as CubeSettings<T>,
-  });
+  const cubeSettings = reactive<CubeSettings<T>>({
+    dimension: defaultValues.dimension,
+    measure: defaultValues.measure,
+    series: defaultValues.series,
+    bySeries: defaultValues.bySeries ?? false,
+    countField: defaultValues.countField ?? COUNT_FIELD,
+  }) as CubeSettings<T>;
 
   const dimensionOptions = computed(() => {
     if (passedOptions.dimensions) {
@@ -56,10 +54,10 @@ export function useCubeSettings<T>(
     dimensionOptions,
     () => {
       if (
-        !state.settings.dimension ||
-        !dimensionOptions.value[state.settings.dimension as string]
+        !cubeSettings.dimension ||
+        !dimensionOptions.value[cubeSettings.dimension as string]
       ) {
-        state.settings.dimension = Object.keys(
+        cubeSettings.dimension = Object.keys(
           dimensionOptions.value ?? {},
         )[0] as any;
       }
@@ -71,10 +69,10 @@ export function useCubeSettings<T>(
     measureOptions,
     () => {
       if (
-        !state.settings.measure ||
-        !measureOptions.value[state.settings.measure as string]
+        !cubeSettings.measure ||
+        !measureOptions.value[cubeSettings.measure as string]
       ) {
-        state.settings.measure = Object.keys(
+        cubeSettings.measure = Object.keys(
           measureOptions.value ?? {},
         )[0] as any;
       }
@@ -86,25 +84,23 @@ export function useCubeSettings<T>(
     seriesOptions,
     () => {
       if (
-        !state.settings.series ||
-        !seriesOptions.value[state.settings.series as string]
+        !cubeSettings.series ||
+        !seriesOptions.value[cubeSettings.series as string]
       ) {
-        state.settings.series = Object.keys(
-          seriesOptions.value ?? {},
-        )[0] as any;
+        cubeSettings.series = Object.keys(seriesOptions.value ?? {})[0] as any;
       }
     },
     { immediate: true },
   );
 
-  const options = computed(() => ({
+  const cubeOptions = computed(() => ({
     dimension: dimensionOptions.value,
     measure: measureOptions.value,
     series: seriesOptions.value,
   }));
 
   return {
-    ...toRefs(state),
-    options,
+    cubeSettings,
+    cubeOptions,
   };
 }

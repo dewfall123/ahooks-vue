@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref } from 'vue-demi';
 
 export function useDocumentVisibility() {
   const visible = ref(document.visibilityState);

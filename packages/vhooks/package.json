@@ -17,8 +17,7 @@
     "deploy": "gh-pages -d docs",
     "deploy-view": "http-server ./docs",
     "test": "jest",
-    "build": "rimraf dist/ && rollup -c",
-    "gulp": "gulp"
+    "build": "rimraf dist/ && rollup -c"
   },
   "keywords": [
     "vue",
@@ -33,6 +32,7 @@
     "@types/lodash-es": "^4.17.3",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.23.0",
+    "@vue/composition-api": "^1.0.0-beta.16",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "doc-the-lib": "^0.2.0",
@@ -52,7 +52,8 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
-    "vue": "^3.0.0",
+    "vue": "3.0.0-rc.13",
+    "vue-demi": "^0.4.0",
     "vue-router": "^4.0.0-beta.13"
   },
   "homepage": "https://dewfall123.github.io/vhooks/",

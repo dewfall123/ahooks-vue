@@ -1,5 +1,5 @@
 import { BasicTarget, getTargetElement } from '../../utils/dom';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue-demi';
 import useBoolean from '../useBoolean';
 
 interface Options {

@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "cd packages/vhooks && yarn dev",
-    "build": "lerna run gulp && lerna run build",
+    "build": "lerna run build",
     "deploy": "cd packages/vhooks && yarn deploy",
     "pub": "lerna publish"
   },

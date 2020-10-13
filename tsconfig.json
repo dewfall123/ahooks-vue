@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "outDir": "dist",
     "sourceMap": false,
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": false,
@@ -16,16 +16,17 @@
     "esModuleInterop": true,
     "removeComments": false,
     "declaration": true,
+    "isolatedModules": true,
     "declarationDir": "dist",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
     "types": ["jest", "node"],
     "rootDir": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@dewfall/vhooks-vue2": ["src/"]
+      "@/*": ["packages/vhooks/src/*"],
+      "@dewfall/vhooks": ["packages/vhooks/src/"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "dist", "src/**/__tests__"]
+  "include": ["packages/**/*.ts", "packages/**/*.vue"],
+  "exclude": ["node_modules", "dist", "packages/**/__tests__"]
 }

@@ -1,4 +1,4 @@
-import { reactive, toRefs, computed } from 'vue';
+import { reactive, toRefs, computed } from 'vue-demi';
 import { SourceDataRef, OPERATOR, Filter, ColumnsRef } from './type';
 
 export function useFilters<T>(data: SourceDataRef<T>, columns: ColumnsRef<T>) {

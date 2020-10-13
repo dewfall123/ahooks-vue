@@ -1,4 +1,4 @@
-import { ObjectDirective } from 'vue';
+import { ObjectDirective } from 'vue-demi';
 
 const vue3LifecycleToVue2 = {
   beforeMount: 'bind',

@@ -1,4 +1,4 @@
-import { ref, Ref } from 'vue';
+import { ref, Ref } from 'vue-demi';
 
 type IState = string | number | boolean | undefined;
 

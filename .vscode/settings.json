@@ -4,7 +4,5 @@
   //     "./",
   //     "./docs"
   // ]
-  "typescript.tsdk": "node_modules/typescript/lib",
-
-  "eslint.options": { "configFile": "D:/Code/github/vue3-hooks/.eslintrc.js" }
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

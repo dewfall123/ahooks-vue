@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue-demi';
 
 export type LocalStateKey = string;
 

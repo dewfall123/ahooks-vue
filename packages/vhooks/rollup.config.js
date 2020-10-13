@@ -9,7 +9,7 @@ export default {
     file: 'dist/index.js',
     format: 'esm',
   },
-  external: ['vue', 'vue-router'],
+  external: ['vue', '@vue/composition-api', 'vue-router'],
   plugins: [
     nodeResolve(),
     commonjs(),

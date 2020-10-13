@@ -1,5 +1,5 @@
 import { useThrottle } from '../index';
-import { ref } from 'vue';
+import { ref } from 'vue-demi';
 import { sleep } from '../../../utils';
 
 // vue2-import-slot

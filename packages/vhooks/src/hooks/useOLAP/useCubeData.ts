@@ -1,11 +1,11 @@
-import { Ref, computed } from 'vue';
+import { Ref, computed } from 'vue-demi';
 import { Filter, SourceDataRef, CubeSettings } from './type';
 import { operatorFn } from './constants';
 
 export function useCubeData<T>(
   data: SourceDataRef<T>,
   filters: Ref<Filter<T>[]>,
-  cubeSettings: Ref<CubeSettings<T>>,
+  cubeSettings: CubeSettings<T>,
 ) {
   const cube = computed(() => {
     const filteredData = data.value.filter(dataItem => {
@@ -18,13 +18,7 @@ export function useCubeData<T>(
       return true;
     });
 
-    const {
-      dimension,
-      measure,
-      series,
-      bySeries,
-      countField,
-    } = cubeSettings.value;
+    const { dimension, measure, series, bySeries, countField } = cubeSettings;
 
     if (!dimension || !measure || (bySeries && !series)) {
       return [];

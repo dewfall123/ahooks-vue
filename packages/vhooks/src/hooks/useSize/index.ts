@@ -1,5 +1,5 @@
 import { BasicTarget, getTargetElement } from '../../utils/dom';
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted } from 'vue-demi';
 import ResizeObserver from 'resize-observer-polyfill';
 
 export function useSize(target: BasicTarget) {

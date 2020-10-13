@@ -6,8 +6,6 @@
 
 [document|文档](https://dewfall123.github.io/vhooks/)
 
-[vue2 version](https://www.npmjs.com/package/@dewfall/vhooks-vue2)
-
 # Quick start
 
 ```

@@ -1,6 +1,6 @@
 import screenfull from 'screenfull';
 import useBoolean from '../useBoolean';
-import { Ref, watch, onMounted } from 'vue';
+import { Ref, watch, onMounted } from 'vue-demi';
 import { BasicTarget, getTargetElement } from '../../utils/dom';
 
 export interface Options<T> {

@@ -1,6 +1,6 @@
 import { BasicTarget, getTargetElement } from '../../utils/dom';
 import useBoolean from '../useBoolean';
-import { onMounted } from 'vue';
+import { onMounted } from 'vue-demi';
 import 'intersection-observer';
 
 function isInViewPort(el: HTMLElement): boolean {

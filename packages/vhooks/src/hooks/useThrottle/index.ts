@@ -1,4 +1,4 @@
-import { Ref, watch, ref, computed, ComputedRef } from 'vue';
+import { Ref, watch, ref, computed, ComputedRef } from 'vue-demi';
 import { throttle } from 'lodash-es';
 
 export interface ThrottleOptions {

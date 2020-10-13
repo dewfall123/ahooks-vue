@@ -1,4 +1,4 @@
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue-demi';
 import createWorkerBlobUrl from './lib/createWorkerBlobUrl';
 import { WORKER_STATUS } from './lib/status';
 

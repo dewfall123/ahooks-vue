@@ -1,4 +1,4 @@
-import { isRef, ref, computed, Ref } from 'vue';
+import { isRef, ref, computed } from 'vue-demi';
 import {
   SourceData,
   Columns,
@@ -41,18 +41,19 @@ export function useOLAP<T>(
 
   const filter = useFilters(data, setting.columns);
 
-  const cubeSettings = useCubeSettings(
+  const { cubeSettings, cubeOptions } = useCubeSettings(
     setting.columns,
     setting.options,
     setting.defaultValues,
   );
 
-  const { cube } = useCubeData<T>(data, filter.list as any, cubeSettings.settings as Ref<CubeSettings<T>>);
+  const { cube } = useCubeData<T>(data, filter.list as any, cubeSettings);
 
   return {
     cube,
     columns: setting.columns,
     cubeSettings,
+    cubeOptions,
     filter,
   };
 }
