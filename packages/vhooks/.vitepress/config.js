@@ -18,12 +18,10 @@ const sideBar = [
   {
     link: '/state',
     text: 'State',
-    children: ['useUrlState', 'useToggle', 'useLocalState', 'useThrottle'].map(
-      hookName => ({
-        link: `${hooksPrefix}/${hookName}/readme`,
-        text: hookName,
-      }),
-    ),
+    children: ['useToggle', 'useLocalState', 'useThrottle'].map(hookName => ({
+      link: `${hooksPrefix}/${hookName}/readme`,
+      text: hookName,
+    })),
   },
   {
     link: '/woker',
@@ -52,6 +50,5 @@ module.exports = {
   outDir: 'docs',
   // TODO
   // base: '/vhooks',
-  viteOptions: {
-  },
+  viteOptions: {},
 };

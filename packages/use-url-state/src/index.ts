@@ -1,5 +1,5 @@
 import { useRoute, Router } from 'vue-router';
-import { ref, watch } from 'vue-demi';
+import { ref, watch, isVue2  } from 'vue-demi';
 
 interface Options<T> {
   defaultValue?: T;
@@ -24,7 +24,12 @@ export function useUrlState<T>(
   key: string,
   options?: Options<T>,
 ) {
-  const route = useRoute();
+  let route;
+  if (isVue2) {
+    route = 
+  } else {
+
+  }
 
   const {
     defaultValue,
