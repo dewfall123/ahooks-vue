@@ -12,4 +12,14 @@
   desc="刷新页面后，可以看到输入框中的内容被从 localStorage 中恢复了。" >
 </demo>
 
-<demo src="./demo/demo2.vue" language="vue" ></demo>
+### 存储对象
+
+<demo src="./demo/demo2.vue" 
+  language="vue" 
+  title="将 state 持久化在 localStorage 中" 
+  desc="刷新页面后，可以看到输入框中的内容被从 localStorage 中恢复了。">
+</demo>
+
+## API
+
+`TODO`

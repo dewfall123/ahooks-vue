@@ -1,0 +1,50 @@
+# useToggle
+
+A hook that switch value between two states.
+
+## Examples
+
+### Basic usage
+
+<demo src="./demo/demo.vue"
+  language="vue"
+  title="Basic usage"
+  desc="click the button, look at the value.">
+</demo>
+
+<code src="./demo/demo1.tsx" />
+
+## API
+
+```typescript
+const [state, { toggle, setLeft, setRight }] = useToggle(
+  defaultValue?: boolean,
+);
+
+const [state, { toggle, setLeft, setRight }] = useToggle(
+  defaultValue: any = false,
+  reverseValue?: any,
+);
+```
+
+### Params
+
+| Property     | Description                   | Type                                             | Default |
+| ------------ | ----------------------------- | ------------------------------------------------ | ------- |
+| defaultValue | Optional，set a default value | `number` \| `string` \| `boolean` \| `undefined` | false   |
+| reverseValue | Optional，set a reverse value | `number` \| `string` \| `boolean` \| `undefined` | -       |
+
+### Result
+
+| Property | Description   | Type      |
+| -------- | ------------- | --------- |
+| state    | state value   | -         |
+| actions  | Operation set | `Actions` |
+
+### Actions
+
+| Property | Description          | Type                    |
+| -------- | -------------------- | ----------------------- |
+| toggle   | Trigger state change | `(state?: any) => void` |
+| setLeft  | Set defaultValue     | `() => void`            |
+| setRight | Set reverseValue     | `() => void`            |

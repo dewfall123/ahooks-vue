@@ -8,12 +8,16 @@
     </div>
 
     <p>
-      {{ sorting }} worker status: <span style="color: blue">{{ status }}</span>
+      is sorting:
+      <span style="color: blue">{{ sorting }}</span>
+    </p>
+    <p>
+      worker status: <span style="color: blue">{{ status }}</span>
     </p>
 
     <div>
-      <button @click="sort" style="margin-right: 16px">排序</button>
-      <button @click="sortInWorker">在worker里排序</button>
+      <button @click="sort" style="margin-right: 16px">In main thread</button>
+      <button @click="sortInWorker">In worker</button>
     </div>
   </div>
 </template>
@@ -42,7 +46,7 @@
 import { useWorkerFunction } from '@dewfall/vhooks';
 import { ref } from 'vue';
 
-function randomArray(n: number = 100 * 10000) {
+function randomArray(n: number = 50 * 10000) {
   return [...new Array(n)].map(() => Math.random() * n);
 }
 

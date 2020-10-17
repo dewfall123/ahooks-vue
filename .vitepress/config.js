@@ -1,18 +1,47 @@
-const { routerConfig, hooksPrefix } = require('./router');
-const packagePath = '/packages/vhooks/src/';
+const path = require('path');
+const { getRouterConfig, hooksPrefix } = require('./router');
+const packagePath = '/vhooks/';
 
 module.exports = {
   title: 'vhooks',
   description: 'vue hooks',
-  head: [['link', { href: '/hooks' }, '文档']],
+  // head: [['link', { href: '/hooks' }, 'Document']],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: '文档', link: hooksPrefix },
+      { text: 'Document', link: `/${hooksPrefix}useSize/` },
     ],
-    sidebar: routerConfig,
+    sidebar: getRouterConfig(),
+    lang: 'en-US',
+    locales: {
+      '/': {
+        lang: 'en-US',
+        title: 'vHooks',
+        description: 'vue hooks',
+        // head?: HeadConfig[]
+        label: 'English',
+        selectText: 'Languages',
+        nav: [
+          { text: 'Home', link: '/' },
+          { text: 'Document', link: `/${hooksPrefix}useSize/` },
+        ],
+        sidebar: getRouterConfig(),
+      },
+      '/zh/': {
+        lang: 'zh-CN',
+        title: 'vHooks',
+        description: 'vue hooks',
+        // head?: HeadConfig[]
+        label: '中文',
+        selectText: '语言',
+        nav: [
+          { text: '指南', link: '/' },
+          { text: '文档', link: `/zh/${hooksPrefix}useSize/` },
+        ],
+        sidebar: getRouterConfig('/zh/'),
+      },
+    },
     search: {
-      // placeholder: '',
       searchMaxSuggestions: 10,
     },
     repo: 'dewfall123/vhooks',
@@ -22,11 +51,11 @@ module.exports = {
     nextLink: true,
   },
   alias: {
-    '@dewfall/vhooks': packagePath,
+    '@dewfall/vhooks': '/vhooks/',
     'vue-demi': 'vue',
-    [hooksPrefix]: packagePath,
+    '/vhooks/': '/packages/vhooks/src/',
   },
-  outDir: 'docs/dist',
+  outDir: 'docs/',
   // TODO
   // base: '/vhooks',
   viteOptions: {},
