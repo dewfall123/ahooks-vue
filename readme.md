@@ -1,35 +1,46 @@
-# (WIP) vhooks
+# `vhooks`
 
-[![npm](https://img.shields.io/npm/v/@dewfall/vhooks)](https://www.npmjs.com/package/@dewfall/vhooks)
+vue Hooks Library. Some of hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs)
 
-**Note this is early WIP!
+[![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
 
-[document | 文档](https://dewfall123.github.io/vhooks/)
+## 📚 Document
 
-# Quick start
+- [English] TODO
+- [中文](https://dewfall123.github.io/vhooks/)
+
+## ✨ Features
+
+- Easy to learn and use.
+- Works for both Vue 3 and 2 ( thanks for [vue-demi](https://github.com/antfu/vue-demi) ).
+- Written in TypeScript with predictable static types.
+
+## 📦 Install
 
 ```
-// 安装依赖
-yarn add @dewfall/vhooks
-
-// 使用 Hooks
-import { useRequest } from '@dewfall/vhooks';
+yarn add @dewfall/vhooks -D
 ```
 
-# Contributing
+## 🔨 Usage
+
+```
+import { useWorkerFunction } from '@dewfall/vhooks';
+```
+
+## 💗 Contributing
 
 ### Setup vhooks dev environment
 
 1. Clone the vhooks repo
 1. Install dependencies
-    ```
-    yarn
-    ```
-2. run demo
-    ```bash
-    yarn dev
-    ```
-    - If it's successful, you should see the following message:
-    ```
-    listening at http://localhost:3000
-    ```
+   ```
+   yarn
+   ```
+1. run demo
+   ```bash
+   yarn dev
+   ```
+   - If it's successful, you should see the following message:
+   ```
+   listening at http://localhost:3000
+   ```
