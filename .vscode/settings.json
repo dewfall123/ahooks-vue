@@ -1,8 +1,5 @@
 {
   "editor.tabSize": 2,
-  // "workingDirectories": [
-  //     "./",
-  //     "./docs"
-  // ]
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.packageManager": "yarn"
 }

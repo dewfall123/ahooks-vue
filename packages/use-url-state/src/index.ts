@@ -1,7 +1,8 @@
 import { useRoute, Router } from 'vue-router';
-import { ref, watch, isVue2  } from 'vue-demi';
+import { ref, watch, isVue2 } from 'vue-demi';
 
 interface Options<T> {
+  route?: any;
   defaultValue?: T;
   serialize?: (value: T) => string;
   deserialize?: (string: string) => T;
@@ -15,7 +16,9 @@ function defaultDeserialize<T>(urlString: string): T {
   let value;
   try {
     value = JSON.parse(decodeURIComponent(urlString));
-  } catch {}
+  } catch {
+    //
+  }
   return value;
 }
 
@@ -24,11 +27,11 @@ export function useUrlState<T>(
   key: string,
   options?: Options<T>,
 ) {
-  let route;
+  let route: any;
   if (isVue2) {
-    route = 
+    route = options?.route;
   } else {
-
+    route = useRoute();
   }
 
   const {
