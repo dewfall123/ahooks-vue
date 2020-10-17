@@ -12,7 +12,8 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "vlib-docsify --docRoot=docs",
+    "dev": "vlib-docsify",
+    "docs:build": "vlib-docsify build",
     "deploy": "gh-pages -d docs",
     "deploy-view": "http-server ./docs",
     "build": "lerna run build",

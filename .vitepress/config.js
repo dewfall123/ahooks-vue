@@ -4,11 +4,11 @@ const packagePath = '/packages/vhooks/src/';
 module.exports = {
   title: 'vhooks',
   description: 'vue hooks',
-  head: [['link', { href: '/hooks' }, '文档']],
+  head: [['link', { href: '/hooks' }, 'Document']],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: '文档', link: hooksPrefix },
+      { text: 'Document', link: hooksPrefix },
     ],
     sidebar: routerConfig,
     search: {

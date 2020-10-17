@@ -1,6 +1,8 @@
 # `vhooks`
 
-vue Hooks Library. Some of hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs)
+vue Hooks Library.
+
+Some of hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs)
 
 [![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
 
