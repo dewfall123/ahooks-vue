@@ -8,7 +8,7 @@ Some of hooks implementation is original ported from [ahooks](https://ahooks.js.
 
 ## 📚 Document
 
-- [English] TODO
+- [English](https://dewfall123.github.io/vhooks/)
 - [中文](https://dewfall123.github.io/vhooks/)
 
 ## ✨ Features
