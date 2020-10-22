@@ -1,6 +1,6 @@
 {
   "name": "@dewfall/use-url-state",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "vue hooks",
   "main": "dist/index.js",
   "repository": {
