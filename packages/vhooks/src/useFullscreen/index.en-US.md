@@ -6,9 +6,17 @@ A Hook for handling dom full screen.
 
 ### Basic usage
 
-<demo src="./demo/demo1.vue" language="vue" ></demo>
+<demo src="./demo/demo1.vue"
+  language="vue"
+  title="Basic usage"
+  desc="Use ref to set elements that need full screen">
+</demo>
 
-<demo src="./demo/demo2.vue" language="vue" ></demo>
+<demo src="./demo/demo2.vue"
+  language="vue"
+  title="Pass in a function"
+  desc="Use function to set elements that need full screen">
+</demo>
 
 ## API
 

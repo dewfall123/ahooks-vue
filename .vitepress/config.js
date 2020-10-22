@@ -1,17 +1,12 @@
-const path = require('path');
 const { getRouterConfig, hooksPrefix } = require('./router');
-const packagePath = '/vhooks/';
+
+const base = process.env.NODE_ENV === 'production' ? '/vhooks' : '';
 
 module.exports = {
   title: 'vhooks',
   description: 'vue hooks',
   // head: [['link', { href: '/hooks' }, 'Document']],
   themeConfig: {
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Document', link: `/${hooksPrefix}useSize/` },
-    ],
-    sidebar: getRouterConfig(),
     lang: 'en-US',
     locales: {
       '/': {
@@ -22,7 +17,7 @@ module.exports = {
         label: 'English',
         selectText: 'Languages',
         nav: [
-          { text: 'Home', link: '/' },
+          { text: 'Guide', link: '/' },
           { text: 'Document', link: `/${hooksPrefix}useSize/` },
         ],
         sidebar: getRouterConfig(),
@@ -57,6 +52,6 @@ module.exports = {
   },
   outDir: 'docs/',
   // TODO
-  // base: '/vhooks',
+  base,
   viteOptions: {},
 };
