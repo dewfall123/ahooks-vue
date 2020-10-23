@@ -2,7 +2,7 @@
 
 vue Hooks Library.
 
-Some of hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs)
+Most hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs).
 
 ## ✨ Features
 

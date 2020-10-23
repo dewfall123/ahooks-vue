@@ -2,14 +2,14 @@
 
 vue Hooks Library.
 
-Some of hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs)
+Most hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs).
 
 [![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
 
 ## 📚 Document
 
 - [English](https://dewfall123.github.io/vhooks/)
-- [中文](https://dewfall123.github.io/vhooks/)
+- [中文](https://dewfall123.github.io/vhooks/zh/)
 
 ## ✨ Features
 
@@ -20,7 +20,7 @@ Some of hooks implementation is original ported from [ahooks](https://ahooks.js.
 ## 📦 Install
 
 ```
-yarn add @dewfall/vhooks -D
+yarn add @dewfall/vhooks
 ```
 
 ## 🔨 Usage
