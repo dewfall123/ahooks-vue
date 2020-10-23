@@ -1,1 +1,0 @@
-import{d as e,c as a,E as t}from"./common-d7c2b913.js";var s={components:{}};const r='{"title":"use-url-state","frontmatter":{},"headers":[{"level":2,"title":"Usage","slug":"usage"}],"relativePath":"packages/use-url-state/README.md","lastUpdated":1602902545340.2559}',u=t('',4);s.render=function(t,s,r,d,l,o){return a(),e("div",null,[u])};export default s;export{r as __pageData};

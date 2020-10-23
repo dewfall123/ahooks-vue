@@ -1,0 +1,1 @@
+import{d as t,e as o,q as e,c as s}from"./common-ec3338d0.js";import{u as n}from"./common-8f5b8761.js";import"./common-4578e2e0.js";var r={setup(){const{state:t,toggle:o}=n();return{state:t,toggle:o}}};r.render=function(n,r,m,a,c,l){return s(),t("div",null,[o("p",null,e(a.state),1),o("button",{onClick:r[1]||(r[1]=t=>a.toggle())},"点击")])};export{r as s};
