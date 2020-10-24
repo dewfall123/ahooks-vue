@@ -1,7 +1,7 @@
-import { Ref, watch, ref, computed, ComputedRef } from 'vue-demi';
-import { throttle } from 'lodash-es';
+import { debounce } from 'lodash-es';
+import { computed, ComputedRef, ref, Ref, watch } from 'vue-demi';
 
-export interface ThrottleOptions {
+export interface DebounceOptions {
   wait?: number;
   leading?: boolean;
   trailing?: boolean;
@@ -9,9 +9,9 @@ export interface ThrottleOptions {
 
 export declare type ComputedGetter<T> = (ctx?: any) => T;
 
-export function useThrottle<T>(
+export function useDebounce<T>(
   value: Ref<T> | ComputedGetter<T>,
-  options?: ThrottleOptions,
+  options?: DebounceOptions,
 ) {
   let targetValue: Ref<T> | ComputedRef<T>;
   if (typeof value === 'function') {
@@ -20,12 +20,12 @@ export function useThrottle<T>(
     targetValue = value;
   }
 
-  const throttledValue = ref<T>(targetValue.value);
+  const debouncedValue = ref<T>(targetValue.value);
 
-  const setValue = throttle(
+  const setValue = debounce(
     () => {
       // TODO
-      throttledValue.value = targetValue.value as any;
+      debouncedValue.value = targetValue.value as any;
     },
     options?.wait ?? 1000,
     options,
@@ -33,7 +33,5 @@ export function useThrottle<T>(
 
   watch(targetValue, setValue);
 
-  return throttledValue;
+  return debouncedValue;
 }
-
-export default useThrottle;

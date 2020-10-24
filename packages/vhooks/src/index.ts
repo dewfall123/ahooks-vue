@@ -7,6 +7,7 @@ export { useInViewport } from './useInViewport';
 export { useSize } from './useSize';
 export { useWorkerFunction } from './useWorkerFunction';
 export { useThrottle } from './useThrottle';
+export { useDebounce } from './useDebounce';
 export { usePage } from './usePage';
 export { useOLAP } from './useOLAP';
 //

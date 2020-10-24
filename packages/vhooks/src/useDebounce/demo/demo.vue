@@ -4,20 +4,20 @@
       count: <span>{{ count }}</span>
     </p>
     <p>
-      throlledCount: <span>{{ throlledCount }}</span>
+      debouncedValue: <span>{{ debouncedValue }}</span>
     </p>
     <button @click="addCount">++count</button>
   </div>
 </template>
 
 <script lang="ts">
-import { useThrottle } from '@dewfall/vhooks';
+import { useDebounce } from '@dewfall/vhooks';
 import { ref } from 'vue';
 
 export default {
   setup() {
     const count = ref(0);
-    const throlledCount = useThrottle(count, { wait: 2000 });
+    const debouncedValue = useDebounce(count, { wait: 2000 });
 
     function addCount() {
       count.value++;
@@ -25,7 +25,7 @@ export default {
 
     return {
       count,
-      throlledCount,
+      debouncedValue,
       addCount,
     };
   },

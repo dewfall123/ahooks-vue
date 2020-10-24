@@ -21,12 +21,15 @@ function getRouterConfig(langPrefix = '/') {
     },
     {
       text: 'State',
-      children: ['useToggle', 'useLocalState', 'useThrottle'].map(
-        (hookName) => ({
-          link: `${langPrefix}${hooksPrefix}${hookName}/`,
-          text: hookName,
-        }),
-      ),
+      children: [
+        'useToggle',
+        'useLocalState',
+        'useThrottle',
+        'useDebounce',
+      ].map((hookName) => ({
+        link: `${langPrefix}${hooksPrefix}${hookName}/`,
+        text: hookName,
+      })),
     },
     {
       text: 'Worker',

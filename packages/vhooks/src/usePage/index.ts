@@ -57,7 +57,9 @@ export function usePage<T>(list: Ref<T[]> | T[], options?: Options) {
     search: search!,
   });
 
-  const throlltedSearchText = useThrottle(() => state.search.text, 500);
+  const throlltedSearchText = useThrottle(() => state.search.text, {
+    wait: 500,
+  });
 
   const filtedList = computed(() => {
     let list = [...state.list];

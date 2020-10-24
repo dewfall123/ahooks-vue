@@ -17,15 +17,12 @@ import {
 import { ref, nextTick } from 'vue-demi';
 import { COUNT_FIELD } from '../type';
 
-// vue2-import-slot
-
 describe('useOLAP', () => {
-  // vue2-beforeAll-slot
   it('should be defined', () => {
     expect(useOLAP).toBeDefined();
   });
 
-  it('should work with only one arg', () => {
+  it('should work with only one arg', async () => {
     const { cube, cubeSettings, cubeOptions } = useOLAP<DataSchema>(data);
 
     expect(cubeSettings.dimension).toEqual('date');

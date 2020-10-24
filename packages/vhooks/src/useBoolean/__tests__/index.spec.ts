@@ -1,8 +1,6 @@
 import useBoolean from '../index';
-// vue2-import-slot
 
 describe('useBoolean', () => {
-  // vue2-beforeAll-slot
   it('should be defined', () => {
     expect(useBoolean).toBeDefined();
   });

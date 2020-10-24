@@ -14,7 +14,6 @@
   "scripts": {
     "dev": "cd ../.. && yarn dev",
     "predeploy": "doc-the-lib build",
-    "test": "jest",
     "build": "rimraf dist/ && rollup -c"
   },
   "keywords": [

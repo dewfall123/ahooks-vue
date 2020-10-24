@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vlib-docsify",
-    "test": "lerna run test",
+    "test": "jest",
     "build": "lerna run build",
     "deploy": "gh-pages -d docs",
     "docs:build": "rimraf docs/ && cross-env NODE_ENV=production vlib-docsify build",
