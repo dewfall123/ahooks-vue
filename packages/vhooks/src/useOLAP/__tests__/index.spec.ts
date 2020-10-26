@@ -36,21 +36,25 @@ describe('useOLAP', () => {
     expect(cube.value).toEqual(date__count);
 
     cubeSettings.dimension = 'name';
-    expect(cube.value).toEqual(name__count);
+    await nextTick(() => {
+      expect(cube.value).toEqual(name__count);
+    });
 
     cubeSettings.measure = 'score';
-    expect(cube.value).toEqual(name_score);
+    await nextTick(() => {
+      expect(cube.value).toEqual(name_score);
+    });
 
     cubeSettings.bySeries = true;
+    cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
-    cubeSettings.dimension = 'date';
-    nextTick(() => {
+    await nextTick(() => {
       expect(cube.value).toEqual(date_name_score);
     });
   });
 
-  it('the default values arg should work', () => {
+  it('the default values arg should work', async () => {
     const { cube, cubeSettings } = useOLAP<DataSchema>(data, {
       columns,
       defaultValues: {
@@ -67,7 +71,7 @@ describe('useOLAP', () => {
     expect(cube.value).toEqual(name_score);
 
     cubeSettings.bySeries = true;
-    nextTick(() => {
+    await nextTick(() => {
       expect(cube.value).toEqual(name_date_score);
     });
   });

@@ -58,9 +58,6 @@ export function useCubeData<T>(
       for (const dimensionValue in cubeTree) {
         const subCubeTree = {} as Record<string, number>;
         for (const item of cubeTree[dimensionValue]) {
-          if ((series as string) in item) {
-            continue;
-          }
           setMeasure(subCubeTree, item[series as string], item);
         }
 
