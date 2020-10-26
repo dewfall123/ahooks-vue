@@ -10,5 +10,6 @@ export { useThrottle } from './useThrottle';
 export { useDebounce } from './useDebounce';
 export { usePage } from './usePage';
 export { useOLAP } from './useOLAP';
+export { useKeyPress } from './useKeyPress';
 //
 export * from './useOLAP';

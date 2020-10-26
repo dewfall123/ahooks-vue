@@ -10,6 +10,7 @@ function getRouterConfig(langPrefix = '/') {
       text: 'Dom',
       children: [
         'useSize',
+        'useKeyPress',
         'useFullscreen',
         'useDocumentVisibility',
         'useHover',

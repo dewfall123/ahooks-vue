@@ -6,7 +6,7 @@ export type BasicTarget<T = HTMLElement> =
   | null
   | Ref<T | null | undefined>;
 
-export type TargetElement = HTMLElement | Document | Window;
+export type TargetElement = HTMLElement | Element | Document | Window;
 
 export function getTargetElement(
   target?: BasicTarget<TargetElement>,
