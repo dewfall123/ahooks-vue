@@ -18,7 +18,14 @@ export function useCubeData<T>(
       return true;
     });
 
-    const { dimension, measure, series, bySeries, countField } = cubeSettings;
+    const {
+      dimension,
+      measure,
+      series,
+      bySeries,
+      countField,
+      aggByDimension,
+    } = cubeSettings;
 
     if (!dimension || !measure || (bySeries && !series)) {
       return [];
@@ -39,7 +46,7 @@ export function useCubeData<T>(
     }
 
     // agg by series
-    const cube = [];
+    let cube = [];
     if (bySeries) {
       const cubeTree = {} as Record<any, any>;
       for (const item of filteredData) {
@@ -84,6 +91,25 @@ export function useCubeData<T>(
           [measure]: cubeTree[dimensionValue],
         });
       }
+    }
+
+    // 把dimension相同的放在同一行
+    if (bySeries && aggByDimension) {
+      const mapByDimension = {} as Record<string, any>;
+      for (const item of cube) {
+        const dimensionValue = item[dimension as string];
+        const seriesValue = item[series as string];
+        const measureValue = item[measure as string];
+        if (mapByDimension[dimensionValue]) {
+          mapByDimension[dimensionValue][seriesValue] = measureValue;
+        } else {
+          mapByDimension[dimensionValue] = {
+            [dimension]: dimensionValue,
+            [seriesValue]: measureValue,
+          };
+        }
+      }
+      cube = Object.values(mapByDimension);
     }
 
     return cube;

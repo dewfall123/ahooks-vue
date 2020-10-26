@@ -32,6 +32,7 @@ export interface CubeSettings<T> {
   measure?: keyof T | UnwrapRef<keyof T> | CountField;
   //
   bySeries?: boolean;
+  aggByDimension?: boolean;
   countField?: string;
 }
 

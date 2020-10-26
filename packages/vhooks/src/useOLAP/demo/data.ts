@@ -105,3 +105,11 @@ export const date__count_filtered_age = [
   { date: '2020-08-07', _count: 2 },
   { date: '2020-08-08', _count: 1 },
 ];
+
+export const date_name_score_aggByDimension = [
+  { date: '2020-08-05', a: 13, b: 0, c: 4, d: 3 },
+  { date: '2020-08-06', a: -3, d: 9 },
+  { date: '2020-08-07', b: 15, c: 0 },
+  { date: '2020-08-08', a: 1, d: 17 },
+  { date: '2020-08-09', a: 0 },
+];

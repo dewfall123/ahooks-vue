@@ -13,6 +13,7 @@ import {
   seriesOptionsArg,
   date__count_filtered_age,
   DataSchema,
+  date_name_score_aggByDimension,
 } from '../demo/data';
 import { ref, nextTick } from 'vue-demi';
 import { COUNT_FIELD } from '../type';
@@ -164,6 +165,23 @@ describe('useOLAP', () => {
     nextTick(() => {
       expect(cubeSettings.dimension).toEqual('date');
       expect(cube.value).toEqual(date_score);
+    });
+  });
+
+  it('should work with options ref', async () => {
+    const { cube, cubeSettings } = useOLAP<DataSchema>(data);
+
+    expect(cubeSettings.dimension).toEqual('date');
+    expect(cubeSettings.measure).toEqual(COUNT_FIELD);
+    expect(cubeSettings.series).toEqual('date');
+
+    cubeSettings.bySeries = true;
+    cubeSettings.aggByDimension = true;
+    cubeSettings.dimension = 'date';
+    cubeSettings.series = 'name';
+    cubeSettings.measure = 'score';
+    await nextTick(() => {
+      expect(cube.value).toEqual(date_name_score_aggByDimension);
     });
   });
 });
