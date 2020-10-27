@@ -18,6 +18,7 @@ export function useCubeSettings<T>(
     series: defaultValues.series,
     bySeries: defaultValues.bySeries ?? false,
     countField: defaultValues.countField ?? COUNT_FIELD,
+    aggByDimension: defaultValues.aggByDimension ?? true,
   }) as CubeSettings<T>;
 
   const dimensionOptions = computed(() => {

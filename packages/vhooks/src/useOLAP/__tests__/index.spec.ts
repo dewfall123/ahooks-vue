@@ -47,6 +47,7 @@ describe('useOLAP', () => {
     });
 
     cubeSettings.bySeries = true;
+    cubeSettings.aggByDimension = false;
     cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
@@ -72,6 +73,7 @@ describe('useOLAP', () => {
     expect(cube.value).toEqual(name_score);
 
     cubeSettings.bySeries = true;
+    cubeSettings.aggByDimension = false;
     await nextTick(() => {
       expect(cube.value).toEqual(name_date_score);
     });
