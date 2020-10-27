@@ -1,4 +1,4 @@
-import { Ref, UnwrapRef } from 'vue-demi';
+import { ComputedRef, Ref, UnwrapRef } from 'vue-demi';
 
 export enum OPERATOR {
   '等于' = '=',
@@ -20,11 +20,17 @@ export type MeasuresOptions =
   | Ref<Record<string, string>>
   | Record<string, string>;
 
-export interface Options {
+export interface PassedInCubeOptions {
   dimensions?: DimensionOptions;
   series?: DimensionOptions;
   measures?: MeasuresOptions;
 }
+
+export type CubeOptions = ComputedRef<{
+  dimension: Record<string, string>;
+  measure: Record<string, string>;
+  series: Record<string, string>;
+}>;
 
 export interface CubeSettings<T> {
   dimension?: keyof T | UnwrapRef<keyof T>;
@@ -32,7 +38,6 @@ export interface CubeSettings<T> {
   measure?: keyof T | UnwrapRef<keyof T> | CountField;
   //
   bySeries?: boolean;
-  aggByDimension?: boolean;
   countField?: string;
 }
 
@@ -47,3 +52,16 @@ export type SourceDataRef<T> = Ref<T[]>;
 
 export type Columns<T> = Ref<Record<keyof T, string>> | Record<keyof T, string>;
 export type ColumnsRef<T> = Ref<Record<keyof T, string>>;
+
+export type Cube = ComputedRef<
+  {
+    [x: string]: string | number;
+  }[]
+>;
+
+export type ChartCube = ComputedRef<{
+  columns: string[];
+  rows: {
+    [x: string]: string | number;
+  }[];
+}>;

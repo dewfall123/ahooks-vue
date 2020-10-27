@@ -7,6 +7,7 @@ export interface DataSchema {
 }
 
 export const data = [
+  { date: '2020-08-08', name: 'd', age: 22, action: 'pull', score: 17 },
   { date: '2020-08-05', name: 'a', age: 18, action: 'push', score: 13 },
   { date: '2020-08-05', name: 'b', age: 20, action: 'pull', score: 0 },
   { date: '2020-08-05', name: 'c', age: 24, action: 'push', score: 4 },
@@ -16,7 +17,6 @@ export const data = [
   { date: '2020-08-07', name: 'b', age: 20, action: 'pull', score: 15 },
   { date: '2020-08-07', name: 'c', age: 24, action: 'push', score: 0 },
   { date: '2020-08-08', name: 'a', age: 18, action: 'push', score: 1 },
-  { date: '2020-08-08', name: 'd', age: 22, action: 'pull', score: 17 },
   { date: '2020-08-09', name: 'a', age: 18, action: 'push' },
 ] as DataSchema[];
 
@@ -72,8 +72,8 @@ export const date_name_score = [
   { date: '2020-08-06', name: 'd', score: 9 },
   { date: '2020-08-07', name: 'b', score: 15 },
   { date: '2020-08-07', name: 'c', score: 0 },
-  { date: '2020-08-08', name: 'a', score: 1 },
   { date: '2020-08-08', name: 'd', score: 17 },
+  { date: '2020-08-08', name: 'a', score: 1 },
   { date: '2020-08-09', name: 'a', score: 0 },
 ];
 
@@ -86,9 +86,9 @@ export const name_date_score = [
   { name: 'b', date: '2020-08-07', score: 15 },
   { name: 'c', date: '2020-08-05', score: 4 },
   { name: 'c', date: '2020-08-07', score: 0 },
+  { name: 'd', date: '2020-08-08', score: 17 },
   { name: 'd', date: '2020-08-05', score: 3 },
   { name: 'd', date: '2020-08-06', score: 9 },
-  { name: 'd', date: '2020-08-08', score: 17 },
 ];
 
 export const date_score = [
@@ -106,10 +106,13 @@ export const date__count_filtered_age = [
   { date: '2020-08-08', _count: 1 },
 ];
 
-export const date_name_score_aggByDimension = [
-  { date: '2020-08-05', a: 13, b: 0, c: 4, d: 3 },
-  { date: '2020-08-06', a: -3, d: 9 },
-  { date: '2020-08-07', b: 15, c: 0 },
-  { date: '2020-08-08', a: 1, d: 17 },
-  { date: '2020-08-09', a: 0 },
-];
+export const date_name_score_chartCube = {
+  columns: ['date', 'a', 'b', 'c', 'd'],
+  rows: [
+    { a: 13, b: 0, c: 4, d: 3, date: '2020-08-05' },
+    { a: -3, d: 9, date: '2020-08-06' },
+    { b: 15, c: 0, date: '2020-08-07' },
+    { a: 1, d: 17, date: '2020-08-08' },
+    { a: 0, date: '2020-08-09' },
+  ],
+};

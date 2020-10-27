@@ -2,24 +2,36 @@ import { isRef, ref, computed } from 'vue-demi';
 import {
   SourceData,
   Columns,
-  Options,
+  CubeOptions,
   CubeSettings,
   SourceDataRef,
   ColumnsRef,
+  Cube,
+  PassedInCubeOptions,
 } from './type';
 import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export type { SourceData, Columns, Options, CubeSettings };
+export type {
+  SourceData,
+  Columns,
+  PassedInCubeOptions,
+  CubeOptions,
+  CubeSettings,
+  Cube,
+};
 export { OPERATOR } from './type';
 
 export function useOLAP<T>(
   data: SourceData<T>,
   setting: {
+    // 字段名映射
     columns?: Columns<T>;
+    // 维度设置默认值
     defaultValues?: CubeSettings<T>;
-    options?: Options;
+    // 可选维度
+    options?: PassedInCubeOptions;
   } = {},
 ) {
   if (!isRef(data)) {
@@ -50,10 +62,15 @@ export function useOLAP<T>(
     setting.defaultValues,
   );
 
-  const { cube } = useCubeData<T>(data, filter.list as any, cubeSettings);
+  const { cube, chartCube } = useCubeData<T>(
+    data,
+    filter.list as any,
+    cubeSettings,
+  );
 
   return {
     cube,
+    chartCube,
     columns: setting.columns,
     cubeSettings,
     cubeOptions,

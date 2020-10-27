@@ -13,7 +13,7 @@ import {
   seriesOptionsArg,
   date__count_filtered_age,
   DataSchema,
-  date_name_score_aggByDimension,
+  date_name_score_chartCube,
 } from '../demo/data';
 import { ref, nextTick } from 'vue-demi';
 import { COUNT_FIELD } from '../type';
@@ -47,7 +47,7 @@ describe('useOLAP', () => {
     });
 
     cubeSettings.bySeries = true;
-    cubeSettings.aggByDimension = false;
+
     cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
@@ -73,7 +73,7 @@ describe('useOLAP', () => {
     expect(cube.value).toEqual(name_score);
 
     cubeSettings.bySeries = true;
-    cubeSettings.aggByDimension = false;
+
     await nextTick(() => {
       expect(cube.value).toEqual(name_date_score);
     });
@@ -170,20 +170,19 @@ describe('useOLAP', () => {
     });
   });
 
-  it('should work with options ref', async () => {
-    const { cube, cubeSettings } = useOLAP<DataSchema>(data);
+  it('should work with chartCube', async () => {
+    const { chartCube, cubeSettings } = useOLAP<DataSchema>(data);
 
     expect(cubeSettings.dimension).toEqual('date');
     expect(cubeSettings.measure).toEqual(COUNT_FIELD);
     expect(cubeSettings.series).toEqual('date');
 
     cubeSettings.bySeries = true;
-    cubeSettings.aggByDimension = true;
     cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
     await nextTick(() => {
-      expect(cube.value).toEqual(date_name_score_aggByDimension);
+      expect(chartCube.value).toEqual(date_name_score_chartCube);
     });
   });
 });

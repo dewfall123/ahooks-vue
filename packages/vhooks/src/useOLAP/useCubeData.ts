@@ -1,5 +1,5 @@
 import { Ref, computed } from 'vue-demi';
-import { Filter, SourceDataRef, CubeSettings } from './type';
+import { Filter, SourceDataRef, CubeSettings, ChartCube, Cube } from './type';
 import { operatorFn } from './constants';
 
 export function useCubeData<T>(
@@ -7,7 +7,7 @@ export function useCubeData<T>(
   filters: Ref<Filter<T>[]>,
   cubeSettings: CubeSettings<T>,
 ) {
-  const cube = computed(() => {
+  const cube: Cube = computed(() => {
     const filteredData = data.value.filter((dataItem) => {
       for (const { field, operator, value } of filters.value) {
         const opFn = operatorFn[operator];
@@ -18,14 +18,7 @@ export function useCubeData<T>(
       return true;
     });
 
-    const {
-      dimension,
-      measure,
-      series,
-      bySeries,
-      countField,
-      aggByDimension,
-    } = cubeSettings;
+    const { dimension, measure, series, bySeries, countField } = cubeSettings;
 
     if (!dimension || !measure || (bySeries && !series)) {
       return [];
@@ -93,10 +86,32 @@ export function useCubeData<T>(
       }
     }
 
-    // 把dimension相同的放在同一行
-    if (bySeries && aggByDimension) {
+    // 默认按照dimension从小到大排序
+    cube = cube.sort((a, b) => {
+      return a[dimension as string] < b[dimension as string] ? -1 : 1;
+    });
+
+    return cube;
+  });
+
+  const chartCube: ChartCube = computed(() => {
+    const { dimension, measure, series, bySeries } = cubeSettings;
+
+    const columns: string[] = [dimension as string];
+    if (bySeries) {
+      const seriesValues = Array.from(
+        new Set(cube.value.map((item) => item[series as string])),
+      ) as string[];
+      columns.push(...seriesValues);
+    } else {
+      columns.push(measure as string);
+    }
+
+    let rows = cube.value;
+    if (bySeries) {
+      // 二维数据  把dimension聚合到一行
       const mapByDimension = {} as Record<string, any>;
-      for (const item of cube) {
+      for (const item of cube.value) {
         const dimensionValue = item[dimension as string];
         const seriesValue = item[series as string];
         const measureValue = item[measure as string];
@@ -104,18 +119,23 @@ export function useCubeData<T>(
           mapByDimension[dimensionValue][seriesValue] = measureValue;
         } else {
           mapByDimension[dimensionValue] = {
-            [dimension]: dimensionValue,
+            [dimension!]: dimensionValue,
             [seriesValue]: measureValue,
           };
         }
       }
-      cube = Object.values(mapByDimension);
+
+      rows = Object.values(mapByDimension);
     }
 
-    return cube;
+    return {
+      columns,
+      rows,
+    };
   });
 
   return {
     cube,
+    chartCube,
   };
 }

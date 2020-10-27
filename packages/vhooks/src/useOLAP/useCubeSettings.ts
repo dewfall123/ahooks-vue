@@ -1,6 +1,6 @@
 import { reactive, computed, isRef, watch } from 'vue-demi';
 import {
-  Options,
+  PassedInCubeOptions,
   CubeSettings,
   ColumnsRef,
   COUNT_FIELD,
@@ -9,7 +9,7 @@ import {
 
 export function useCubeSettings<T>(
   columns: ColumnsRef<T>,
-  passedOptions: Options = {},
+  passedOptions: PassedInCubeOptions = {},
   defaultValues: CubeSettings<T> = {},
 ) {
   const cubeSettings = reactive<CubeSettings<T>>({
@@ -18,7 +18,6 @@ export function useCubeSettings<T>(
     series: defaultValues.series,
     bySeries: defaultValues.bySeries ?? false,
     countField: defaultValues.countField ?? COUNT_FIELD,
-    aggByDimension: defaultValues.aggByDimension ?? true,
   }) as CubeSettings<T>;
 
   const dimensionOptions = computed(() => {
