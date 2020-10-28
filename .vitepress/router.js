@@ -1,44 +1,32 @@
 const hooksPrefix = 'vhooks/';
 
+const Router = {
+  Dom: [
+    'useSize',
+    'useKeyPress',
+    'useFullscreen',
+    'useDocumentVisibility',
+    'useHover',
+    'useInViewport',
+  ],
+  State: ['useToggle', 'useLocalState', 'useThrottle', 'useDebounce'],
+  Data: ['useTable'],
+  Worker: ['useWorkerFunction'],
+};
+
 function getRouterConfig(langPrefix = '/') {
   return [
     {
       text: langPrefix === '/' ? 'Getting started' : '快速上手',
       link: `${langPrefix}`,
     },
-    {
-      text: 'Dom',
-      children: [
-        'useSize',
-        'useKeyPress',
-        'useFullscreen',
-        'useDocumentVisibility',
-        'useHover',
-        'useInViewport',
-      ].map((hookName) => ({
+    ...Object.entries(Router).map(([text, children]) => ({
+      text,
+      children: children.map((hookName) => ({
         link: `${langPrefix}${hooksPrefix}${hookName}/`,
         text: hookName,
       })),
-    },
-    {
-      text: 'State',
-      children: [
-        'useToggle',
-        'useLocalState',
-        'useThrottle',
-        'useDebounce',
-      ].map((hookName) => ({
-        link: `${langPrefix}${hooksPrefix}${hookName}/`,
-        text: hookName,
-      })),
-    },
-    {
-      text: 'Worker',
-      children: ['useWorkerFunction'].map((hookName) => ({
-        link: `${langPrefix}${hooksPrefix}${hookName}/`,
-        text: hookName,
-      })),
-    },
+    })),
   ];
 }
 

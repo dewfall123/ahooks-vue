@@ -3,34 +3,41 @@ import { merge } from 'lodash-es';
 import { useThrottle } from '../useThrottle';
 
 function defaultCompareFn(a: any, b: any) {
-  return a < b;
+  return a < b ? -1 : 1;
 }
 
-interface Page {
+export type SortDirection = 'ascend' | 'descend';
+
+export interface Page {
   index: number;
   size: number;
 }
 
-interface Sort {
+export interface Sort {
   key: string;
-  desc: boolean;
-  compareFn: (a: any, b: any) => boolean;
+  direction: SortDirection;
+  compareFn: (a: any, b: any) => number;
 }
 
-interface Search {
+export interface Search {
   text: string;
   isReg: boolean;
   keys: string[];
 }
 
-interface Options {
-  page?: Page;
-  size?: number;
-  search?: Search;
-  sort?: Sort;
+export interface DefaultParams {
+  page?: Partial<Page>;
+  search?: Partial<Search>;
+  sort?: Partial<Sort>;
 }
 
-const defaultOptions = {
+export interface Pramas {
+  page: Page;
+  search: Search;
+  sort: Sort;
+}
+
+const defaultParams = {
   page: {
     index: 1,
     size: 10,
@@ -42,13 +49,13 @@ const defaultOptions = {
   },
   sort: {
     key: '',
-    desc: true,
+    direction: 'ascend',
     compareFn: defaultCompareFn,
   },
-} as Options;
+} as Pramas;
 
-export function usePage<T>(list: Ref<T[]> | T[], options?: Options) {
-  const { page, sort, search } = merge({}, options, defaultOptions);
+export function useTable<T>(list: Ref<T[]> | T[], options?: DefaultParams) {
+  const { page, sort, search } = merge({}, defaultParams, options) as Pramas;
 
   const state = reactive({
     list,
@@ -91,15 +98,11 @@ export function usePage<T>(list: Ref<T[]> | T[], options?: Options) {
     if (state.sort.key) {
       list.sort((a: any, b: any) => {
         const key = state.sort.key;
-        const isGreater = state.sort.compareFn(
+        const sortResult = state.sort.compareFn(
           a[key as keyof T],
           b[key as keyof T],
         );
-        let t = isGreater ? -1 : 1;
-        if (state.sort.desc) {
-          t *= -1;
-        }
-        return t;
+        return state.sort.direction === 'ascend' ? sortResult : sortResult * -1;
       });
     }
     return list;
@@ -116,27 +119,20 @@ export function usePage<T>(list: Ref<T[]> | T[], options?: Options) {
     return list;
   });
 
-  function onSortChange({
-    column,
-    key,
-    order,
-  }: {
-    column: any;
-    key: string;
-    order: 'desc' | 'asc' | 'normal';
-  }) {
-    if (order === 'normal') {
-      state.sort.key = '';
-      return;
-    }
-    state.sort.key = column.sortKey || key;
-    state.sort.desc = order === 'desc';
-  }
-
   watch(
     () => state.list,
     () => {
       state.search.text = '';
+    },
+  );
+
+  watch(
+    () => state.page.size,
+    () => {
+      state.page.index = 1;
+    },
+    {
+      immediate: false,
     },
   );
 
@@ -151,6 +147,5 @@ export function usePage<T>(list: Ref<T[]> | T[], options?: Options) {
     ...toRefs(state),
     pagedList,
     total,
-    onSortChange,
   };
 }
