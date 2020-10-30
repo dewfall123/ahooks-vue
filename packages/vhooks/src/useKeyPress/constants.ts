@@ -1,4 +1,4 @@
-import { BasicTarget } from '@/utils/dom';
+import { BasicTarget } from '../utils/dom';
 
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type keyType = KeyboardEvent['keyCode'] | KeyboardEvent['key'];
