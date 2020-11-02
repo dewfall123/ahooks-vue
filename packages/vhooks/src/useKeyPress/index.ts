@@ -1,4 +1,4 @@
-import { onMounted } from 'vue';
+import { onMounted } from 'vue-demi';
 import { getTargetElement } from '../utils/dom';
 import {
   EventHandler,
