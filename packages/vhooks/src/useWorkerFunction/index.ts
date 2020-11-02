@@ -1,4 +1,4 @@
-import { reactive, toRefs } from 'vue-demi';
+import { ref, Ref } from 'vue-demi';
 import createWorkerBlobUrl from './lib/createWorkerBlobUrl';
 import { WORKER_STATUS } from './lib/status';
 
@@ -21,27 +21,32 @@ const DEFAULT_OPTIONS: Options = {
   transferable: TRANSFERABLE_TYPE.AUTO,
 };
 
+type WorkerWithURL = Worker & { _url?: string };
+
 export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
   fn: T,
   options: Options = {},
-) {
-  const state = reactive({
-    worker: null as null | (Worker & { _url?: string }),
-    status: WORKER_STATUS.PENDING,
-    timeoutId: null as null | NodeJS.Timeout,
-  });
+): {
+  worker: Ref<WorkerWithURL>;
+  status: Ref<WORKER_STATUS>;
+  callWokerFn: (...workerArgs: Parameters<T>) => Promise<ReturnType<T>>;
+  killWorker: () => void;
+} {
+  const worker = ref<null | WorkerWithURL>(null);
+  let timeoutId: null | number = null;
+  const status = ref<WORKER_STATUS>(WORKER_STATUS.PENDING);
 
   function killWorker() {
-    if (state.worker?._url) {
-      state.worker.terminate();
-      URL.revokeObjectURL(state.worker._url);
-      state.worker = null;
-      state.timeoutId && clearTimeout(state.timeoutId);
+    if (worker.value?._url) {
+      worker.value.terminate();
+      URL.revokeObjectURL(worker.value._url);
+      worker.value = null;
+      timeoutId && clearTimeout(timeoutId);
     }
   }
 
-  function setWorkerStatus(status: WORKER_STATUS) {
-    state.status = status;
+  function setWorkerStatus(s: WORKER_STATUS) {
+    status.value = s;
   }
 
   function onWorkerEnd(status: WORKER_STATUS) {
@@ -64,13 +69,13 @@ export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
 
   const blobUrl = createWorkerBlobUrl(fn, remoteDependencies!, transferable!);
 
-  state.worker = new Worker(blobUrl);
-  state.worker._url = blobUrl;
+  worker.value = new Worker(blobUrl);
+  worker.value._url = blobUrl;
 
   function callWokerFn(...workerArgs: Parameters<T>) {
     const { transferable = DEFAULT_OPTIONS.transferable } = options;
     return new Promise<ReturnType<T>>((resolve, reject) => {
-      if (!state.worker) {
+      if (!worker.value) {
         reject('worker is not available!');
       }
 
@@ -87,9 +92,9 @@ export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
 
       setWorkerStatus(WORKER_STATUS.RUNNING);
 
-      state.worker!.postMessage([[...workerArgs]], transferList);
+      worker.value!.postMessage([[...workerArgs]], transferList);
 
-      state.worker!.onmessage = (e: MessageEvent) => {
+      worker.value!.onmessage = (e: MessageEvent) => {
         const [status, result] = e.data as [WORKER_STATUS, ReturnType<T>];
 
         switch (status) {
@@ -104,13 +109,13 @@ export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
         }
       };
 
-      state.worker!.onerror = (e: ErrorEvent) => {
+      worker.value!.onerror = (e: ErrorEvent) => {
         reject(e);
         onWorkerEnd(WORKER_STATUS.ERROR);
       };
 
       if (timeout) {
-        state.timeoutId = setTimeout(() => {
+        timeoutId = setTimeout(() => {
           killWorker();
           reject('timeout!');
           setWorkerStatus(WORKER_STATUS.TIMEOUT_EXPIRED);
@@ -122,7 +127,8 @@ export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
   return {
     callWokerFn,
     killWorker,
-    ...toRefs(state),
+    worker: worker as Ref<WorkerWithURL>,
+    status,
   };
 }
 

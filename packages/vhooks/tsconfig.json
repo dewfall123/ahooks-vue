@@ -20,7 +20,7 @@
     "declarationDir": "dist",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["jest", "node"],
+    "types": ["jest"],
     "rootDir": ".",
     "paths": {
       "@/*": ["src/*"],
