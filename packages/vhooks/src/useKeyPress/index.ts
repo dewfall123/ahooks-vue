@@ -1,4 +1,4 @@
-import { onMounted } from 'vue-demi';
+import { onMounted, onUnmounted } from 'vue-demi';
 import { getTargetElement } from '../utils/dom';
 import {
   EventHandler,
@@ -27,8 +27,8 @@ export function useKeyPress(
   const isKeyEvent: KeyPredicate = genKeyFormater(keyFilter);
 
   onMounted(() => {
-    const el = getTargetElement(target, window)!;
     const handlers = [] as ((event: KeyboardEvent) => any)[];
+    const el = getTargetElement(target, window)!;
 
     for (const eventName of events) {
       const handler = (event: KeyboardEvent) => {
@@ -39,7 +39,7 @@ export function useKeyPress(
       el.addEventListener(eventName, handler);
     }
 
-    onMounted(() => {
+    onUnmounted(() => {
       for (const eventName of events) {
         const handler = handlers.shift()!;
         el.removeEventListener(eventName, handler);
