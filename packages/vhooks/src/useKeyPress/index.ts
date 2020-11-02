@@ -29,7 +29,6 @@ export function useKeyPress(
   onMounted(() => {
     const handlers = [] as ((event: KeyboardEvent) => any)[];
     const el = getTargetElement(target, window)!;
-
     for (const eventName of events) {
       const handler = (event: KeyboardEvent) => {
         if (isKeyEvent(event)) {
