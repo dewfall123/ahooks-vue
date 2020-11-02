@@ -1,4 +1,4 @@
-import { computed, reactive, toRefs, Ref, watch } from 'vue-demi';
+import { computed, Ref, watch, ComputedRef, isRef, ref } from 'vue-demi';
 import { merge } from 'lodash-es';
 import { useThrottle } from '../useThrottle';
 
@@ -54,34 +54,47 @@ const defaultParams = {
   },
 } as Pramas;
 
-export function useTable<T>(list: Ref<T[]> | T[], options?: DefaultParams) {
-  const { page, sort, search } = merge({}, defaultParams, options) as Pramas;
+export function useTable<T>(
+  data: Ref<T[]> | T[],
+  options?: DefaultParams,
+): {
+  data: Ref<T[]>;
+  page: Ref<Page>;
+  sort: Ref<Sort>;
+  search: Ref<Search>;
+  pagedData: ComputedRef<T[]>;
+  total: ComputedRef<number>;
+} {
+  const { page: pageParams, sort: sortParams, search: searchParams } = merge(
+    {},
+    defaultParams,
+    options,
+  ) as Pramas;
 
-  const state = reactive({
-    list,
-    page: page!,
-    sort: sort!,
-    search: search!,
-  });
+  const dataRef = isRef(data) ? data : (computed(() => data) as Ref<T[]>);
 
-  const throlltedSearchText = useThrottle(() => state.search.text, {
+  const page = ref<Page>(pageParams);
+  const sort = ref<Sort>(sortParams);
+  const search = ref<Search>(searchParams);
+
+  const throlltedSearchText = useThrottle(() => search.value.text, {
     wait: 500,
   });
 
   const filtedList = computed(() => {
-    let list = [...state.list];
+    let list = [...dataRef.value];
     // search
     const searchText = throlltedSearchText.value.trim();
     if (searchText) {
       list = list.filter((i) => {
         let iStr = '';
-        if (state.search.keys?.length) {
-          iStr = state.search.keys.map((key) => i[key as keyof T]).join(' ');
+        if (search.value.keys?.length) {
+          iStr = search.value.keys.map((key) => i[key as keyof T]).join(' ');
         } else {
           iStr = JSON.stringify(i);
         }
 
-        if (state.search.isReg) {
+        if (search.value.isReg) {
           try {
             const matched = Boolean(iStr.match(new RegExp(searchText)));
             return matched;
@@ -95,14 +108,14 @@ export function useTable<T>(list: Ref<T[]> | T[], options?: DefaultParams) {
       });
     }
     // sort
-    if (state.sort.key) {
+    if (sort.value.key) {
       list.sort((a: any, b: any) => {
-        const key = state.sort.key;
-        const sortResult = state.sort.compareFn(
+        const key = sort.value.key;
+        const sortResult = sort.value.compareFn(
           a[key as keyof T],
           b[key as keyof T],
         );
-        return state.sort.direction === 'ascend' ? sortResult : sortResult * -1;
+        return sort.value.direction === 'ascend' ? sortResult : sortResult * -1;
       });
     }
     return list;
@@ -110,26 +123,26 @@ export function useTable<T>(list: Ref<T[]> | T[], options?: DefaultParams) {
 
   const total = computed(() => filtedList.value.length);
 
-  const pagedList = computed(() => {
+  const pagedData = computed(() => {
     let list = [...filtedList.value];
     // page slice
-    const start = (state.page.index - 1) * state.page.size;
-    const end = start + state.page.size;
+    const start = (page.value.index - 1) * page.value.size;
+    const end = start + page.value.size;
     list = list.slice(start, end);
-    return list;
+    return list as T[];
   });
 
   watch(
-    () => state.list,
+    () => data,
     () => {
-      state.search.text = '';
+      search.value.text = '';
     },
   );
 
   watch(
-    () => state.page.size,
+    () => page.value.size,
     () => {
-      state.page.index = 1;
+      page.value.index = 1;
     },
     {
       immediate: false,
@@ -139,13 +152,18 @@ export function useTable<T>(list: Ref<T[]> | T[], options?: DefaultParams) {
   watch(
     () => filtedList.value,
     () => {
-      state.page.index = 1;
+      page.value.index = 1;
     },
   );
 
   return {
-    ...toRefs(state),
-    pagedList,
+    data: dataRef,
+    page,
+    search,
+    sort,
+    pagedData,
     total,
   };
 }
+
+export default useTable;
