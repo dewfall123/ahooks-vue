@@ -35,6 +35,7 @@ export function useKeyPress(
           return eventHandler(event);
         }
       };
+      handlers.push(handler);
       el.addEventListener(eventName, handler);
     }
 
