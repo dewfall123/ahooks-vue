@@ -19,7 +19,7 @@
     "build-deploy": "yarn docs:build && gh-pages -d docs",
     "docs:build": "rimraf docs/ && cross-env NODE_ENV=production vlib-docsify build",
     "static": "node static-serve.js",
-    "pub": "lerna publish",
+    "pub": " yarn build && lerna publish",
     "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/dist/* \"packages/*/src/**/*.{vue,js,ts,tsx}\"",
     "lint:fix": "npm run lint -- --fix"
   },
