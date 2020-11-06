@@ -1,6 +1,7 @@
 const hooksPrefix = 'vhooks/';
 
 const Router = {
+  Request: ['useRequest'],
   Dom: [
     'useSize',
     'useKeyPress',

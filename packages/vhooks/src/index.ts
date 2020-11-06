@@ -11,6 +11,7 @@ export { useDebounce } from './useDebounce';
 export { useTable } from './useTable';
 export { useOLAP } from './useOLAP';
 export { useKeyPress } from './useKeyPress';
+export { useRequest } from './useRequest';
 
 //
 export * from './useOLAP';

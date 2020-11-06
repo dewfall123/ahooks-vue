@@ -3,7 +3,7 @@
     <div style="margin-bottom: 12px">
       <input v-model="search.text" placeholder="search" />
     </div>
-    <MyTable :columns="columns" :data="pagedList" :sort="sort"></MyTable>
+    <MyTable :columns="columns" :data="pagedData" :sort="sort"></MyTable>
     <Pagination v-model="page.index" :total="total" :size="page.size" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     Pagination,
   },
   setup() {
-    const { pagedList, page, total, search, sort } = useTable(data, {
+    const { pagedData, page, total, search, sort } = useTable(data, {
       page: { size: 5 },
       sort: {
         key: 'score',
@@ -28,7 +28,7 @@ export default {
       },
     });
 
-    return { pagedList, page, total, columns, search, sort };
+    return { pagedData, page, total, columns, search, sort };
   },
 };
 </script>

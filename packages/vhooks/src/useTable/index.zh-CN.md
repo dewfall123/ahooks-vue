@@ -15,7 +15,7 @@
 ## API
 
 ```javascript
-const { pagedList, page, total, search } = useTable(
+const { pagedData, page, total, search } = useTable(
   data,
   defaultParams?: Object
 );

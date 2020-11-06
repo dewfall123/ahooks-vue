@@ -15,7 +15,7 @@ Hooks that handle Table-related logic, like frontend pagination, sort and search
 ## API
 
 ```javascript
-const { pagedList, page, total, search } = useTable(
+const { pagedData, page, total, search } = useTable(
   data,
   defaultParams?: Object
 );
