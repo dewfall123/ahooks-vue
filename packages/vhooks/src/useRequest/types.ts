@@ -11,42 +11,18 @@ export type CombineService<R, P extends any[]> =
   | ((...args: P) => RequestService)
   | Service<R, P>;
 
-export interface FetchConfig<R, P extends any[]> {
-  formatResult?: (res: any) => R;
-
-  onSuccess?: (data: R, params: P) => void;
-  onError?: (e: Error, params: P) => void;
-
-  loadingDelay?: number; // loading delay
-
-  // 轮询
-  pollingInterval?: number; // 轮询的间隔毫秒
-  pollingWhenHidden?: boolean; // 屏幕隐藏时，停止轮询
-
-  refreshOnWindowFocus?: boolean;
-  focusTimespan: number;
-
-  debounceInterval?: number;
-  throttleInterval?: number;
-
-  throwOnError?: boolean;
-}
-
-export interface BaseResult<R, P extends any[]> {
+export interface UseRequestResult<R, P extends any[]> {
   loading: Ref<boolean>;
   data: Ref<UnwrapRef<R | undefined>>;
   error: Ref<Error | undefined>;
   params: Ref<P>;
-  lastSuccessedParams: Ref<P>;
-  cancel: noop;
-  refresh: () => Promise<R>;
-  mutate: Mutate<R>;
-  // TODO 如果 options 存在 debounceInterval，或 throttleInterval，则 run 和 refresh 不会返回 Promise。类型需要修复。
-  run: (...args: P) => Promise<R>;
-  unmount: () => void;
+  lastSuccessParams: Ref<P | undefined>;
+  cancel: () => void;
+  refresh: () => void;
+  run: (...args: P) => void;
 }
 
-export type BaseOptions<R = any, P extends any[] = any[]> = {
+export type UseRequestOptions<R = any, P extends any[] = any[]> = {
   formatResult: (res: any) => R;
   // refreshDeps: DependencyList; // 如果 deps 变化后，重新请求
   manual: boolean; // 是否需要手动触发
@@ -61,6 +37,7 @@ export type BaseOptions<R = any, P extends any[] = any[]> = {
   // 轮询
   pollingInterval: number; // 轮询的间隔毫秒
   pollingWhenHidden: boolean; // 屏幕隐藏时，停止轮询
+  pollingSinceLastFinished: boolean; // 等上次请求结束，再开始轮询
 
   // fetchKey: (...args: P) => string;
 
@@ -75,7 +52,9 @@ export type BaseOptions<R = any, P extends any[] = any[]> = {
   // staleTime: number;
 
   debounceInterval: number;
+  loadingWhenDebounceStart: boolean; // 在debounce等待阶段，是否把loading设置为true
   throttleInterval: number;
+  loadingWhenThrottleStart: boolean; // 在throttle等待阶段，是否把loading设置为true
 
   initialData: R;
 

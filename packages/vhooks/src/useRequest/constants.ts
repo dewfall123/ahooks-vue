@@ -1,4 +1,4 @@
-import { BaseOptions } from './types';
+import { UseRequestOptions } from './types';
 
 function fetchProxy(params: string | Record<string, string>) {
   let url: string;
@@ -18,7 +18,7 @@ function fetchProxy(params: string | Record<string, string>) {
 }
 
 export const DefaultOptions = {
-  formatResult: (res) => res,
+  formatResult: (res: any) => res,
   requestMethod: fetchProxy,
   // refreshDeps: [],
   manual: false,
@@ -30,6 +30,7 @@ export const DefaultOptions = {
 
   pollingInterval: 0,
   pollingWhenHidden: true,
+  pollingSinceLastFinished: true,
 
   defaultParams: [] as any[],
   refreshOnWindowFocus: false,
@@ -39,8 +40,10 @@ export const DefaultOptions = {
   cacheTime: 5 * 60 * 1000,
   staleTime: 0,
   debounceInterval: 0,
+  loadingWhenDebounceStart: true,
   throttleInterval: 0,
+  loadingWhenThrottleStart: true,
   initialData: undefined,
   ready: true,
   throwOnError: false,
-} as BaseOptions;
+} as UseRequestOptions;

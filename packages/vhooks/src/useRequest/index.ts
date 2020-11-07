@@ -1,6 +1,8 @@
-import { inject, onUnmounted, ref, watch } from 'vue-demi';
+import { inject, onUnmounted, Ref, ref } from 'vue-demi';
 import { DefaultOptions } from './constants';
-import { BaseOptions, BaseResult, CombineService } from './types';
+import { UseRequestOptions, UseRequestResult, CombineService } from './types';
+import { debounce, throttle } from 'lodash-es';
+import { useDocumentVisibility } from '../useDocumentVisibility';
 
 export const RequestConfig = Symbol('useRequestConfig');
 
@@ -11,16 +13,14 @@ export const RequestConfig = Symbol('useRequestConfig');
 //   UU extends U = any
 // >(
 //   service: CombineService<R, P>,
-//   options: Partial<BaseOptions<R, P>>,
+//   options: Partial<UseRequestOptions<R, P>>,
 // ): BaseResult<U, P>;
 
-export function useRequest<
-  R = any,
-  P extends any[] = any[],
-  U = any,
-  UU extends U = any
->(service: CombineService<R, P>, options: Partial<BaseOptions<R, P>> = {}) {
-  const contextConfig = inject<Partial<BaseOptions<R, P>>>(RequestConfig);
+export function useRequest<R = any, P extends any[] = any>(
+  service: CombineService<R, P>,
+  options: Partial<UseRequestOptions<R, P>> = {},
+): UseRequestResult<R, P> {
+  const contextConfig = inject<Partial<UseRequestOptions<R, P>>>(RequestConfig);
   const finalOptions = { ...DefaultOptions, ...contextConfig, ...options };
 
   const {
@@ -33,6 +33,14 @@ export function useRequest<
     formatResult,
     initialData,
     defaultParams,
+    loadingDelay,
+    debounceInterval,
+    loadingWhenDebounceStart,
+    throttleInterval,
+    loadingWhenThrottleStart,
+    pollingInterval,
+    pollingWhenHidden,
+    pollingSinceLastFinished,
   } = finalOptions;
 
   let promiseService: (...args: P) => Promise<any>;
@@ -50,7 +58,7 @@ export function useRequest<
               'If sevice is a function, it must return a String, Object or Promise',
             );
           }
-          fn = () => requestMethod(returnedService);
+          fn = requestMethod(returnedService);
         }
         (fn as Promise<any>).then(resolve).catch(reject);
       });
@@ -59,44 +67,56 @@ export function useRequest<
   const loading = ref<boolean>(defaultLoading);
   const data = ref<R>(initialData);
   const error = ref<Error>();
-  const params = ref<P>();
-  const lastSucceededParams = ref<P>();
+  const params = ref<P>(defaultParams as P) as Ref<P>;
+  const lastSuccessParams = ref<P>();
 
   let unmountedFlag = false;
   onUnmounted(() => {
     unmountedFlag = true;
   });
+  const documentVisible = useDocumentVisibility();
 
   let count = 0;
-  const cancel = () => {
-    count++;
-  };
 
-  function refresh() {
-    console.log(params.value);
-    run(...((params.value ?? []) as any));
-  }
+  let loadingDelayTimer: any;
+  let pollingSinceFinishedTimer: any;
 
-  function run(...args: P) {
-    loading.value = true;
+  function _run(...args: P) {
+    if (pollingSinceFinishedTimer) {
+      clearTimeout(pollingSinceFinishedTimer);
+    }
+    if (loadingDelayTimer) {
+      clearTimeout(loadingDelayTimer);
+    }
+    // 设置loading
+    if (loadingDelay) {
+      loadingDelayTimer = setTimeout(() => {
+        loading.value = true;
+      }, loadingDelay);
+    } else {
+      loading.value = true;
+    }
     count++;
     const curCount = count;
     params.value = args;
 
+    // 抛弃该次请求结果
+    const shoundAbandon = () => unmountedFlag || curCount !== count;
+
     promiseService(...args)
       .then((res) => {
-        if (unmountedFlag || curCount !== count) {
+        if (shoundAbandon()) {
           return;
         }
         const formattedResult = formatResult(res);
         onSuccess(res, args);
         data.value = formattedResult;
 
-        lastSucceededParams.value = args;
+        lastSuccessParams.value = args;
         return formattedResult;
       })
       .catch((err) => {
-        if (unmountedFlag || curCount !== count) {
+        if (shoundAbandon()) {
           return;
         }
         console.error(err);
@@ -110,13 +130,81 @@ export function useRequest<
         );
       })
       .finally(() => {
-        if (unmountedFlag || curCount !== count) {
+        if (shoundAbandon()) {
           return;
+        }
+        if (loadingDelayTimer) {
+          clearTimeout(loadingDelayTimer);
+        }
+        // 在请求结束时轮询
+        if (pollingInterval && pollingSinceLastFinished) {
+          if (pollingWhenHidden && !documentVisible.value) {
+            return;
+          }
+          pollingSinceFinishedTimer = setTimeout(() => {
+            _run(...args);
+          }, pollingInterval);
         }
         loading.value = false;
       });
   }
 
+  const cancel = () => {
+    if (pollingTimer) {
+      clearInterval(pollingTimer);
+    }
+    if (pollingSinceFinishedTimer) {
+      clearTimeout(pollingSinceFinishedTimer);
+    }
+    if (loadingDelayTimer) {
+      clearTimeout(loadingDelayTimer);
+    }
+    count++;
+    loading.value = false;
+  };
+
+  let run = _run;
+  if (debounceInterval) {
+    const debounceRun = debounce(_run, debounceInterval);
+    run = (...args: P) => {
+      // 在debounce等待阶段把loading设置为true，比loadingDelay优先级高
+      if (loadingWhenDebounceStart) {
+        loading.value = true;
+      }
+      debounceRun(...args);
+    };
+  }
+  if (throttleInterval) {
+    const throttleRun = throttle(_run, throttleInterval);
+    run = (...args: P) => {
+      if (loadingWhenThrottleStart) {
+        loading.value = true;
+      }
+      throttleRun(...args);
+    };
+  }
+
+  let pollingTimer: any;
+  if (pollingInterval && !pollingSinceLastFinished) {
+    run = (...args: P) => {
+      if (pollingTimer) {
+        clearInterval(pollingTimer);
+      }
+      _run(...args);
+      pollingTimer = setInterval(() => {
+        if (pollingWhenHidden && !documentVisible.value) {
+          return;
+        }
+        _run(...args);
+      }, pollingInterval);
+    };
+  }
+
+  function refresh() {
+    run(...(params.value as any));
+  }
+
+  // 自动执行
   if (!manual) {
     run(...(defaultParams as P));
   }
@@ -127,6 +215,7 @@ export function useRequest<
     data,
     run,
     params,
+    lastSuccessParams,
     cancel,
     refresh,
   };
