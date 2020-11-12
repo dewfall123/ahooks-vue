@@ -1,5 +1,5 @@
 <template>
-  <div>isVisible: {{ visible }}</div>
+  <div>isVisible: {{ isVisible }}</div>
 </template>
 
 <script lang="ts">
@@ -8,14 +8,15 @@ import { watch } from 'vue';
 
 export default {
   setup() {
-    const visible = useDocumentVisibility();
+    const { isVisible, visibilityState } = useDocumentVisibility();
 
-    watch(visible, () => {
-      console.log('current visible state =  ' + visible.value);
+    watch(visibilityState, () => {
+      console.log('current visible state =  ' + visibilityState.value);
     });
 
     return {
-      visible,
+      visibilityState,
+      isVisible,
     };
   },
 };

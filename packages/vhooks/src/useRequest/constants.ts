@@ -20,7 +20,7 @@ function fetchProxy(params: string | Record<string, string>) {
 export const DefaultOptions = {
   formatResult: (res: any) => res,
   requestMethod: fetchProxy,
-  // refreshDeps: [],
+  // refreshDeps: undefined,
   manual: false,
   onSuccess: () => {},
   onError: () => {},
@@ -33,17 +33,10 @@ export const DefaultOptions = {
   pollingSinceLastFinished: true,
 
   defaultParams: [] as any[],
-  refreshOnWindowFocus: false,
-  focusTimespan: 5000,
-  // fetchKey,
-  // cacheKey,
-  cacheTime: 5 * 60 * 1000,
-  staleTime: 0,
   debounceInterval: 0,
   loadingWhenDebounceStart: true,
   throttleInterval: 0,
-  loadingWhenThrottleStart: true,
   initialData: undefined,
-  ready: true,
+  // ready: true,
   throwOnError: false,
 } as UseRequestOptions;

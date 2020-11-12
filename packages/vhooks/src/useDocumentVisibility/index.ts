@@ -1,21 +1,24 @@
-import { onMounted, onUnmounted, ref } from 'vue-demi';
+import { computed, onUnmounted, ref } from 'vue-demi';
 
 export function useDocumentVisibility() {
-  const visible = ref(document.visibilityState);
+  const visibilityState = ref(document.visibilityState);
+
+  const isVisible = computed(() => visibilityState.value === 'visible');
 
   function handleVisibilitychange() {
-    visible.value = document.visibilityState;
+    visibilityState.value = document.visibilityState;
   }
 
-  onMounted(() => {
-    document.addEventListener('visibilitychange', handleVisibilitychange);
-  });
+  document.addEventListener('visibilitychange', handleVisibilitychange);
 
   onUnmounted(() => {
     document.removeEventListener('visibilitychange', handleVisibilitychange);
   });
 
-  return visible;
+  return {
+    visibilityState,
+    isVisible,
+  };
 }
 
 export default useDocumentVisibility;

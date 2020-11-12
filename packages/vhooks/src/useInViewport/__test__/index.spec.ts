@@ -1,7 +1,7 @@
 import { useInViewport } from '../index';
 
-describe('useHover', () => {
-  it('should be defined', () => {
+describe('useInViewport', () => {
+  it('should useInViewport be defined', () => {
     expect(useInViewport).toBeDefined();
     // TODO
   });

@@ -1,4 +1,4 @@
-import { Ref, UnwrapRef } from 'vue-demi';
+import { ComputedRef, Ref, UnwrapRef, watch } from 'vue-demi';
 
 export type noop = (...args: any[]) => void;
 
@@ -18,48 +18,39 @@ export interface UseRequestResult<R, P extends any[]> {
   params: Ref<P>;
   lastSuccessParams: Ref<P | undefined>;
   cancel: () => void;
-  refresh: () => void;
-  run: (...args: P) => void;
+  refresh: () => Promise<any>;
+  run: (...args: P) => Promise<any>;
 }
+
+export type WatchSource = readonly (
+  | object
+  | Ref<unknown>
+  | ComputedRef<unknown>
+  | (() => unknown)
+)[];
+
+watch([], () => {});
 
 export type UseRequestOptions<R = any, P extends any[] = any[]> = {
   formatResult: (res: any) => R;
-  // refreshDeps: DependencyList; // 如果 deps 变化后，重新请求
+  // refreshDeps?: WatchSource; // 如果 deps 变化后，重新请求
   manual: boolean; // 是否需要手动触发
   onSuccess: (data: R, params: P) => void; // 成功回调
   onError: (e: Error, params: P) => void; // 失败回调
-
   defaultLoading: boolean; // 默认 loading 状态
-
   loadingDelay: number; // loading delay
-
   defaultParams: P;
   // 轮询
   pollingInterval: number; // 轮询的间隔毫秒
   pollingWhenHidden: boolean; // 屏幕隐藏时，停止轮询
   pollingSinceLastFinished: boolean; // 等上次请求结束，再开始轮询
 
-  // fetchKey: (...args: P) => string;
-
-  // paginated: false;
-  // loadMore: false;
-
-  refreshOnWindowFocus: boolean;
-  focusTimespan: number;
-
-  // cacheKey: CachedKeyType;
-  // cacheTime: number;
-  // staleTime: number;
-
   debounceInterval: number;
   loadingWhenDebounceStart: boolean; // 在debounce等待阶段，是否把loading设置为true
   throttleInterval: number;
-  loadingWhenThrottleStart: boolean; // 在throttle等待阶段，是否把loading设置为true
 
   initialData: R;
-
   requestMethod: (service: any) => Promise<any>;
-
-  ready: boolean;
+  // ready: boolean;
   throwOnError: boolean;
 };

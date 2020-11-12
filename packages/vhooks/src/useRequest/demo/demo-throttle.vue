@@ -3,19 +3,19 @@
     <p>
       UserName: <span>{{ loading ? 'loading' : data }}</span>
     </p>
-    <button @click="run">run</button>
+    <button @click="run()">run</button>
   </div>
 </template>
 
 <script lang="ts">
 import { useRequest } from '@dewfall/vhooks';
-import { getUsername } from './utils';
+import { getNumber } from './utils';
 
 export default {
   setup() {
-    const { data, loading, error, run } = useRequest(getUsername, {
+    const { data, loading, error, run } = useRequest(getNumber, {
       manual: true,
-      throttleInterval: 1000,
+      throttleInterval: 500,
     });
 
     return {

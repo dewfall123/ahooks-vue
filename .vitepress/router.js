@@ -18,7 +18,7 @@ const Router = {
 function getRouterConfig(langPrefix = '/') {
   return [
     {
-      text: langPrefix === '/' ? 'Getting started' : '快速上手',
+      text: langPrefix === '/' ? 'Getting started' : '介绍',
       link: `${langPrefix}`,
     },
     ...Object.entries(Router).map(([text, children]) => ({

@@ -7,7 +7,7 @@
 <script lang="ts">
 import { useRequest } from '@dewfall/vhooks';
 
-function getUsername(): Promise<string> {
+function getFullName(): Promise<string> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(Math.random().toString(36).slice(2));
@@ -17,7 +17,7 @@ function getUsername(): Promise<string> {
 
 export default {
   setup() {
-    const { data, error, loading } = useRequest(getUsername);
+    const { data, error, loading } = useRequest(getFullName);
 
     return { data, error, loading };
   },

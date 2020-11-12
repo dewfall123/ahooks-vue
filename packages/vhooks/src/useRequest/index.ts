@@ -1,4 +1,4 @@
-import { inject, onUnmounted, Ref, ref } from 'vue-demi';
+import { getCurrentInstance, inject, onUnmounted, Ref, ref } from 'vue-demi';
 import { DefaultOptions } from './constants';
 import { UseRequestOptions, UseRequestResult, CombineService } from './types';
 import { debounce, throttle } from 'lodash-es';
@@ -6,21 +6,15 @@ import { useDocumentVisibility } from '../useDocumentVisibility';
 
 export const RequestConfig = Symbol('useRequestConfig');
 
-// export function useRequest<
-//   R = any,
-//   P extends any[] = any[],
-//   U = any,
-//   UU extends U = any
-// >(
-//   service: CombineService<R, P>,
-//   options: Partial<UseRequestOptions<R, P>>,
-// ): BaseResult<U, P>;
-
 export function useRequest<R = any, P extends any[] = any>(
   service: CombineService<R, P>,
   options: Partial<UseRequestOptions<R, P>> = {},
 ): UseRequestResult<R, P> {
-  const contextConfig = inject<Partial<UseRequestOptions<R, P>>>(RequestConfig);
+  let contextConfig = {} as Partial<UseRequestOptions<R, P>>;
+  if (getCurrentInstance()) {
+    contextConfig =
+      inject<Partial<UseRequestOptions<R, P>>>(RequestConfig) ?? {};
+  }
   const finalOptions = { ...DefaultOptions, ...contextConfig, ...options };
 
   const {
@@ -37,7 +31,6 @@ export function useRequest<R = any, P extends any[] = any>(
     debounceInterval,
     loadingWhenDebounceStart,
     throttleInterval,
-    loadingWhenThrottleStart,
     pollingInterval,
     pollingWhenHidden,
     pollingSinceLastFinished,
@@ -68,15 +61,20 @@ export function useRequest<R = any, P extends any[] = any>(
   const data = ref<R>(initialData);
   const error = ref<Error>();
   const params = ref<P>(defaultParams as P) as Ref<P>;
-  const lastSuccessParams = ref<P>();
+  const lastSuccessParams = ref<P>(defaultParams as P) as Ref<P>;
+  let count = 0;
 
   let unmountedFlag = false;
-  onUnmounted(() => {
-    unmountedFlag = true;
-  });
-  const documentVisible = useDocumentVisibility();
+  if (getCurrentInstance()) {
+    onUnmounted(() => {
+      unmountedFlag = true;
+    });
+  }
 
-  let count = 0;
+  let isVisible = ref(true);
+  if (getCurrentInstance()) {
+    isVisible = useDocumentVisibility().isVisible;
+  }
 
   let loadingDelayTimer: any;
   let pollingSinceFinishedTimer: any;
@@ -103,16 +101,16 @@ export function useRequest<R = any, P extends any[] = any>(
     // 抛弃该次请求结果
     const shoundAbandon = () => unmountedFlag || curCount !== count;
 
-    promiseService(...args)
+    return promiseService(...args)
       .then((res) => {
         if (shoundAbandon()) {
           return;
         }
         const formattedResult = formatResult(res);
-        onSuccess(res, args);
         data.value = formattedResult;
 
         lastSuccessParams.value = args;
+        onSuccess(formattedResult, args);
         return formattedResult;
       })
       .catch((err) => {
@@ -125,9 +123,6 @@ export function useRequest<R = any, P extends any[] = any>(
         if (throwOnError) {
           throw err;
         }
-        return Promise.reject(
-          'useRequest has caught the exception, if you need to handle the exception yourself, you can set options.throwOnError to true.',
-        );
       })
       .finally(() => {
         if (shoundAbandon()) {
@@ -138,7 +133,7 @@ export function useRequest<R = any, P extends any[] = any>(
         }
         // 在请求结束时轮询
         if (pollingInterval && pollingSinceLastFinished) {
-          if (pollingWhenHidden && !documentVisible.value) {
+          if (pollingWhenHidden && !isVisible.value) {
             return;
           }
           pollingSinceFinishedTimer = setTimeout(() => {
@@ -171,37 +166,36 @@ export function useRequest<R = any, P extends any[] = any>(
       if (loadingWhenDebounceStart) {
         loading.value = true;
       }
-      debounceRun(...args);
+      return Promise.resolve(debounceRun(...args)!);
     };
   }
   if (throttleInterval) {
     const throttleRun = throttle(_run, throttleInterval);
     run = (...args: P) => {
-      if (loadingWhenThrottleStart) {
-        loading.value = true;
-      }
-      throttleRun(...args);
+      return Promise.resolve(throttleRun(...args)!);
     };
   }
 
   let pollingTimer: any;
+  // 每隔x时间开始轮询，不管上次什么时候结束
   if (pollingInterval && !pollingSinceLastFinished) {
     run = (...args: P) => {
       if (pollingTimer) {
         clearInterval(pollingTimer);
       }
-      _run(...args);
       pollingTimer = setInterval(() => {
-        if (pollingWhenHidden && !documentVisible.value) {
+        if (pollingWhenHidden && !isVisible.value) {
           return;
         }
         _run(...args);
       }, pollingInterval);
+
+      return _run(...args);
     };
   }
 
   function refresh() {
-    run(...(params.value as any));
+    return run(...params.value);
   }
 
   // 自动执行

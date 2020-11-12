@@ -3,18 +3,18 @@
     <p>
       UserName: <span>{{ loading ? 'loading' : data }}</span>
     </p>
-    <button @click="run" style="margin-right: 8px">run</button>
+    <button @click="run()" style="margin-right: 8px">run</button>
     <button @click="cancel">cancel</button>
   </div>
 </template>
 
 <script lang="ts">
 import { useRequest } from '@dewfall/vhooks';
-import { getUsername } from './utils';
+import { getFullName } from './utils';
 
 export default {
   setup() {
-    const { data, loading, error, run, cancel } = useRequest(getUsername, {
+    const { data, loading, error, run, cancel } = useRequest(getFullName, {
       pollingInterval: 1 * 1000,
       pollingWhenHidden: true,
     });
