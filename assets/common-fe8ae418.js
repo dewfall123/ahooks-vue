@@ -1,0 +1,1 @@
+import{j as o,x as a,B as t}from"./common-569d9d4d.js";import{t as n}from"./common-2f9a21e0.js";function e(e,u){var l;let m;m="function"==typeof e?o(e):e;const r=a(m.value),s=n(()=>{r.value=m.value},null!=(l=null==u?void 0:u.wait)?l:1e3,u);return t(m,s),r}export{e as u};

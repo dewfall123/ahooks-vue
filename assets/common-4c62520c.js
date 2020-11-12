@@ -1,0 +1,1 @@
+import{x as t}from"./common-569d9d4d.js";function o(o=!1,e){const s=t(o),a=t=>{s.value=t},d=void 0===e?!o:e;return{state:s,toggle:t=>{void 0===t&&(t=s.value===o?d:o),a(t)},setLeft:()=>{a(o)},setRight:()=>{a(d)}}}export{o as u};
