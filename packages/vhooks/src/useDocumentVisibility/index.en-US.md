@@ -16,6 +16,7 @@ A Hook can tell if the page is visible.
 
 ### 参数
 
-| 参数               |                                 说明 |   类型 |                                                值 |
-| ------------------ | -----------------------------------: | -----: | ------------------------------------------------: |
-| documentVisibility | Determine if the document is visible | string | 'visible' \| 'hidden' \| 'prerender' \| undefined |
+| 参数            |                                 说明 |    类型 |                         值 |
+| --------------- | -----------------------------------: | ------: | -------------------------: |
+| visibilityState |             Document's visible state |  string |      `hidden` \| `visible` |
+| isVisible       | Determine if the document is visible | boolean | `document.visibilityState` |

@@ -16,6 +16,7 @@
 
 ### 参数
 
-| 参数               |                                 说明 |   类型 |                                                值 |
-| ------------------ | -----------------------------------: | -----: | ------------------------------------------------: |
-| documentVisibility | 判断 document 是否在是否处于可见状态 | string | 'visible' \| 'hidden' \| 'prerender' \| undefined |
+| 参数            |                        说明 |    类型 |                                 值 |
+| --------------- | --------------------------: | ------: | ---------------------------------: |
+| visibilityState | document.visibilityState 值 |  string | `hidden` \| `visible` \| undefined |
+| isVisible       |                页面是否可见 | boolean |         `document.visibilityState` |
