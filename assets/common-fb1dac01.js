@@ -1,0 +1,1 @@
+import{k as o,y as t,B as a}from"./common-34d19493.js";import{t as e}from"./common-2f9a21e0.js";function m(m,n){let s;s="function"==typeof m?o(m):m;const r=t(s.value),u=e((()=>{r.value=s.value}),n?.wait??1e3,n);return a(s,u),r}export{m as u};
