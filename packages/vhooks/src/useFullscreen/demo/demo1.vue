@@ -8,13 +8,13 @@
         margin-bottom: 10px;
       "
     />
-    <button @click="toggleFull()">点击</button>
+    <button @click="toggleFull()">Click</button>
     <span> isFullscreen: {{ isFullscreen }}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { useFullscreen } from '@dewfall/vhooks';
+import { useFullscreen } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

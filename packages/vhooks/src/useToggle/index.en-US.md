@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-toggle
+---
+
 # useToggle
 
 A hook that switch value between two states.
+
+::: warning
+The API is different from [ahooks](https://ahooks.js.org/hooks/state/use-toggle).
+:::
 
 ## Examples
 

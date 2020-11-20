@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-key-press
+---
+
 # useKeyPress
 
 A hook that elegantly manages KeyboardEvent of keyup adn keydown, Keyboard key combinations are supported to define key and keyCode alias input for keyboard events.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-key-press).
+:::
 
 ## Examples
 

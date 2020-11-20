@@ -24,7 +24,7 @@
     "rootDir": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@dewfall/vhooks": ["src/"]
+      "ahooks-vue": ["src/"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],

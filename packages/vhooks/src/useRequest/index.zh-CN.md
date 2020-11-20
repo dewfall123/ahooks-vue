@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-request
+---
+
 # useRequest
 
 一个管理异步数据请求的 Hook.
+
+::: warning
+API 有改动，见[ahooks](https://ahooks.js.org/hooks/async)。
+:::
 
 ## 代码演示
 

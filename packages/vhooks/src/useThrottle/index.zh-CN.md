@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-throttle
+---
+
 # useThrottle
 
 用来处理节流值的 Hook。
+
+::: tip
+Api 与[ahooks](https://ahooks.js.org/hooks/side-effect/use-throttle)一致。
+:::
 
 ## 代码演示
 

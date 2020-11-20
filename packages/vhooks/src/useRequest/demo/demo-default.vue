@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { useRequest } from '@dewfall/vhooks';
+import { useRequest } from 'ahooks-vue';
 
 function getFullName(): Promise<string> {
   return new Promise((resolve) => {

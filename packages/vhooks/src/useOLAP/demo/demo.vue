@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { useOLAP } from '@dewfall/vhooks';
+import { useOLAP } from 'ahooks-vue';
 import { data } from './data';
 
 export default {

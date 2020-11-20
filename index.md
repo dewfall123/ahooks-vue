@@ -13,11 +13,11 @@ Some of hooks implementation is original ported from [ahooks](https://ahooks.js.
 ## 📦 Install
 
 ```
-yarn add @dewfall/vhooks -D
+yarn add ahooks-vue -D
 ```
 
 ## 🔨 Usage
 
 ```
-import { useWorkerFunction } from '@dewfall/vhooks';
+import { useWorkerFunction } from 'ahooks-vue';
 ```

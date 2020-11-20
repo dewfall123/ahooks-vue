@@ -1,4 +1,5 @@
-const hooksPrefix = 'vhooks/';
+const hooksPrefix = 'hooks/';
+const { kebabCase } = require('lodash');
 
 const Router = {
   Request: ['useRequest'],
@@ -10,7 +11,7 @@ const Router = {
     'useHover',
     'useInViewport',
   ],
-  State: ['useToggle', 'useLocalState', 'useThrottle', 'useDebounce'],
+  State: ['useToggle', 'useLocalStorageState', 'useThrottle', 'useDebounce'],
   Data: ['useTable'],
   Worker: ['useWorkerFunction'],
 };
@@ -24,7 +25,7 @@ function getRouterConfig(langPrefix = '/') {
     ...Object.entries(Router).map(([text, children]) => ({
       text,
       children: children.map((hookName) => ({
-        link: `${langPrefix}${hooksPrefix}${hookName}/`,
+        link: `${langPrefix}${hooksPrefix}${kebabCase(hookName)}/`,
         text: hookName,
       })),
     })),

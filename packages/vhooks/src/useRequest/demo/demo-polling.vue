@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { useRequest } from '@dewfall/vhooks';
+import { useRequest } from 'ahooks-vue';
 import { getFullName } from './utils';
 
 export default {

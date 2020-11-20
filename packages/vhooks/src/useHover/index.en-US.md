@@ -1,16 +1,27 @@
+---
+map:
+  path: /hooks/use-hover
+---
+
 # useHover
 
 React UI sensor hooks that track if some element is being hovered by a mouse.
 
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/zh-CN/hooks/side-effect/use-hover).
+:::
+
 ## Examples
 
-###
+### Basic Uagge
 
 <demo src="./demo/demo1.vue"
   language="vue"
   title="Basic usage"
   desc="Use ref to set elements that need listen dom.">
 </demo>
+
+### Pass in DOM element
 
 <demo src="./demo/demo2.vue"
   language="vue"

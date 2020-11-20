@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-table
+---
+
 # useTable
 
 Hooks that handle Table-related logic, like frontend pagination, sort and search。
+
+::: tip
+New hook.
+:::
 
 ## Examples
 
@@ -9,7 +18,7 @@ Hooks that handle Table-related logic, like frontend pagination, sort and search
 <demo src="./demo/demo.vue"
   language="vue"
   title="Basic usage"
-  desc="">
+  desc="front paged table.">
 </demo>
 
 ## API

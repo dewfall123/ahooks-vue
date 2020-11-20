@@ -1,6 +1,6 @@
 export { useToggle } from './useToggle';
 export { useFullscreen } from './useFullscreen';
-export { useLocalState } from './useLocalState';
+export { useLocalStorageState } from './useLocalStorageState';
 export { useDocumentVisibility } from './useDocumentVisibility';
 export { useHover } from './useHover';
 export { useInViewport } from './useInViewport';

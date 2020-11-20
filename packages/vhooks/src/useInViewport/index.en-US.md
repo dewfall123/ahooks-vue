@@ -1,10 +1,19 @@
+---
+map:
+  path: /hooks/use-in-viewport
+---
+
 # useInViewport
 
-A hook to subscribe DOM element visibility change
+A hook to subscribe DOM element visibility change.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-in-viewport).
+:::
 
 ## Examples
 
-### Pass in DOM element
+### Basic usage
 
 <demo src="./demo/demo1.vue"
   title="Basic usage"

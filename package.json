@@ -1,7 +1,7 @@
 {
-  "name": "@dewfall/vhooks",
-  "version": "0.1.1",
-  "description": "vue3 hooks like ahooks",
+  "name": "ahooks-vue",
+  "version": "0.8.0",
+  "description": "ahooks vue",
   "main": "packages/vhooks/dist/index.js",
   "types": "packages/vhooks/dist/index.d.ts",
   "repository": "https://github.com/dewfall123/vhooks.git",
@@ -12,16 +12,17 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "vlib-docsify",
+    "dev": "vitepress-dg --root=docs",
     "test": "jest",
     "build": "lerna run build",
-    "deploy": "gh-pages -d docs",
-    "build-deploy": "yarn docs:build && gh-pages -d docs",
-    "docs:build": "rimraf docs/ && cross-env NODE_ENV=production vlib-docsify build",
-    "static": "node static-serve.js",
+    "docs-deploy": "gh-pages -d docs/dist",
+    "docs-build-deploy": "yarn docs-build && yarn docs-deploy",
+    "docs-build": "rimraf docs/dist && cross-env NODE_ENV=production vitepress-dg build --root=docs",
+    "docs-static": "node static-serve.js",
     "pub": " yarn build && lerna publish",
     "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/dist/* \"packages/*/src/**/*.{vue,js,ts,tsx}\"",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "keywords": [
     "vue",
@@ -44,6 +45,7 @@
     "@typescript-eslint/parser": "^4.4.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "conventional-changelog-cli": "^2.1.1",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "eslint": "^7.11.0",
@@ -55,6 +57,7 @@
     "koa": "^2.13.0",
     "koa-static-server": "^1.5.2",
     "lerna": "^3.22.1",
+    "lodash": "^4.17.20",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0",
@@ -64,7 +67,7 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^26.4.3",
     "typescript": "^4.0.5",
-    "vlib-docsify": "^0.3.1",
+    "vitepress-dg": "^0.8.1",
     "vue": "^3.0.2",
     "vue-router": "^4.0.0-beta.7",
     "whatwg-fetch": "^3.5.0"

@@ -6,12 +6,12 @@
 
 <script lang="ts">
 import { reactive } from 'vue';
-import { useLocalState } from '@dewfall/vhooks';
+import { useLocalStorageState } from 'ahooks-vue';
 
 export default {
   setup() {
     const conditions = reactive({
-      field1: useLocalState('field1', 'hellow word!'),
+      field1: useLocalStorageState('field1', 'hello world!'),
     });
 
     return {

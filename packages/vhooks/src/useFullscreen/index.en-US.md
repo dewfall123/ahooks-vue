@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-fullscreen
+---
+
 # useFullscreen
 
 A Hook for handling dom full screen.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-fullscreen).
+:::
 
 ## Examples
 
@@ -9,13 +18,15 @@ A Hook for handling dom full screen.
 <demo src="./demo/demo1.vue"
   language="vue"
   title="Basic usage"
-  desc="Use ref to set elements that need full screen">
+  desc="Use ref to set elements that need full screen.">
 </demo>
+
+### Pass in function
 
 <demo src="./demo/demo2.vue"
   language="vue"
   title="Pass in a function"
-  desc="Use function to set elements that need full screen">
+  desc="Use function to set elements that need full screen.">
 </demo>
 
 ## API

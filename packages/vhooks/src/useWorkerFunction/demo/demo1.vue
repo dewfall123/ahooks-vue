@@ -43,7 +43,7 @@
 </style>
 
 <script lang="ts">
-import { useWorkerFunction } from '@dewfall/vhooks';
+import { useWorkerFunction } from 'ahooks-vue';
 import { ref } from 'vue';
 
 function randomArray(n: number = 50 * 10000) {

@@ -1,37 +1,35 @@
 const { getRouterConfig, hooksPrefix } = require('./router');
+const { kebabCase } = require('lodash');
 
-const base = process.env.NODE_ENV === 'production' ? '/vhooks' : '';
+const base = process.env.NODE_ENV === 'production' ? '/ahooks-vue' : '';
 
 module.exports = {
-  title: 'vhooks',
+  title: 'ahooks-vue',
   description: 'vue hooks',
-  // head: [['link', { href: '/hooks' }, 'Document']],
   themeConfig: {
     lang: 'en-US',
     locales: {
       '/': {
         lang: 'en-US',
-        title: 'vHooks',
+        title: 'ahooks-vue',
         description: 'vue hooks',
-        // head?: HeadConfig[]
         label: 'English',
         selectText: 'Languages',
         nav: [
           { text: 'Guide', link: '/' },
-          { text: 'Document', link: `/${hooksPrefix}useSize/` },
+          { text: 'Document', link: `/${hooksPrefix}${kebabCase('useSize')}/` },
         ],
         sidebar: getRouterConfig(),
       },
       '/zh/': {
         lang: 'zh-CN',
-        title: 'vHooks',
+        title: 'ahooks-vue',
         description: 'vue hooks',
-        // head?: HeadConfig[]
         label: '中文',
         selectText: '语言',
         nav: [
-          { text: '指南', link: '/' },
-          { text: '文档', link: `/zh/${hooksPrefix}useSize/` },
+          { text: '指南', link: '/zh' },
+          { text: '文档', link: `/zh/${hooksPrefix}${kebabCase('useSize')}/` },
         ],
         sidebar: getRouterConfig('/zh/'),
       },
@@ -39,19 +37,18 @@ module.exports = {
     search: {
       searchMaxSuggestions: 10,
     },
-    repo: 'dewfall123/vhooks',
+    repo: 'dewfall123/ahooks-vue',
     repoLabel: 'Github',
     lastUpdated: true,
     prevLink: true,
     nextLink: true,
   },
+  srcIncludes: ['packages/vhooks/src'],
   alias: {
-    '@dewfall/vhooks': '/vhooks/',
+    'ahooks-vue': '/@packages/vhooks/src/',
     'vue-demi': 'vue',
-    '/vhooks/': '/packages/vhooks/src/',
   },
-  outDir: 'docs/',
-  // TODO
+  outDir: '../dist',
   base,
   viteOptions: {},
 };

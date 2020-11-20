@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-size
+---
+
 # useSize
 
-一个用于监听 dom 节点尺寸变化的 Hook
+一个用于监听 dom 节点尺寸变化的 Hook。
+
+::: tip
+Api 与[ahooks](https://ahooks.js.org/hooks/dom/use-size)一致。
+:::
 
 ## 代码演示
 
@@ -8,7 +17,7 @@
 
 <demo src="./demo/demo1.vue"
   title="基本用法"
-  desc="使用 ref 监听节点尺寸变化">
+  desc="使用 ref 监听节点尺寸变化。">
 </demo>
 
 ### 传入 DOM 节点

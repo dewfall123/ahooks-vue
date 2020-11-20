@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-debounce
+---
+
 # useDebounce
 
 用来处理防抖值的 Hook。
+
+::: tip
+Api 与[ahooks](https://ahooks.js.org/zh-CN/hooks/side-effect/use-debounce)一致。
+:::
 
 ## 代码演示
 
@@ -9,7 +18,7 @@
 <demo src="./demo/demo.vue"
   language="vue"
   title="基础用法"
-  desc="点击按钮，可以看到debouncedValue值得变化情况。">
+  desc="点击按钮，可以看到debouncedValue值在1s后才变化。">
 </demo>
 
 ## API

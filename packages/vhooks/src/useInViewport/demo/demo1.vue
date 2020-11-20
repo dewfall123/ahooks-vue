@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { useInViewport } from '@dewfall/vhooks';
+import { useInViewport } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

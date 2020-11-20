@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { useDocumentVisibility } from '@dewfall/vhooks';
+import { useDocumentVisibility } from 'ahooks-vue';
 import { watch } from 'vue';
 
 export default {

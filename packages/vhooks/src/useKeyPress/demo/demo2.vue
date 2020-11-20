@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { useKeyPress } from '@dewfall/vhooks';
+import { useKeyPress } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

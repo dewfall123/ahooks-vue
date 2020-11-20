@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { useRequest } from '@dewfall/vhooks';
+import { useRequest } from 'ahooks-vue';
 import { getNumber } from './utils';
 
 export default {

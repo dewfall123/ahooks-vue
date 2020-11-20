@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { useHover } from '@dewfall/vhooks';
+import { useHover } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

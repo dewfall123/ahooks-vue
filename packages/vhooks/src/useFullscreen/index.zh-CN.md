@@ -1,14 +1,33 @@
+---
+map:
+  path: /hooks/use-fullscreen
+---
+
 # useFullscreen
 
 一个用于处理 dom 全屏的 Hook
+
+::: tip
+Api 与[ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-fullscreen)一致。
+:::
 
 ## 代码演示
 
 ### 基本用法
 
-<demo src="./demo/demo1.vue" language="vue" ></demo>
+<demo
+  src="./demo/demo1.vue"
+  language="vue"
+  desc="使用 ref 设置需要全屏的元素。">
+</demo>
 
-<demo src="./demo/demo2.vue" language="vue" ></demo>
+### 传入目标元素
+
+<demo
+  src="./demo/demo2.vue"
+  language="vue"
+  desc="传入一个元素。">
+</demo>
 
 ## API
 

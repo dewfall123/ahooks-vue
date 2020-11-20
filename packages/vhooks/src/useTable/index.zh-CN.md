@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-table
+---
+
 # useTable
 
-处理 Table 相关逻辑的 hooks，例如前端分页，排序，搜索。
+纯前端 Table 相关逻辑的 hooks，例如分页，排序，搜索。
+
+::: tip
+新增的 Hook.
+:::
 
 ## 代码演示
 

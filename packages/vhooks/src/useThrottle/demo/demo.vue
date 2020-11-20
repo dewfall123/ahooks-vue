@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { useThrottle } from '@dewfall/vhooks';
+import { useThrottle } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

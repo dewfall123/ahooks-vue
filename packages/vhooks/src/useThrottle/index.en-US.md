@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-throttle
+---
+
 # useThrottle
 
 A hook that handle the throttle value.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/hooks/side-effect/use-throttle).
+:::
 
 ## Examples
 

@@ -2,7 +2,10 @@ import { ref, watch } from 'vue-demi';
 
 export type LocalStateKey = string;
 
-export function useLocalState<T>(key: LocalStateKey, defaultValue?: T) {
+export function useLocalStorageState<T>(
+  key: LocalStateKey,
+  defaultValue?: T | (() => T),
+) {
   const state = ref<T | undefined | null>(getState());
 
   function getState() {
@@ -14,7 +17,10 @@ export function useLocalState<T>(key: LocalStateKey, defaultValue?: T) {
         //
       }
     }
-    return defaultValue;
+    if (typeof defaultValue === 'function') {
+      return (defaultValue as () => T)();
+    }
+    return defaultValue as T;
   }
 
   function setState() {
@@ -32,4 +38,4 @@ export function useLocalState<T>(key: LocalStateKey, defaultValue?: T) {
   return state;
 }
 
-export default useLocalState;
+export default useLocalStorageState;

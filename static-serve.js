@@ -5,13 +5,13 @@ const app = new Koa();
 
 app.use(
   StaticServer({
-    rootDir: 'docs',
-    rootPath: '/vhooks',
+    rootDir: 'docs/dist',
+    rootPath: '/ahooks-vue',
   }),
 );
 
 app.use(async (ctx) => {
-  ctx.redirect('/vhooks');
+  ctx.redirect('/ahooks-vue');
 });
 
 const port = 3001;

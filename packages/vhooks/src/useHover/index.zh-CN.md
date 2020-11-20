@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-hover
+---
+
 ## useHover
 
-一个用于追踪 dom 元素是否有鼠标悬停的 Hook
+一个用于追踪 dom 元素是否有鼠标悬停的 Hook。
+
+::: tip
+Api 与[ahooks](https://ahooks.js.org/zh-CN/hooks/side-effect/use-hover)一致。
+:::
 
 ### 基本用法
 
@@ -9,6 +18,8 @@
   title="基本用法"
   desc="使用 ref 设置需要需要监听的元素。">
 </demo>
+
+### 传入 Dom 元素
 
 <demo src="./demo/demo2.vue"
   language="vue"

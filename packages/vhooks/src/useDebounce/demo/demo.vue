@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { useDebounce } from '@dewfall/vhooks';
+import { useDebounce } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {
   setup() {
     const count = ref(0);
-    const debouncedValue = useDebounce(count, { wait: 2000 });
+    const debouncedValue = useDebounce(count, { wait: 1000 });
 
     function addCount() {
       count.value++;

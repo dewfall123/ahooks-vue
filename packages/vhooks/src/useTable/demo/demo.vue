@@ -12,7 +12,7 @@
 import MyTable from './table.vue';
 import Pagination from './pagination.vue';
 import { data, columns } from './data';
-import { useTable } from '@dewfall/vhooks';
+import { useTable } from 'ahooks-vue';
 
 export default {
   components: {

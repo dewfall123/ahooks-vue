@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-size
+---
+
 # useSize
 
-A hook to subscribe DOM element size change
+A hook to subscribe DOM element size change.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/hooks/dom/use-size).
+:::
 
 ## Examples
 
@@ -8,7 +17,7 @@ A hook to subscribe DOM element size change
 
 <demo src="./demo/demo1.vue"
   title="Basic usage"
-  desc="drag the div. look at the value change">
+  desc="using ref to listen to size change.">
 </demo>
 
 ## API

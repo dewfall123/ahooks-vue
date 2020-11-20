@@ -1,10 +1,10 @@
 {
-  "name": "@dewfall/vhooks",
-  "version": "0.6.1",
-  "description": "vue hooks like ahooks",
+  "name": "ahooks-vue",
+  "version": "0.8.0",
+  "description": "ahooks-vue",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
-  "repository": "https://github.com/dewfall123/vhooks.git",
+  "repository": "https://github.com/dewfall123/ahooks-vue.git",
   "author": "dewfall",
   "license": "MIT",
   "files": [
@@ -45,7 +45,7 @@
     "vue-router": "^4.0.0-beta.13",
     "whatwg-fetch": "^3.5.0"
   },
-  "homepage": "https://dewfall123.github.io/vhooks/",
+  "homepage": "https://dewfall123.github.io/ahooks-vue/",
   "dependencies": {
     "dayjs": "^1.8.34",
     "intersection-observer": "^0.11.0",

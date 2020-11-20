@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { useToggle } from '@dewfall/vhooks';
+import { useToggle } from 'ahooks-vue';
 
 export default {
   setup() {

@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-toggle
+---
+
 # useToggle
 
 用于在两个状态值间切换的 Hook。
+
+::: warning
+API 有改动，见[ahooks](https://ahooks.js.org/hooks/state/use-toggle)。
+:::
 
 ## Examples
 

@@ -17,7 +17,7 @@ export default {
     alias({
       resolve: ['.jsx', '.js'],
       entries: {
-        '@dewfall/vhooks': 'src/',
+        'ahooks-vue': 'src/',
       },
     }),
   ],

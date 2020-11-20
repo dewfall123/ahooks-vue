@@ -1,39 +1,37 @@
-# `vhooks`
+# ahooks-vue
 
-vue Hooks Library.
+Vue Hooks Library.
 
 Most hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs).
 
-[![NPM version][image-1]][1] [![NPM downloads][image-2]][2]
+## Document
 
-## 📚 Document
+- [中文](https://dewfall123.github.io/ahooks-vue/zh/)
+- [English](https://dewfall123.github.io/ahooks-vue/)
 
-- [English](https://dewfall123.github.io/vhooks/)
-- [中文](https://dewfall123.github.io/vhooks/zh/)
-
-## ✨ Features
+## Features
 
 - Easy to learn and use.
 - Works for both Vue 3 and 2 ( thanks for [vue-demi](https://github.com/antfu/vue-demi) ).
 - Written in TypeScript with predictable static types.
 
-## 📦 Install
+## Install
 
 ```
-yarn add @dewfall/vhooks
+yarn add ahooks-vue
 ```
 
-## 🔨 Usage
+## Usage
 
 ```
-import { useWorkerFunction } from '@dewfall/vhooks';
+import { useWorkerFunction } from 'ahooks-vue';
 ```
 
-## 💗 Contributing
+## Contributing
 
-### Setup vhooks dev environment
+### Setup ahooks-vue dev environment
 
-1. Clone the vhooks repo
+1. Clone the ahooks-vue repo
 1. Install dependencies
    ```
    yarn

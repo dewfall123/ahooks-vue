@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { useSize } from '@dewfall/vhooks';
+import { useSize } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

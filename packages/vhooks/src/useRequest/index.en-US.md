@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-request
+---
+
 # useRequest
 
 Production-ready Vue Hook to manage asynchronous data.
+
+::: warning
+The API is different from [ahooks](https://ahooks.js.org/hooks/async).
+:::
 
 ## Examples
 

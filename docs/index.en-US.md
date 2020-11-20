@@ -4,20 +4,20 @@ vue Hooks Library.
 
 Most hooks implementation is original ported from [ahooks](https://ahooks.js.org/docs).
 
-## ✨ Features
+## Features
 
 - Easy to learn and use.
 - Works for both Vue 3 and 2 ( thanks for [vue-demi](https://github.com/antfu/vue-demi) ).
 - Written in TypeScript with predictable static types.
 
-## 📦 Install
+## Install
 
 ```
-yarn add @dewfall/vhooks -D
+yarn add ahooks-vue
 ```
 
-## 🔨 Usage
+## Usage
 
 ```
-import { useWorkerFunction } from '@dewfall/vhooks';
+import { useWorkerFunction } from 'ahooks-vue';
 ```

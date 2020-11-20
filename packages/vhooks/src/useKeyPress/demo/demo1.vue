@@ -2,10 +2,10 @@
   <div>
     <p>Try pressing the following:</p>
 
-    <p>1. Press <span style="color: blue">ArrowUp</span> by key to increase</p>
+    <p>1. Press <span style="color: blue">ArrowUp</span> by key to increase.</p>
     <p>
-      2. Press <span style="color: blue">ArrowDown</span> by keyCode to decrease
-      counter: 0
+      2. Press <span style="color: blue">ArrowDown</span> by keyCode to
+      decrease.
     </p>
 
     <p>
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { useKeyPress } from '@dewfall/vhooks';
+import { useKeyPress } from 'ahooks-vue';
 import { ref } from 'vue';
 
 export default {

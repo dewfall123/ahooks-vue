@@ -8,15 +8,15 @@
         margin-bottom: 10px;
       "
     />
-    <button @click="setFull()">全屏</button>
-    <button @click="exitFull()">缩小</button>
-    <button @click="toggleFull()">切换</button>
+    <button @click="setFull()" style="margin-right: 16px">setFull</button>
+    <button @click="exitFull()" style="margin-right: 16px">exitFull</button>
+    <button @click="toggleFull()">toggleFull</button>
     <span> isFullscreen: {{ isFullscreen }}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { useFullscreen } from '@dewfall/vhooks';
+import { useFullscreen } from 'ahooks-vue';
 export default {
   setup() {
     const { isFullscreen, toggleFull, setFull, exitFull } = useFullscreen(() =>

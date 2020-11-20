@@ -1,6 +1,15 @@
+---
+map:
+  path: /hooks/use-debounce
+---
+
 # useDebounce
 
 A hook that handle the debounce value.
+
+::: tip
+API is consistent with [ahooks](https://ahooks.js.org/zh-CN/hooks/side-effect/use-debounce).
+:::
 
 ## Examples
 
@@ -9,7 +18,7 @@ A hook that handle the debounce value.
 <demo src="./demo/demo.vue"
   language="vue"
   title="Basic usage"
-  desc="Click the button, observe the changes of debouncedValue.">
+  desc="Click the button, debouncedValue will change after the input ends 1000ms.">
 </demo>
 
 ## API
