@@ -17,9 +17,11 @@
     "build": "rimraf dist/ && rollup -c"
   },
   "keywords": [
+    "ahooks-vue",
+    "ahooks",
     "vue",
-    "hooks",
-    "ahooks"
+    "vue3",
+    "hooks"
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.1.1",

@@ -28,7 +28,7 @@ module.exports = {
         label: '中文',
         selectText: '语言',
         nav: [
-          { text: '指南', link: '/zh' },
+          { text: '指南', link: '/zh/' },
           { text: '文档', link: `/zh/${hooksPrefix}${kebabCase('useSize')}/` },
         ],
         sidebar: getRouterConfig('/zh/'),
