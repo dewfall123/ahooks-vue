@@ -1,6 +1,6 @@
 {
   "name": "ahooks-vue",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "ahooks-vue",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
