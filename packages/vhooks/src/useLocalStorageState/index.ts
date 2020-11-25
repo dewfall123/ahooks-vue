@@ -1,14 +1,23 @@
-import { ref, watch } from 'vue-demi';
+import { Ref, ref, watch } from 'vue-demi';
 
 export type LocalStateKey = string;
 
-export function useLocalStorageState<T>(
+export function useLocalStorageState<T = undefined>(
+  key: string,
+): Ref<T | undefined>;
+
+export function useLocalStorageState<T = any>(
+  key: string,
+  defaultValue: T | (() => T),
+): Ref<T>;
+
+export function useLocalStorageState<T = any>(
   key: LocalStateKey,
   defaultValue?: T | (() => T),
 ) {
-  const state = ref<T | undefined | null>(getState());
+  const state = ref(getState()) as Ref<T | undefined>;
 
-  function getState() {
+  function getState(): T | undefined {
     const raw = localStorage.getItem(key);
     if (raw) {
       try {
@@ -20,7 +29,7 @@ export function useLocalStorageState<T>(
     if (typeof defaultValue === 'function') {
       return (defaultValue as () => T)();
     }
-    return defaultValue as T;
+    return defaultValue;
   }
 
   function setState() {

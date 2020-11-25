@@ -9682,10 +9682,10 @@ vite@^1.0.0-rc.9:
     vue "^3.0.2"
     ws "^7.3.1"
 
-vitepress-for-component@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/vitepress-for-component/-/vitepress-for-component-0.8.2.tgz#04e9cd5fbb57c696169b5260a7a81daef9a3c171"
-  integrity sha512-TWcZdkSLRJb08wARnlRNrS9FGSIA+dEq7ge1CiRSeOtUfFETM5HWyWp3PlSaHVHQKxlrvp4N1K79SBEbp5j3KA==
+vitepress-for-component@latest:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/vitepress-for-component/-/vitepress-for-component-0.8.3.tgz#a5c85b980e66d371de3fa9edf1c84ad9107f00f8"
+  integrity sha512-ead1wUpS/idGJ+wSwz/HmFi1csqdLd4tuuOY/2aRBO1f1aPLo8JRU5xlIuJYudnAd9Vz5nDAfkSgDMkLLDLlgA==
   dependencies:
     "@vue/compiler-sfc" "^3.0.2"
     "@vue/server-renderer" "^3.0.2"
