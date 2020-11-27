@@ -15,3 +15,4 @@ export { useRequest } from './useRequest';
 
 //
 export * from './useOLAP';
+export * from './useRequest';
