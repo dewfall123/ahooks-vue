@@ -1,0 +1,1 @@
+import{e as i,v as e,c as t}from"./common-95e9c5a8.js";function n(){const n=i(document.visibilityState),s=e((()=>"visible"===n.value));function a(){n.value=document.visibilityState}return document.addEventListener("visibilitychange",a),t((()=>{document.removeEventListener("visibilitychange",a)})),{visibilityState:n,isVisible:s}}export{n as u};

@@ -1,0 +1,1 @@
+import{v as o,e as a,w as e}from"./common-95e9c5a8.js";import{t}from"./common-2f9a21e0.js";function m(m,n){let s;s="function"==typeof m?o(m):m;const r=a(s.value),u=t((()=>{r.value=s.value}),n?.wait??1e3,n);return e(s,u),r}export{m as u};
