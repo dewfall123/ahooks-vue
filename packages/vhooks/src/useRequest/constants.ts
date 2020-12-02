@@ -39,4 +39,5 @@ export const DefaultOptions = {
   initialData: undefined,
   // ready: true,
   throwOnError: false,
+  paginated: false,
 } as UseRequestOptions;

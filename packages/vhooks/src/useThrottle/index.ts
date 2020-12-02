@@ -35,5 +35,3 @@ export function useThrottle<T>(
 
   return throttledValue;
 }
-
-export default useThrottle;

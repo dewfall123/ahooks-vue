@@ -20,5 +20,3 @@ export function useDocumentVisibility() {
     isVisible,
   };
 }
-
-export default useDocumentVisibility;

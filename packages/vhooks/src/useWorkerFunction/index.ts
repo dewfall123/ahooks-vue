@@ -131,5 +131,3 @@ export function useWorkerFunction<T extends (...fnArgs: any[]) => any>(
     status,
   };
 }
-
-export default useWorkerFunction;

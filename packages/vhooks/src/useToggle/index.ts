@@ -68,5 +68,3 @@ export function useToggle<D extends IState = IState, R extends IState = IState>(
     setRight,
   };
 }
-
-export default useToggle;

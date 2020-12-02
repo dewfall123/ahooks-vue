@@ -1,5 +1,5 @@
 import screenfull from 'screenfull';
-import useBoolean from '../useBoolean';
+import { useBoolean } from '../useBoolean';
 import { Ref, watch, onMounted } from 'vue-demi';
 import { BasicTarget, getTargetElement } from '../utils/dom';
 
@@ -66,5 +66,3 @@ export function useFullscreen(target: BasicTarget, options?: Options): Result {
 
   return result;
 }
-
-export default useFullscreen;

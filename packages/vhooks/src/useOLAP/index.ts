@@ -77,5 +77,3 @@ export function useOLAP<T>(
     filter,
   };
 }
-
-export default useOLAP;

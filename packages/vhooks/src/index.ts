@@ -1,18 +1,14 @@
-export { useToggle } from './useToggle';
-export { useFullscreen } from './useFullscreen';
-export { useLocalStorageState } from './useLocalStorageState';
-export { useDocumentVisibility } from './useDocumentVisibility';
-export { useHover } from './useHover';
-export { useInViewport } from './useInViewport';
-export { useSize } from './useSize';
-export { useWorkerFunction } from './useWorkerFunction';
-export { useThrottle } from './useThrottle';
-export { useDebounce } from './useDebounce';
-export { useTable } from './useTable';
-export { useOLAP } from './useOLAP';
-export { useKeyPress } from './useKeyPress';
-export { useRequest } from './useRequest';
-
-//
+export * from './useToggle';
+export * from './useFullscreen';
+export * from './useLocalStorageState';
+export * from './useDocumentVisibility';
+export * from './useHover';
+export * from './useInViewport';
+export * from './useSize';
+export * from './useWorkerFunction';
+export * from './useThrottle';
+export * from './useDebounce';
+export * from './useTable';
+export * from './useKeyPress';
 export * from './useOLAP';
 export * from './useRequest';

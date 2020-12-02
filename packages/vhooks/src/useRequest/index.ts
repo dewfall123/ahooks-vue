@@ -58,11 +58,13 @@ export function useRequest<R = any, P extends any[] = any>(
   }
 
   const loading = ref<boolean>(defaultLoading);
-  const data = ref<R>(initialData);
+  const data = ref(initialData) as Ref<R>;
   const error = ref<Error>();
   const params = ref<P>(defaultParams as P) as Ref<P>;
   const lastSuccessParams = ref<P>(defaultParams as P) as Ref<P>;
   let count = 0;
+  // pagination
+  // const page
 
   let unmountedFlag = false;
   if (getCurrentInstance()) {

@@ -46,5 +46,3 @@ export function useLocalStorageState<T = any>(
 
   return state;
 }
-
-export default useLocalStorageState;

@@ -1,4 +1,4 @@
-import { ComputedRef, Ref, UnwrapRef, watch } from 'vue-demi';
+import { ComputedRef, Ref, watch } from 'vue-demi';
 
 export type noop = (...args: any[]) => void;
 
@@ -13,7 +13,7 @@ export type CombineService<R, P extends any[]> =
 
 export interface UseRequestResult<R, P extends any[]> {
   loading: Ref<boolean>;
-  data: Ref<UnwrapRef<R | undefined>>;
+  data: Ref<R>;
   error: Ref<Error | undefined>;
   params: Ref<P>;
   lastSuccessParams: Ref<P | undefined>;
@@ -53,4 +53,5 @@ export type UseRequestOptions<R = any, P extends any[] = any[]> = {
   requestMethod: (service: any) => Promise<any>;
   // ready: boolean;
   throwOnError: boolean;
+  paginated: boolean;
 };

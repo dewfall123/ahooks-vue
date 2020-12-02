@@ -165,5 +165,3 @@ export function useTable<T>(
     total,
   };
 }
-
-export default useTable;

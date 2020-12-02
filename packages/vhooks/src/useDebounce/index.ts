@@ -7,7 +7,7 @@ export interface DebounceOptions {
   trailing?: boolean;
 }
 
-export declare type ComputedGetter<T> = (ctx?: any) => T;
+declare type ComputedGetter<T> = (ctx?: any) => T;
 
 export function useDebounce<T>(
   value: Ref<T> | ComputedGetter<T>,

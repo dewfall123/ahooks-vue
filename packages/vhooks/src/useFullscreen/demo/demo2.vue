@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { useFullscreen } from 'ahooks-vue';
+
 export default {
   setup() {
     const { isFullscreen, toggleFull, setFull, exitFull } = useFullscreen(() =>

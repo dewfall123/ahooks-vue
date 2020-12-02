@@ -277,6 +277,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bundled-es-modules/axios@^0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@bundled-es-modules/axios/-/axios-0.18.1.tgz#8beedbc92e9b0ed7df7c6cbdc6dfce84d306d80b"
+  integrity sha512-7c389uGe0dmfdedi9PQ3Om4vKg1HFzm/IntaqZ4FbXOo+gNiiPIM4He8MIkuRpgqUitbm1km0jOQ8p+tSpUp4Q==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"

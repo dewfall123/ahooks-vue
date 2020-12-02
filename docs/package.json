@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "ahooks-vue-docs",
+  "dependencies": {
+    "screenfull": "^5.0.2"
+  }
+}

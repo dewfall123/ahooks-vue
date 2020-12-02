@@ -1,4 +1,4 @@
-import useBoolean from '../index';
+import { useBoolean } from '../index';
 
 describe('useBoolean', () => {
   it('should be defined', () => {

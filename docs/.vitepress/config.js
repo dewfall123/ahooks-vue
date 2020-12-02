@@ -8,6 +8,15 @@ module.exports = {
   description: 'vue hooks',
   themeConfig: {
     lang: 'en-US',
+    lastUpdated: '最近更新',
+    // algolia: {
+    //   apiKey: 'c57105e511faa5558547599f120ceeba',
+    //   indexName: 'vitepress',
+    // },
+    repo: 'dewfall123/ahooks-vue',
+    repoLabel: 'Github',
+    prevLink: true,
+    nextLink: true,
     locales: {
       '/': {
         lang: 'en-US',
@@ -34,14 +43,6 @@ module.exports = {
         sidebar: getRouterConfig('/zh/'),
       },
     },
-    search: {
-      searchMaxSuggestions: 10,
-    },
-    repo: 'dewfall123/ahooks-vue',
-    repoLabel: 'Github',
-    lastUpdated: true,
-    prevLink: true,
-    nextLink: true,
   },
   srcIncludes: ['packages/vhooks/src'],
   alias: {
@@ -50,5 +51,9 @@ module.exports = {
   },
   outDir: '../dist',
   base,
-  viteOptions: {},
+  viteOptions: {
+    optimizeDeps: {
+      exclude: ['axios'],
+    },
+  },
 };

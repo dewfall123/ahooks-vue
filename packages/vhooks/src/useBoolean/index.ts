@@ -1,6 +1,6 @@
-import useToggle from '../useToggle';
+import { useToggle } from '../useToggle';
 
-const useBoolean = (defaultValue = false) => {
+export const useBoolean = (defaultValue = false) => {
   const { state, toggle } = useToggle(defaultValue);
 
   const setTrue = () => toggle(true);
@@ -16,5 +16,3 @@ const useBoolean = (defaultValue = false) => {
     setFalse,
   };
 };
-
-export default useBoolean;

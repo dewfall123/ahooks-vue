@@ -1,4 +1,4 @@
-import useFullscreen from '../index';
+import { useFullscreen } from '../index';
 
 describe('useFullscreen', () => {
   it('should be defined', () => {
