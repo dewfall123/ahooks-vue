@@ -135,12 +135,20 @@ export function useRequest<R = any, P extends any[] = any>(
         }
         // 在请求结束时轮询
         if (pollingInterval && pollingSinceLastFinished) {
+          // 当时页面不可见，等页面可见再查询
           if (pollingWhenHidden && !isVisible.value) {
-            return;
+            pollingSinceFinishedTimer = setInterval(() => {
+              // 需要恢复查询
+              if (!(pollingWhenHidden && !isVisible.value)) {
+                clearInterval(pollingSinceFinishedTimer);
+                _run(...args);
+              }
+            }, pollingInterval);
+          } else {
+            pollingSinceFinishedTimer = setTimeout(() => {
+              _run(...args);
+            }, pollingInterval);
           }
-          pollingSinceFinishedTimer = setTimeout(() => {
-            _run(...args);
-          }, pollingInterval);
         }
         loading.value = false;
       });
