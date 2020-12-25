@@ -6,6 +6,8 @@ import { useDocumentVisibility } from '../useDocumentVisibility';
 
 export const RequestConfig = Symbol('useRequestConfig');
 
+export * from './types';
+
 export function useRequest<R = any, P extends any[] = any>(
   service: CombineService<R, P>,
   options: Partial<UseRequestOptions<R, P>> = {},
@@ -24,6 +26,7 @@ export function useRequest<R = any, P extends any[] = any>(
     throwOnError,
     onSuccess,
     onError,
+    onFinally,
     formatResult,
     initialData,
     defaultParams,
@@ -63,8 +66,6 @@ export function useRequest<R = any, P extends any[] = any>(
   const params = ref<P>(defaultParams as P) as Ref<P>;
   const lastSuccessParams = ref<P>(defaultParams as P) as Ref<P>;
   let count = 0;
-  // pagination
-  // const page
 
   let unmountedFlag = false;
   if (getCurrentInstance()) {
@@ -151,6 +152,7 @@ export function useRequest<R = any, P extends any[] = any>(
           }
         }
         loading.value = false;
+        onFinally();
       });
   }
 

@@ -24,6 +24,7 @@ export const DefaultOptions = {
   manual: false,
   onSuccess: () => {},
   onError: () => {},
+  onFinally: () => {},
 
   defaultLoading: false,
   loadingDelay: 0,
@@ -39,5 +40,4 @@ export const DefaultOptions = {
   initialData: undefined,
   // ready: true,
   throwOnError: false,
-  paginated: false,
 } as UseRequestOptions;

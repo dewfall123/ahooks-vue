@@ -3,7 +3,6 @@ import { ComputedRef, Ref, watch } from 'vue-demi';
 export type noop = (...args: any[]) => void;
 
 export type Service<R, P extends any[]> = (...args: P) => Promise<R>;
-export type Mutate<R> = (x: R | undefined | ((data: R) => R)) => void;
 
 export type RequestService = string | { [key: string]: any };
 export type CombineService<R, P extends any[]> =
@@ -11,7 +10,7 @@ export type CombineService<R, P extends any[]> =
   | ((...args: P) => RequestService)
   | Service<R, P>;
 
-export interface UseRequestResult<R, P extends any[]> {
+export interface UseRequestResult<R = any, P extends any[] = any[]> {
   loading: Ref<boolean>;
   data: Ref<R>;
   error: Ref<Error | undefined>;
@@ -31,12 +30,13 @@ export type WatchSource = readonly (
 
 watch([], () => {});
 
-export type UseRequestOptions<R = any, P extends any[] = any[]> = {
+export interface UseRequestOptions<R = any, P extends any[] = any[]> {
   formatResult: (res: any) => R;
   // refreshDeps?: WatchSource; // 如果 deps 变化后，重新请求
   manual: boolean; // 是否需要手动触发
   onSuccess: (data: R, params: P) => void; // 成功回调
   onError: (e: Error, params: P) => void; // 失败回调
+  onFinally: () => void; // finally回调
   defaultLoading: boolean; // 默认 loading 状态
   loadingDelay: number; // loading delay
   defaultParams: P;
@@ -53,5 +53,4 @@ export type UseRequestOptions<R = any, P extends any[] = any[]> = {
   requestMethod: (service: any) => Promise<any>;
   // ready: boolean;
   throwOnError: boolean;
-  paginated: boolean;
-};
+}
