@@ -1,6 +1,7 @@
 import { BasicTarget, getTargetElement } from '../utils/dom';
-import { reactive, onMounted } from 'vue-demi';
+import { reactive, onUnmounted } from 'vue-demi';
 import ResizeObserver from 'resize-observer-polyfill';
+import { safeOnMounted } from '../utils';
 
 export function useSize(target: BasicTarget) {
   const size = reactive({
@@ -8,7 +9,7 @@ export function useSize(target: BasicTarget) {
     height: undefined,
   });
 
-  onMounted(() => {
+  safeOnMounted(() => {
     const targetElement = getTargetElement(target);
     if (!targetElement) {
       return;
@@ -25,7 +26,7 @@ export function useSize(target: BasicTarget) {
 
     resizeObserver.observe(targetElement as HTMLElement);
 
-    onMounted(() => {
+    onUnmounted(() => {
       resizeObserver.disconnect();
     });
   });

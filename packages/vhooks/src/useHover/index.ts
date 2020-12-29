@@ -1,6 +1,7 @@
 import { BasicTarget, getTargetElement } from '../utils/dom';
-import { onMounted, onUnmounted } from 'vue-demi';
+import { onUnmounted } from 'vue-demi';
 import { useBoolean } from '../useBoolean';
+import { safeOnMounted } from '../utils';
 
 interface Options {
   onEnter?: () => void;
@@ -21,7 +22,7 @@ export function useHover(target: BasicTarget, options?: Options) {
     onLeave && onLeave();
   }
 
-  onMounted(() => {
+  safeOnMounted(() => {
     const targetElement = getTargetElement(target);
     if (!targetElement) {
       return;

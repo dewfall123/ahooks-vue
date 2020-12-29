@@ -1,5 +1,5 @@
-import { onMounted, onUnmounted } from 'vue-demi';
-import { getTargetElement } from '../utils/dom';
+import { onUnmounted } from 'vue-demi';
+import { getTargetElement, safeOnMounted } from '../utils';
 import {
   EventHandler,
   genKeyFormater,
@@ -26,7 +26,7 @@ export function useKeyPress(
 
   const isKeyEvent: KeyPredicate = genKeyFormater(keyFilter);
 
-  onMounted(() => {
+  safeOnMounted(() => {
     const handlers = [] as ((event: KeyboardEvent) => any)[];
     const el = getTargetElement(target, window)!;
     for (const eventName of events) {

@@ -1,7 +1,8 @@
 import { BasicTarget, getTargetElement } from '../utils/dom';
 import { useBoolean } from '../useBoolean';
-import { onMounted } from 'vue-demi';
+import { onUnmounted } from 'vue-demi';
 import 'intersection-observer';
+import { safeOnMounted } from '../utils';
 
 function isInViewPort(el: HTMLElement): boolean {
   if (!el) {
@@ -31,7 +32,7 @@ function isInViewPort(el: HTMLElement): boolean {
 export function useInViewport(target: BasicTarget) {
   const { state } = useBoolean(false);
 
-  onMounted(() => {
+  safeOnMounted(() => {
     const targetElement = getTargetElement(target);
     if (!targetElement) {
       return;
@@ -46,7 +47,7 @@ export function useInViewport(target: BasicTarget) {
 
     observer.observe(targetElement as HTMLElement);
 
-    onMounted(() => {
+    onUnmounted(() => {
       observer.disconnect();
     });
   });

@@ -1,7 +1,8 @@
 import screenfull from 'screenfull';
 import { useBoolean } from '../useBoolean';
-import { Ref, watch, onMounted } from 'vue-demi';
+import { Ref, watch } from 'vue-demi';
 import { BasicTarget, getTargetElement } from '../utils/dom';
+import { safeOnMounted } from '../utils';
 
 export interface Options {
   onExitFull?: () => void;
@@ -21,7 +22,7 @@ export function useFullscreen(target: BasicTarget, options?: Options): Result {
 
   const { state, toggle, setTrue, setFalse } = useBoolean(false);
 
-  onMounted(() => {
+  safeOnMounted(() => {
     function handleStateChange() {
       const targetElemnt = getTargetElement(target);
 
