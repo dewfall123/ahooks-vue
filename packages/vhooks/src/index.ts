@@ -12,3 +12,4 @@ export * from './useTable';
 export * from './useKeyPress';
 export * from './useOLAP';
 export * from './useRequest';
+export * from './usePaginatedRequest';
