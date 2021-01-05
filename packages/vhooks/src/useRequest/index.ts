@@ -1,7 +1,7 @@
 import { getCurrentInstance, inject, onUnmounted, Ref, ref } from 'vue-demi';
 import { DefaultOptions } from './constants';
 import { UseRequestOptions, UseRequestResult, CombineService } from './types';
-import { debounce, throttle } from 'lodash-es';
+import { cloneDeep, debounce, throttle } from 'lodash-es';
 import { useDocumentVisibility } from '../useDocumentVisibility';
 
 export const RequestConfig = Symbol('useRequestConfig');
@@ -99,7 +99,7 @@ export function useRequest<R = any, P extends any[] = any>(
     }
     count++;
     const curCount = count;
-    params.value = args;
+    params.value = cloneDeep(args);
 
     // 抛弃该次请求结果
     const shoundAbandon = () => unmountedFlag || curCount !== count;
@@ -112,7 +112,7 @@ export function useRequest<R = any, P extends any[] = any>(
         const formattedResult = formatResult(res);
         data.value = formattedResult;
 
-        lastSuccessParams.value = args;
+        lastSuccessParams.value = cloneDeep(args);
         onSuccess(formattedResult, args);
         return formattedResult;
       })
