@@ -25,9 +25,29 @@ The API is different from [ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-doc
 
 ## API
 
-```typescript
-const { isVisible, visibilityState } = useDocumentVisibility();
+```ts
+const { isVisible, visibilityState } = useDocumentVisibility({
+  onHidden,
+  onVisible,
+  onChange,
+}: UseDocumentVisibilityOptions);
 ```
+
+```ts
+export interface UseDocumentVisibilityOptions {
+  onHidden?: () => void;
+  onVisible?: () => void;
+  onChange?: (visibilityState: VisibilityState) => void;
+}
+```
+
+### Params
+
+| Property  |                         Description |     Type |                                      Default |
+| --------- | ----------------------------------: | -------: | -------------------------------------------: |
+| onHidden  |            Document hidden callback | Function |                                 `() => void` |
+| onVisible |           Document visible callback | Function |                                 `() => void` |
+| onChange  | Document visibility change callback | Function | `(visibilityState: VisibilityState) => void` |
 
 ### Result
 

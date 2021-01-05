@@ -4,13 +4,13 @@ export type PaginatedParams = [
   {
     current: number;
     pageSize: number;
-    // sorter?: Sorter;
-    // filters?: Filter;
   },
   ...any[]
 ];
 
-export type Service<R, P extends any[]> = (...args: P) => Promise<R>;
+export type PaginatedCombineService =
+  | ((...p: PaginatedParams) => Promise<any>)
+  | ((...p: PaginatedParams) => { [key: string]: any });
 
 export interface UsePaginatedRequestOptions<Item>
   extends UseRequestOptions<PaginationResult<Item>, PaginatedParams> {

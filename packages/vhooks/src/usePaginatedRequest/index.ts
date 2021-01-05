@@ -1,6 +1,7 @@
 import { getCurrentInstance, inject, reactive, watch } from 'vue';
 import { RequestConfig, useRequest } from '../useRequest';
 import {
+  PaginatedCombineService,
   PaginatedParams,
   PaginationResult,
   UsePaginatedRequestOptions,
@@ -16,7 +17,7 @@ const defaultPagination = {
   返回格式需要固定 
 */
 export function usePaginatedRequest<Item = any>(
-  service: (...p: PaginatedParams) => Promise<any>,
+  service: PaginatedCombineService,
   options: Partial<UsePaginatedRequestOptions<Item>> = {},
 ): UsePaginatedRequestResult<Item> {
   let contextConfig = {} as Partial<UsePaginatedRequestOptions<Item>>;

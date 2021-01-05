@@ -25,11 +25,31 @@ API 有改动，见[ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-document-v
 
 ## API
 
-```typescript
-const { isVisible, visibilityState } = useDocumentVisibility();
+```ts
+const { isVisible, visibilityState } = useDocumentVisibility({
+  onHidden,
+  onVisible,
+  onChange,
+}: UseDocumentVisibilityOptions);
+```
+
+```ts
+export interface UseDocumentVisibilityOptions {
+  onHidden?: () => void;
+  onVisible?: () => void;
+  onChange?: (visibilityState: VisibilityState) => void;
+}
 ```
 
 ### 参数
+
+| 参数      |                            说明 |     类型 |                                           值 |
+| --------- | ------------------------------: | -------: | -------------------------------------------: |
+| onHidden  |            Document hidden 回调 | Function |                                 `() => void` |
+| onVisible |           Document visible 回调 | Function |                                 `() => void` |
+| onChange  | Document visibility change 回调 | Function | `(visibilityState: VisibilityState) => void` |
+
+### 结果
 
 | 参数            |                        说明 |    类型 |                                 值 |
 | --------------- | --------------------------: | ------: | ---------------------------------: |

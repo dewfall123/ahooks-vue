@@ -2,7 +2,7 @@ const hooksPrefix = 'hooks/';
 const { kebabCase } = require('lodash');
 
 const Router = {
-  Request: ['useRequest', 'usePaginatedRequest'],
+  Request: ['useRequest'],
   Dom: [
     'useSize',
     'useKeyPress',
