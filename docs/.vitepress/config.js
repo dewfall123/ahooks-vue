@@ -1,11 +1,18 @@
 const { getRouterConfig, hooksPrefix } = require('./router');
 const { kebabCase } = require('lodash');
+const { resolve } = require('path');
 
 const base = process.env.NODE_ENV === 'production' ? '/ahooks-vue' : '';
 
 module.exports = {
   title: 'ahooks-vue',
   description: 'vue hooks',
+  srcIncludes: ['packages/vhooks/src/'],
+  alias: {
+    'ahooks-vue': resolve('./packages/vhooks/src/'),
+  },
+  outDir: '../dist',
+  base,
   themeConfig: {
     lang: 'en-US',
     lastUpdated: '最近更新',
@@ -42,18 +49,6 @@ module.exports = {
         ],
         sidebar: getRouterConfig('/zh/'),
       },
-    },
-  },
-  srcIncludes: ['packages/vhooks/src'],
-  alias: {
-    'ahooks-vue': '/@packages/vhooks/src/',
-    'vue-demi': 'vue',
-  },
-  outDir: '../dist',
-  base,
-  viteOptions: {
-    optimizeDeps: {
-      exclude: ['axios'],
     },
   },
 };

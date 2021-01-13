@@ -1,5 +1,5 @@
 <template>
-  <div ref="elementRef" style="padding: 16px; background: #fff">
+  <div ref="divRef" style="padding: 16px; background: #fff">
     <div
       style="
         width: 300px;
@@ -19,13 +19,13 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const elementRef = ref(null);
-    const { isFullscreen, toggleFull } = useFullscreen(elementRef);
+    const divRef = ref(null);
+    const { isFullscreen, toggleFull } = useFullscreen(divRef);
 
     return {
       isFullscreen,
       toggleFull,
-      elementRef,
+      divRef,
     };
   },
 };
