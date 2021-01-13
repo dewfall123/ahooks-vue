@@ -1,0 +1,1 @@
+import{g as t,u as o,z as a}from"./framework.ce6f7686.js";import{t as e}from"./throttle.88b7ff20.js";function r(r,u){var f;let l;l="function"==typeof r?t(r):r;const n=o(l.value),s=e((()=>{n.value=l.value}),null!=(f=null==u?void 0:u.wait)?f:1e3,u);return a(l,s),n}export{r as u};

@@ -1,1 +1,0 @@
-import{L as o,D as r,A as t,M as a}from"./framework.f47b9a5e.js";function e(t,a){if(!t)return a;let e;return o(t)&&(e=r(t)),"function"==typeof t&&(e=t()),e||console.error("target is not available!"),e}function n(o){a()?.isMounted?o():t(o)}export{e as g,n as s};

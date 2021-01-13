@@ -1,1 +1,0 @@
-import{b as t}from"./framework.f47b9a5e.js";function e(e=!1,o){const a=t(e),r=t=>{a.value=t},s=void 0===o?!e:o;return{state:a,toggle:t=>{void 0===t&&(t=a.value===e?s:e),r(t)},setLeft:()=>{r(e)},setRight:()=>{r(s)}}}export{e as u};
