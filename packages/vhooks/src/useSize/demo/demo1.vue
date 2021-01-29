@@ -30,7 +30,11 @@ import { ref } from 'vue';
 export default {
   setup() {
     const divRef = ref(null);
-    const size = useSize(divRef);
+    const size = useSize(divRef, {
+      onChange: () => {
+        console.log('size change');
+      },
+    });
 
     return {
       divRef,

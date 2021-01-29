@@ -8,7 +8,7 @@ map:
 一个用于监听 dom 节点尺寸变化的 Hook。
 
 ::: tip
-Api 与[ahooks](https://ahooks.js.org/hooks/dom/use-size)一致。
+API 有改动，见[ahooks](https://ahooks.js.org/hooks/dom/use-size)。
 :::
 
 ## 代码演示
@@ -30,9 +30,16 @@ const size = useSize(target);
 
 ### 参数
 
-| 参数   | 说明              | 类型                                                   | 默认值 |
-| ------ | ----------------- | ------------------------------------------------------ | ------ |
-| target | DOM 节点或者 Refs | HTMLElement \| (() => HTMLElement) \| MutableRefObject | -      |
+| 参数    | 说明              | 类型                                                   | 默认值 |
+| ------- | ----------------- | ------------------------------------------------------ | ------ |
+| target  | DOM 节点或者 Refs | HTMLElement \| (() => HTMLElement) \| MutableRefObject | -      |
+| options | Object            | 可选参数                                               |
+
+### Options
+
+| 参数     | 类型     | 默认值    | 说明                |
+| -------- | -------- | --------- | ------------------- |
+| onChange | Function | undefined | size 变化的回调函数 |
 
 ### 结果
 

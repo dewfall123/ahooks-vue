@@ -8,7 +8,7 @@ map:
 A hook to subscribe DOM element size change.
 
 ::: tip
-API is consistent with [ahooks](https://ahooks.js.org/hooks/dom/use-size).
+The API is different from [ahooks](https://ahooks.js.org/hooks/dom/use-size).
 :::
 
 ## Examples
@@ -31,6 +31,13 @@ const size = useSize(target);
 | Property | Description               | Type                                                   | Default |
 | -------- | ------------------------- | ------------------------------------------------------ | ------- |
 | target   | DOM element or Ref Object | HTMLElement \| (() => HTMLElement) \| MutableRefObject | -       |
+| options  | Object                    | -                                                      |
+
+### Options
+
+| 参数     | 类型     | 默认值    | 说明                 |
+| -------- | -------- | --------- | -------------------- |
+| onChange | Function | undefined | size change callback |
 
 ### Result
 
