@@ -3,7 +3,7 @@ map:
   path: /hooks/use-paginated-request
 ---
 
-# useSize
+# usePaginatedRequest
 
 集成分页功能的 useRequest。
 

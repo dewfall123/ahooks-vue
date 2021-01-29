@@ -10,6 +10,8 @@ export default {
       'resize-observer-polyfill',
       'screenfull',
       // 'vue-demi',
+      'mockjs',
+      'axios',
     ],
     exclude: ['vue-demi'],
   },

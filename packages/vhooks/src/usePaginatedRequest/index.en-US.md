@@ -3,7 +3,7 @@ map:
   path: /hooks/use-paginated-request
 ---
 
-# useSize
+# usePaginatedRequest
 
 Wrap useRequest in pagination mode。
 

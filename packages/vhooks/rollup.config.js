@@ -9,7 +9,7 @@ export default {
     file: 'dist/index.js',
     format: 'esm',
   },
-  external: ['vue-demi'],
+  external: ['vue-demi', 'axios'],
   plugins: [
     nodeResolve(),
     commonjs(),
