@@ -1,0 +1,1 @@
+import{u as t}from"./framework.8cd85e4b.js";function e(e=!1,o){const r=t(e),s=t=>{r.value=t},a=void 0===o?!e:o;return{state:r,toggle:t=>{void 0===t&&(t=r.value===e?a:e),s(t)},setLeft:()=>{s(e)},setRight:()=>{s(a)}}}export{e as u};

@@ -1,0 +1,1 @@
+import{o as e,c as t}from"./framework.8cd85e4b.js";const o={components:{}},r='{"title":"","description":"","frontmatter":{},"relativePath":"hooks/use-hover/index.md","lastUpdated":1611998438344}';o.render=function(o,r,n,a,d,s){return e(),t("div")};export default o;export{r as __pageData};
