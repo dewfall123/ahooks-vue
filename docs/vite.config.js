@@ -6,7 +6,7 @@ export default {
     include: [
       'intersection-observer',
       'localforage',
-      'lodash-es',
+      'lodash',
       'resize-observer-polyfill',
       'screenfull',
       // 'vue-demi',

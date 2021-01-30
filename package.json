@@ -1,27 +1,33 @@
 {
   "name": "ahooks-vue",
-  "version": "0.8.1",
-  "description": "ahooks vue",
-  "main": "packages/vhooks/dist/index.js",
-  "types": "packages/vhooks/dist/index.d.ts",
-  "repository": "https://github.com/dewfall123/vhooks.git",
+  "version": "0.9.0",
+  "description": "ahooks-vue",
+  "types": "dist/src/index.d.ts",
+  "repository": "https://github.com/dewfall123/ahooks-vue.git",
   "author": "dewfall",
   "license": "MIT",
   "files": [
-    "dist",
-    "package.json"
+    "dist"
   ],
+  "main": "./dist/ahooks-vue.umd.js",
+  "module": "./dist/ahooks-vue.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ahooks-vue.es.js",
+      "require": "./dist/ahooks-vue.umd.js"
+    }
+  },
   "scripts": {
-    "dev": "vitepress-fc --root=docs",
+    "dev": "vitepress-fc dev docs",
+    "build": "vite build",
     "test": "jest",
-    "build": "lerna run build",
-    "docs-deploy": "gh-pages -d docs/dist -t true",
     "docs-build": "rimraf docs/dist && cross-env NODE_ENV=production vitepress-fc build --root=docs",
     "docs-serve": "yarn docs-build && cross-env NODE_ENV=production vitepress-fc serve --root=docs",
+    "docs-deploy": "gh-pages -d docs/dist -t true",
     "docs-build-deploy": "yarn docs-build && yarn docs-deploy",
-    "pub": " yarn build && lerna publish",
-    "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/dist/* \"packages/*/src/**/*.{vue,js,ts,tsx}\"",
-    "lint:fix": "npm run lint -- --fix",
+    "pub": "yarn build && lerna publish",
+    "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/dist/* \"src/**/*.{vue,js,ts,tsx}\"",
+    "lint-fix": "npm run lint -- --fix",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "keywords": [
@@ -29,63 +35,47 @@
     "ahooks",
     "vue",
     "vue3",
-    "hooks"
+    "hooks",
+    "vue-use",
+    "vue-hooks"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "homepage": "https://dewfall123.github.io/vhooks/",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-replace": "^2.3.3",
     "@types/jest": "^25.1.3",
     "@types/lodash": "^4.14.159",
-    "@types/lodash-es": "^4.17.3",
-    "@types/mockjs": "^1.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.4.1",
-    "@typescript-eslint/parser": "^4.4.1",
+    "@types/whatwg-fetch": "^0.0.33",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "axios": "^0.21.0",
     "conventional-changelog-cli": "^2.1.1",
-    "cross-env": "^7.0.2",
-    "del": "^5.1.0",
-    "eslint": "^7.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^7.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.18.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.5.0",
     "gh-pages": "^3.1.0",
-    "husky": "^4.3.0",
     "intersection-observer": "^0.12.0",
-    "jest": "^26.6.3",
-    "koa": "^2.13.0",
-    "koa-static-server": "^1.5.2",
-    "lerna": "^3.22.1",
+    "jest": "^25.1.0",
     "localforage": "^1.9.0",
-    "lodash": "^4.17.20",
     "lodash-es": "^4.17.20",
     "mockjs": "^1.1.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "pretty-quick": "^3.1.0",
+    "prettier": "^1.19.1",
     "resize-observer-polyfill": "^1.5.1",
-    "rollup": "^2.36.1",
-    "rollup-plugin-alias": "^2.2.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-typescript2": "^0.26.0",
     "screenfull": "^5.1.0",
-    "ts-jest": "^26.4.3",
-    "typescript": "^4.0.5",
-    "vitepress-for-component": "^0.11.10",
-    "vue": "^3.0.2",
-    "vue-router": "^4.0.0-beta.7",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3",
+    "vite": "^2.0.0-beta.59",
+    "vitepress-for-component": "^0.11.11",
+    "vue": "^3.0.1",
     "whatwg-fetch": "^3.5.0"
   },
+  "homepage": "https://dewfall123.github.io/ahooks-vue/",
   "dependencies": {
+    "lodash": "^4.17.20",
     "vue-demi": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "cd1142fc7d4e646d885eb1040a46c8dfed603f29"
 }

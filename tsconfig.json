@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "outDir": "dist",
     "sourceMap": false,
-    "target": "esnext",
+    "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": false,
@@ -20,13 +20,13 @@
     "declarationDir": "dist",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["jest", "node"],
+    "types": ["jest"],
     "rootDir": ".",
     "paths": {
-      "@/*": ["packages/vhooks/src/*"],
-      "ahooks-vue": ["packages/vhooks/src/"]
+      "@/*": ["src/*"],
+      "ahooks-vue": ["src/"]
     }
   },
-  "include": ["packages/**/*.ts", "packages/**/*.vue"],
-  "exclude": ["node_modules", "dist", "packages/**/__tests__/"]
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "src/**/__tests__"]
 }
