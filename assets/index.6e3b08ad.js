@@ -1,1 +1,0 @@
-import{l as o}from"./axios.b3cfc440.js";import{g as t,u as a,z as e}from"./framework.8cd85e4b.js";function r(r,l){var u;let s;s="function"==typeof r?t(r):r;const n=a(s.value),f=o.throttle((()=>{n.value=s.value}),null!=(u=null==l?void 0:l.wait)?u:1e3,l);return e(s,f),n}export{r as u};

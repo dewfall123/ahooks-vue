@@ -1,1 +1,0 @@
-import{u as t}from"./index.e8784435.js";import"./axios.b3cfc440.js";import{o as e,c as o,b as r,p as s}from"./framework.8cd85e4b.js";var a={setup(){const{state:e,toggle:o}=t();return{state:e,toggle:o}}};a.render=function(t,a,n,i,l,u){return e(),o("div",null,[r("p",null,s(i.state),1),r("button",{onClick:a[1]||(a[1]=t=>i.toggle())},"点击")])};export{a as _};
