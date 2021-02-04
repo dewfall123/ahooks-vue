@@ -1,1 +1,0 @@
-import{o as e,c as t}from"./framework.8cd85e4b.js";const r={components:{}},o='{"title":"","description":"","frontmatter":{},"relativePath":"hooks/use-request/index.md","lastUpdated":1612144626494}';r.render=function(r,o,n,s,a,d){return e(),t("div")};export default r;export{o as __pageData};
