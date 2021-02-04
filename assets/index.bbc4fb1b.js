@@ -1,0 +1,1 @@
+import{d as t}from"./app.127dcd3e.js";function e(e=!1,o){const s=t(e),a=t=>{s.value=t},d=void 0===o?!e:o;return{state:s,toggle:t=>{void 0===t&&(t=s.value===e?d:e),a(t)},setLeft:()=>{a(e)},setRight:()=>{a(d)}}}export{e as u};
