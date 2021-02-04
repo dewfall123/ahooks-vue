@@ -1,1 +1,0 @@
-import{o as t,c as e}from"./app.155b9492.js";const o={components:{}},r='{"title":"","description":"","frontmatter":{},"relativePath":"hooks/use-axios/index.md","lastUpdated":1612425061883}';o.render=function(o,r,a,n,s,i){return t(),e("div")};export default o;export{r as __pageData};
