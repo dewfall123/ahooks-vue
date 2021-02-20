@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-table
+  path: /use-table
 ---
 
 # useTable

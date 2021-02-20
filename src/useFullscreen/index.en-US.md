@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-fullscreen
+  path: /use-fullscreen
 ---
 
 # useFullscreen

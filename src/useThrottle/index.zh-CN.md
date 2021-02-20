@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-throttle
+  path: /use-throttle
 ---
 
 # useThrottle

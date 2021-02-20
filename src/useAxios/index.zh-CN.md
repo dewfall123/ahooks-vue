@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-axios
+  path: /use-axios
 ---
 
 # useAxios

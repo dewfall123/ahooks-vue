@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-paginated-request
+  path: /use-paginated-request
 ---
 
 # usePaginatedRequest

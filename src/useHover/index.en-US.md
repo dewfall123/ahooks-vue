@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-hover
+  path: /use-hover
 ---
 
 # useHover

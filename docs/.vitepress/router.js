@@ -1,4 +1,3 @@
-const hooksPrefix = 'hooks/';
 const { kebabCase } = require('lodash');
 
 const Router = {
@@ -24,8 +23,8 @@ function getRouterConfig(langPrefix = '/') {
     },
     ...Object.entries(Router).map(([text, children]) => ({
       text,
-      children: children.map((hookName) => ({
-        link: `${langPrefix}${hooksPrefix}${kebabCase(hookName)}/`,
+      children: children.map(hookName => ({
+        link: `${langPrefix}${kebabCase(hookName)}/`,
         text: hookName,
       })),
     })),
@@ -33,6 +32,5 @@ function getRouterConfig(langPrefix = '/') {
 }
 
 module.exports = {
-  hooksPrefix,
   getRouterConfig,
 };

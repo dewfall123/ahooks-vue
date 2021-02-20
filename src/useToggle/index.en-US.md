@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-toggle
+  path: /use-toggle
 ---
 
 # useToggle

@@ -18,7 +18,7 @@
     </p>
     <p></p>
     <p>
-      size.height: <span style="color: blue">{{ size.height }}</span>
+      size.height: <span class="blue">{{ size.height }}</span>
     </p>
   </div>
 </template>
@@ -43,3 +43,9 @@ export default {
   },
 };
 </script>
+
+<style lang="less">
+.blue {
+  color: blue;
+}
+</style>

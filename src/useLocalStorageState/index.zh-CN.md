@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-local-storage-state
+  path: /use-local-storage-state
 ---
 
 # useLocalStorageState

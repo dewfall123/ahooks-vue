@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-key-press
+  path: /use-key-press
 ---
 
 # useKeyPress

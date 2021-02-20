@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-in-viewport
+  path: /use-in-viewport
 ---
 
 # useInViewport

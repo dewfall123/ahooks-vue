@@ -1,4 +1,4 @@
-const { getRouterConfig, hooksPrefix } = require('./router');
+const { getRouterConfig, } = require('./router');
 const { kebabCase } = require('lodash');
 const { resolve } = require('path');
 
@@ -33,7 +33,7 @@ module.exports = {
         selectText: 'Languages',
         nav: [
           { text: 'Guide', link: '/' },
-          { text: 'Document', link: `/${hooksPrefix}${kebabCase('useSize')}/` },
+          { text: 'Document', link: `/${kebabCase('useSize')}/` },
         ],
         sidebar: getRouterConfig(),
       },
@@ -45,7 +45,7 @@ module.exports = {
         selectText: '语言',
         nav: [
           { text: '指南', link: '/zh/' },
-          { text: '文档', link: `/zh/${hooksPrefix}${kebabCase('useSize')}/` },
+          { text: '文档', link: `/zh/${kebabCase('useSize')}/` },
         ],
         sidebar: getRouterConfig('/zh/'),
       },

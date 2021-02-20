@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-document-visibility
+  path: /use-document-visibility
 ---
 
 # useDocumentVisibility

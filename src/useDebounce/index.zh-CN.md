@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-debounce
+  path: /use-debounce
 ---
 
 # useDebounce

@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-size
+  path: /use-size
 ---
 
 # useSize

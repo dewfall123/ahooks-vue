@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-request
+  path: /use-request
 ---
 
 # useRequest

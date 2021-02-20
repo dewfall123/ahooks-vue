@@ -17,16 +17,19 @@
     "removeComments": false,
     "declaration": true,
     "isolatedModules": true,
-    "declarationDir": "dist",
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
     "types": ["jest"],
+    "skipLibCheck": true,
+    // "files": "src/index.ts",
+    "emitDeclarationOnly": true,
+    "declarationDir": "dist",
     "rootDir": ".",
     "paths": {
       "@/*": ["src/*"],
       "ahooks-vue": ["src/"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "include": ["src/index.ts"],
   "exclude": ["node_modules", "dist", "src/**/__tests__"]
 }

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
-console.log(path.resolve('./src/index.ts'));
 /**
  * @type {import('vite').UserConfig}
  */

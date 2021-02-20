@@ -1,6 +1,6 @@
 ---
 map:
-  path: /hooks/use-worker-function
+  path: /use-worker-function
 ---
 
 # useWorkerFunction
