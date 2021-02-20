@@ -1,1 +1,0 @@
-import{o as t,c as e}from"./app.127dcd3e.js";const o={components:{}},r='{"title":"","description":"","frontmatter":{},"relativePath":"hooks/use-throttle/index.md","lastUpdated":1612427857232}';o.render=function(o,r,d,n,a,s){return t(),e("div")};export default o;export{r as __pageData};

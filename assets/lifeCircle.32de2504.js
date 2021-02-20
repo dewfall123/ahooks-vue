@@ -1,1 +1,0 @@
-import{i as o,u as t,p as n,k as s}from"./app.127dcd3e.js";function a(n,s){if(!n)return s;let a;return o(n)&&(a=t(n)),"function"==typeof n&&(a=n()),a||console.error("target is not available!"),a}function e(o){const t=s();(null==t?void 0:t.isMounted)?o():n(o)}export{a as g,e as s};
