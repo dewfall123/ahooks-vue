@@ -1,3 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
 
-export type UseAxiosParams = AxiosRequestConfig | (() => AxiosRequestConfig);
+export type UseAxiosParams<P extends any[]> =
+  | AxiosRequestConfig
+  | ((...args: P) => AxiosRequestConfig);

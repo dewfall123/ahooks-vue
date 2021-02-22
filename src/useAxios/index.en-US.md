@@ -24,8 +24,8 @@ A new hook.
 ## API
 
 ```javascript
-const throttledValue = Axios(
-  params: AxiosRequestConfig | (() => AxiosRequestConfig),
+const { loading, data } = useAxios(
+  params: AxiosRequestConfig | ((...args: P) => AxiosRequestConfig),
   options?: object
 );
 ```
