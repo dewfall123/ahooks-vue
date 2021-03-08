@@ -1,0 +1,1 @@
+import{e as t}from"./app.07ab8e5a.js";function e(e=!1,a){const o=t(e),s=t=>{o.value=t},i=void 0===a?!e:a;return{state:o,toggle:t=>{void 0===t&&(t=o.value===e?i:e),s(t)},setLeft:()=>{s(e)},setRight:()=>{s(i)}}}export{e as u};
