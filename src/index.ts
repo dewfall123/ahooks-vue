@@ -14,3 +14,4 @@ export * from './useOLAP';
 export * from './useRequest';
 export * from './usePaginatedRequest';
 export * from './useAxios';
+export * from './useLocalforage';

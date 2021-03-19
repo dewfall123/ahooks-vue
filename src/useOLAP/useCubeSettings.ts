@@ -16,7 +16,6 @@ export function useCubeSettings<T>(
     dimension: defaultValues.dimension,
     measure: defaultValues.measure,
     series: defaultValues.series,
-    bySeries: defaultValues.bySeries ?? false,
     countField: defaultValues.countField ?? COUNT_FIELD,
   }) as CubeSettings<T>;
 

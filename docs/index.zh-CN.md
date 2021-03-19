@@ -13,7 +13,7 @@ ahooks 的 vue 实现。
 ## 安装
 
 ```
-yarn add ahooks-vue axios
+yarn add ahooks-vue
 ```
 
 ## 使用

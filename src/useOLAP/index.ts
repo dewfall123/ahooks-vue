@@ -63,15 +63,14 @@ export function useOLAP<T>(
     setting.defaultValues,
   );
 
-  const { cube, chartCube } = useCubeData<T>(
+  const { cubeD1, cubeD2, chartCubeD1, chartCubeD2 } = useCubeData<T>(
     data,
     filter.list as any,
     cubeSettings,
   );
 
   return {
-    cube,
-    chartCube,
+    cubeD1, cubeD2, chartCubeD1, chartCubeD2,
     columns: setting.columns,
     cubeSettings,
     cubeOptions,

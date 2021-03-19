@@ -1,4 +1,4 @@
-const { getRouterConfig, } = require('./router');
+const { getRouterConfig } = require('./router');
 const { kebabCase } = require('lodash');
 const { resolve } = require('path');
 
@@ -7,19 +7,14 @@ const base = process.env.NODE_ENV === 'production' ? '/ahooks-vue' : '';
 module.exports = {
   title: 'ahooks-vue',
   description: 'vue hooks',
-  // srcIncludes: ['./src/'],
   alias: {
     'ahooks-vue': resolve('./src/'),
   },
-  outDir: '../dist',
   base,
+  outDir: '../dist',
   themeConfig: {
     lang: 'en-US',
     lastUpdated: '最近更新',
-    // algolia: {
-    //   apiKey: 'c57105e511faa5558547599f120ceeba',
-    //   indexName: 'vitepress',
-    // },
     repo: 'dewfall123/ahooks-vue',
     repoLabel: 'Github',
     prevLink: true,

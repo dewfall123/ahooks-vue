@@ -10,7 +10,13 @@ const Router = {
     'useHover',
     'useInViewport',
   ],
-  State: ['useToggle', 'useLocalStorageState', 'useThrottle', 'useDebounce'],
+  State: [
+    'useToggle',
+    'useLocalStorageState',
+    // 'useLocalforage',
+    'useThrottle',
+    'useDebounce',
+  ],
   Data: ['useTable'],
   Worker: ['useWorkerFunction'],
 };

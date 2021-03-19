@@ -13,7 +13,7 @@ Most hooks implementation is original ported from [ahooks](https://ahooks.js.org
 ## Install
 
 ```
-yarn add ahooks-vue axios
+yarn add ahooks-vue
 ```
 
 ## Usage

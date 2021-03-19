@@ -6,7 +6,7 @@ import {
   name__count,
   name_score,
   date_name_score,
-  name_date_score,
+  // name_date_score,
   date_score,
   dimensionOptionsArg,
   measureOptionsArg,
@@ -24,7 +24,9 @@ describe('useOLAP', () => {
   });
 
   it('should work with only one arg', async () => {
-    const { cube, cubeSettings, cubeOptions } = useOLAP<DataSchema>(data);
+    const { cubeD1, cubeD2, cubeSettings, cubeOptions } = useOLAP<DataSchema>(
+      data,
+    );
 
     expect(cubeSettings.dimension).toEqual('date');
     expect(cubeSettings.measure).toEqual(COUNT_FIELD);
@@ -34,60 +36,57 @@ describe('useOLAP', () => {
       Object.keys(data[0]).reduce((obj, i) => ({ [i]: i, ...obj }), {}),
     );
 
-    expect(cube.value).toEqual(date__count);
+    expect(cubeD1.value).toEqual(date__count);
 
-    cubeSettings.dimension = 'name';
+    cubeSettings.series = 'name';
     await nextTick(() => {
-      expect(cube.value).toEqual(name__count);
+      expect(cubeD1.value).toEqual(name__count);
     });
 
     cubeSettings.measure = 'score';
     await nextTick(() => {
-      expect(cube.value).toEqual(name_score);
+      expect(cubeD1.value).toEqual(name_score);
     });
-
-    cubeSettings.bySeries = true;
 
     cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
     await nextTick(() => {
-      expect(cube.value).toEqual(date_name_score);
+      expect(cubeD1.value).toEqual(name_score);
+      expect(cubeD2.value).toEqual(date_name_score);
     });
   });
 
   it('the default values arg should work', async () => {
-    const { cube, cubeSettings } = useOLAP<DataSchema>(data, {
+    const { cubeD1, cubeD2, cubeSettings } = useOLAP<DataSchema>(data, {
       columns,
       defaultValues: {
-        dimension: 'name',
+        series: 'name',
         measure: 'score',
-        bySeries: false,
       },
     });
 
-    expect(cubeSettings.dimension).toEqual('name');
+    expect(cubeSettings.dimension).toEqual('date');
     expect(cubeSettings.measure).toEqual('score');
-    expect(cubeSettings.series).toEqual('date');
+    expect(cubeSettings.series).toEqual('name');
 
-    expect(cube.value).toEqual(name_score);
+    expect(cubeD1.value).toEqual(name_score);
 
-    cubeSettings.bySeries = true;
-
-    await nextTick(() => {
-      expect(cube.value).toEqual(name_date_score);
-    });
+    expect(cubeD2.value).toEqual(date_name_score);
   });
 
   it('the options arg should work', () => {
-    const { cube, cubeSettings, cubeOptions } = useOLAP<DataSchema>(data, {
-      columns,
-      options: {
-        dimensions: dimensionOptionsArg,
-        measures: measureOptionsArg,
-        series: seriesOptionsArg,
+    const { cubeD1, cubeD2, cubeSettings, cubeOptions } = useOLAP<DataSchema>(
+      data,
+      {
+        columns,
+        options: {
+          dimensions: dimensionOptionsArg,
+          measures: measureOptionsArg,
+          series: seriesOptionsArg,
+        },
       },
-    });
+    );
 
     expect(cubeSettings.dimension).toEqual('date');
     expect(cubeSettings.measure).toEqual('score');
@@ -97,13 +96,14 @@ describe('useOLAP', () => {
     expect(cubeOptions.value.measure).toEqual(measureOptionsArg);
     expect(cubeOptions.value.series).toEqual(seriesOptionsArg);
 
-    expect(cube.value).toEqual(date_score);
+    expect(cubeD1.value).toEqual(name_score);
+    expect(cubeD2.value).toEqual(date_name_score);
   });
 
   it('should work with filter', () => {
-    const { cube, filter } = useOLAP<DataSchema>(data);
+    const { cubeD1, filter } = useOLAP<DataSchema>(data);
 
-    expect(cube.value).toEqual(date__count);
+    expect(cubeD1.value).toEqual(date__count);
 
     filter.cur.value.field = 'age';
     filter.cur.value.operator = OPERATOR.大于等于;
@@ -124,22 +124,22 @@ describe('useOLAP', () => {
       },
     ]);
 
-    expect(cube.value).toEqual(date__count_filtered_age);
+    expect(cubeD1.value).toEqual(date__count_filtered_age);
 
     filter.list.value.splice(0, 1);
     expect(filter.list.value).toEqual([]);
-    expect(cube.value).toEqual(date__count);
+    expect(cubeD1.value).toEqual(date__count);
   });
 
   it('should work with data ref', () => {
     const dataRef = ref([] as any[]);
-    const { cube } = useOLAP<DataSchema>(dataRef);
+    const { cubeD1 } = useOLAP<DataSchema>(dataRef);
 
-    expect(cube.value).toEqual([]);
+    expect(cubeD1.value).toEqual([]);
 
     dataRef.value = data;
     nextTick(() => {
-      expect(cube.value).toEqual(date__count);
+      expect(cubeD1.value).toEqual(date__count);
     });
   });
 
@@ -149,7 +149,7 @@ describe('useOLAP', () => {
     const measureOptionsRef = ref(measureOptionsArg);
     const seriesOptionsRef = ref(seriesOptionsArg);
 
-    const { cube, cubeSettings } = useOLAP<DataSchema>(dataRef, {
+    const { cubeD1, cubeSettings } = useOLAP<DataSchema>(dataRef, {
       options: {
         dimensions: dimensionOptionsRef,
         series: seriesOptionsRef,
@@ -157,7 +157,7 @@ describe('useOLAP', () => {
       },
     });
 
-    expect(cube.value).toEqual([]);
+    expect(cubeD1.value).toEqual([]);
     expect(cubeSettings.dimension).toEqual(undefined);
     expect(cubeSettings.measure).toEqual('score');
 
@@ -166,23 +166,22 @@ describe('useOLAP', () => {
 
     nextTick(() => {
       expect(cubeSettings.dimension).toEqual('date');
-      expect(cube.value).toEqual(date_score);
+      expect(cubeD1.value).toEqual(date_score);
     });
   });
 
   it('should work with chartCube', async () => {
-    const { chartCube, cubeSettings } = useOLAP<DataSchema>(data);
+    const { chartCubeD2, cubeSettings } = useOLAP<DataSchema>(data);
 
     expect(cubeSettings.dimension).toEqual('date');
     expect(cubeSettings.measure).toEqual(COUNT_FIELD);
     expect(cubeSettings.series).toEqual('date');
 
-    cubeSettings.bySeries = true;
     cubeSettings.dimension = 'date';
     cubeSettings.series = 'name';
     cubeSettings.measure = 'score';
     await nextTick(() => {
-      expect(chartCube.value).toEqual(date_name_score_chartCube);
+      expect(chartCubeD2.value).toEqual(date_name_score_chartCube);
     });
   });
 });

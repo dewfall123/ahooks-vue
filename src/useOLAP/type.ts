@@ -37,7 +37,6 @@ export interface CubeSettings<T> {
   series?: keyof T | UnwrapRef<keyof T>;
   measure?: keyof T | UnwrapRef<keyof T> | CountField;
   //
-  bySeries?: boolean;
   countField?: string;
 }
 
