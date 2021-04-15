@@ -77,3 +77,5 @@ export function useOLAP<T>(
     filter,
   };
 }
+
+export { useFilters } from './useFilters';

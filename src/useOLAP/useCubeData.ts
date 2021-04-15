@@ -1,6 +1,6 @@
 import { Ref, computed } from 'vue-demi';
 import { Filter, SourceDataRef, CubeSettings, ChartCube, Cube } from './type';
-import { operatorFn } from './constants';
+import { EmptyValue, operatorFn } from './constants';
 
 export function useCubeData<T>(
   data: SourceDataRef<T>,
@@ -61,7 +61,7 @@ export function useCubeData<T>(
 
     for (const dimensionValue in cubeTree) {
       cube.push({
-        [series]: dimensionValue,
+        [series]: String(dimensionValue) || EmptyValue,
         [measure]: cubeTree[dimensionValue],
       });
     }
@@ -88,7 +88,9 @@ export function useCubeData<T>(
       if (!((dimension as string) in item)) {
         continue;
       }
-      const dimensionValue = item[dimension as keyof T] as any;
+      const dimensionValue = String(
+        item[dimension as keyof T] || EmptyValue,
+      ) as any;
       if (cubeTree[dimensionValue]) {
         cubeTree[dimensionValue].push(item);
       } else {
@@ -102,7 +104,7 @@ export function useCubeData<T>(
       for (const item of cubeTree[dimensionValue]) {
         setMeasure(
           subCubeTree,
-          item[series as keyof T] as any,
+          String(item[series as keyof T] || EmptyValue) as any,
           item,
           measure as string,
           countField,
