@@ -81,7 +81,8 @@
     "axios": "*"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "gitHead": "cd1142fc7d4e646d885eb1040a46c8dfed603f29"
 }
