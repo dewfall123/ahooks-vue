@@ -11,7 +11,7 @@ module.exports = {
     'ahooks-vue': resolve('./src/'),
   },
   base,
-  outDir: '../dist',
+  // outDir: '../dist',
   themeConfig: {
     lang: 'en-US',
     lastUpdated: '最近更新',
