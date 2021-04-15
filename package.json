@@ -30,7 +30,8 @@
     "pub": "yarn build && lerna publish",
     "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/dist/* \"src/**/*.{vue,js,ts,tsx}\"",
     "lint-fix": "npm run lint -- --fix",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "np"
   },
   "keywords": [
     "ahooks-vue",
