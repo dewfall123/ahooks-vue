@@ -68,7 +68,7 @@
     "screenfull": "^5.1.0",
     "ts-jest": "^25.2.1",
     "typescript": "^4.1.5",
-    "vitepress-for-component": "^0.14.2",
+    "vitepress-for-component": "^0.14.4",
     "vue": "^3.0.1",
     "whatwg-fetch": "^3.5.0"
   },

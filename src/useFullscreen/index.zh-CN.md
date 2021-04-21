@@ -15,16 +15,14 @@ Api 与[ahooks](https://ahooks.js.org/zh-CN/hooks/dom/use-fullscreen)一致。
 
 ### 基本用法
 
-<demo
-  src="./demo/demo1.vue"
+<demo src="./demo/demo1.vue"
   language="vue"
   desc="使用 ref 设置需要全屏的元素。">
 </demo>
 
 ### 传入目标元素
 
-<demo
-  src="./demo/demo2.vue"
+<demo src="./demo/demo2.vue"
   language="vue"
   desc="传入一个元素。">
 </demo>
@@ -37,10 +35,10 @@ const [isFullscreen, { setFull, exitFull, toggleFull }] = useFullScreen(target, 
 
 ### Params
 
-| 参数    | 说明                  | 类型                                                             | 默认值 |
-| ------- | --------------------- | ---------------------------------------------------------------- | ------ |
-| target  | DOM 节点或者 Ref 对象 | `HTMLElement` \| `() => HTMLElement` \| `React.MutableRefObject` | -      |
-| options | 设置(可选)            | `Options`                                                        | -      |
+| 参数    | 说明                  | 类型                                 | 默认值 |
+| ------- | --------------------- | ------------------------------------ | ------ |
+| target  | DOM 节点或者 Ref 对象 | `HTMLElement` \| `() => HTMLElement` |
+| options | 设置(可选)            | `Options`                            | -      |
 
 ### Options
 

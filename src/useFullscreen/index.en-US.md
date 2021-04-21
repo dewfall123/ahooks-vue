@@ -37,10 +37,10 @@ const [isFullscreen, { setFull, exitFull, toggleFull }] = useFullScreen(target, 
 
 ### Params
 
-| Property | Description               | Type                                                             | Default |
-| -------- | ------------------------- | ---------------------------------------------------------------- | ------- |
-| target   | DOM element or Ref Object | `HTMLElement` \| `() => HTMLElement` \| `React.MutableRefObject` | -       |
-| options  | setting(optional)         | `Options`                                                        | -       |
+| Property | Description               | Type                                 | Default |
+| -------- | ------------------------- | ------------------------------------ | ------- |
+| target   | DOM element or Ref Object | `HTMLElement` \| `() => HTMLElement` |
+| options  | setting(optional)         | `Options`                            | -       |
 
 ### Options
 
