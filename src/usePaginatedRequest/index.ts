@@ -45,9 +45,12 @@ export function usePaginatedRequest<Item = any>(
       },
     ],
     ...finalOptions,
-    onSuccess(data) {
+    onSuccess(data, params) {
       pagination.total = data.total;
       pagination.totalPage = Math.ceil(data.total / pagination.pageSize);
+      if (finalOptions.onSuccess) {
+        finalOptions.onSuccess(data, params);
+      }
     },
   });
 
