@@ -11,6 +11,7 @@ const Router = {
     'useInViewport',
   ],
   State: [
+    'useUrlState',
     'useToggle',
     'useLocalStorageState',
     // 'useLocalforage',

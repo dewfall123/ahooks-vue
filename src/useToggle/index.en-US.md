@@ -18,7 +18,7 @@ The API is different from [ahooks](https://ahooks.js.org/hooks/state/use-toggle)
 <demo src="./demo/demo.vue"
   language="vue"
   title="Basic usage"
-  desc="click the button, look at the value.">
+  desc="Accept two parameters, switch between them.">
 </demo>
 
 <code src="./demo/demo1.tsx" />
