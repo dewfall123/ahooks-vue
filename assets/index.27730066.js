@@ -1,1 +1,0 @@
-import{e as t,h as e}from"./app.96d8b727.js";function r(r,n){const o=t(function(){const t=localStorage.getItem(r);if(t)try{return JSON.parse(t)}catch{}if("function"==typeof n)return n();return n}());return e(o,(()=>{localStorage.setItem(r,JSON.stringify(o.value))}),{deep:!0,immediate:!1}),o}export{r as u};
