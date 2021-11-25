@@ -17,6 +17,8 @@ function encodeParams(value: UrlState) {
 function decodeParams(valueStr: string) {
   // return JSON.parse(decodeURIComponent(atob(valueStr)));
   return qs.parse(valueStr, {
+    // fix: 数组长度限制问题
+    arrayLimit: 10000,
     decoder(str, decoder, charset) {
       const strWithoutPlus = str.replace(/\+/g, ' ');
       if (charset === 'iso-8859-1') {
