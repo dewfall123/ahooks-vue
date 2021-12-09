@@ -4,6 +4,7 @@ import { useLocalStorageState } from '../useLocalStorageState';
 
 export interface UseUrlStateOptions {
   localStorageKey?: string;
+  detectNumber?: boolean;
 }
 
 interface UrlState {
@@ -14,7 +15,7 @@ function encodeParams(value: UrlState) {
   return qs.stringify(value);
 }
 
-function decodeParams(valueStr: string) {
+function decodeParams(valueStr: string, detectNumber: boolean) {
   // return JSON.parse(decodeURIComponent(atob(valueStr)));
   return qs.parse(valueStr, {
     // fix: 数组长度限制问题
@@ -26,7 +27,7 @@ function decodeParams(valueStr: string) {
         return strWithoutPlus.replace(/%[0-9a-f]{2}/gi, unescape);
       }
 
-      if (/^[+-]?\d+(\.\d+)?$/.test(str)) {
+      if (detectNumber && /^[+-]?\d+(\.\d+)?$/.test(str)) {
         return parseFloat(str);
       }
 
@@ -55,7 +56,7 @@ export function useUrlState<S extends UrlState = UrlState>(
   initialState?: S | (() => S),
   options?: UseUrlStateOptions,
 ): Ref<S> {
-  const { localStorageKey } = options ?? {};
+  const { localStorageKey, detectNumber = true } = options ?? {};
 
   const [path, paramsStr] = location.hash.slice(1).split('?');
 
@@ -72,7 +73,7 @@ export function useUrlState<S extends UrlState = UrlState>(
   // 初始状态 url > localstorage
   if (paramsStr) {
     try {
-      const paramsValue = decodeParams(paramsStr);
+      const paramsValue = decodeParams(paramsStr, detectNumber);
       console.log('解析url结果:');
       console.log(paramsValue);
       state.value = {
@@ -87,7 +88,7 @@ export function useUrlState<S extends UrlState = UrlState>(
 
   // 去掉多余的key
   if (initialState && Object.keys(initialState).length) {
-    let newState = { ...initialState } as any;
+    const newState = { ...initialState } as any;
     for (const key in newState) {
       if (key in state.value) {
         newState[key] = state.value[key];
