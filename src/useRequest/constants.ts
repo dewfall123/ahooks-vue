@@ -1,3 +1,4 @@
+import { ref } from 'vue-demi';
 import { UseRequestOptions } from './types';
 
 function fetchProxy(params: string | Record<string, string>) {
@@ -38,7 +39,7 @@ export const DefaultOptions = {
   loadingWhenDebounceStart: true,
   throttleInterval: 0,
   initialData: undefined,
-  // ready: true,
+  ready: ref(true),
   throwOnError: false,
   refreshDeps: [],
   refreshOnWindowFocus: false,

@@ -41,7 +41,7 @@ export interface UseRequestOptions<R = any, P extends any[] = any[]> {
 
   initialData: R;
   requestMethod: (service: any) => Promise<any>;
-  // ready: boolean;
+  ready: Ref<boolean>;
   throwOnError: boolean;
   refreshDeps: Array<WatchSource>; // 如果 deps 变化后，重新请求
   refreshOnWindowFocus: boolean;

@@ -46,6 +46,7 @@ export function useRequest<R = any, P extends any[] = any>(
     pollingSinceLastFinished,
     refreshOnWindowFocus,
     refreshDeps,
+    ready,
   } = finalOptions;
 
   let promiseService: (...args: P) => Promise<any>;
@@ -99,6 +100,10 @@ export function useRequest<R = any, P extends any[] = any>(
   let pollingSinceFinishedTimer: any;
 
   function _run(...args: P) {
+    // 只要 ready=false 不执行
+    if (!ready.value) {
+      return Promise.resolve();
+    }
     if (pollingSinceFinishedTimer) {
       clearTimeout(pollingSinceFinishedTimer);
     }
@@ -118,11 +123,11 @@ export function useRequest<R = any, P extends any[] = any>(
     params.value = cloneDeep(args);
 
     // 抛弃该次请求结果
-    const shoundAbandon = () => unmountedFlag || curCount !== count;
+    const shouldAbandon = () => unmountedFlag || curCount !== count;
 
     return promiseService(...args)
       .then(res => {
-        if (shoundAbandon()) {
+        if (shouldAbandon()) {
           return;
         }
         const formattedResult = formatResult(res);
@@ -133,7 +138,7 @@ export function useRequest<R = any, P extends any[] = any>(
         return formattedResult;
       })
       .catch(err => {
-        if (shoundAbandon()) {
+        if (shouldAbandon()) {
           return;
         }
         console.error(err);
@@ -144,7 +149,7 @@ export function useRequest<R = any, P extends any[] = any>(
         }
       })
       .finally(() => {
-        if (shoundAbandon()) {
+        if (shouldAbandon()) {
           return;
         }
         if (loadingDelayTimer) {
@@ -228,7 +233,18 @@ export function useRequest<R = any, P extends any[] = any>(
 
   // 自动执行
   if (!manual) {
-    run(...(defaultParams as P));
+    // ready 变为true 自动发起请求，会带上参数 options.defaultParams
+    watch(
+      ready,
+      () => {
+        if (ready.value) {
+          run(...(defaultParams as P));
+        }
+      },
+      {
+        immediate: true,
+      },
+    );
   }
 
   // refreshDeps

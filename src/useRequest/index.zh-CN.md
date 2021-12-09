@@ -68,6 +68,22 @@ API 有改动，见[ahooks](https://ahooks.js.org/hooks/async)。
   desc="通过设置 `options.loadingDelay` ，可以延迟 `loading` 变成 `true` 的时间，有效防止闪烁。">
 </demo>
 
+### Ready
+
+<demo src="./demo/demo-ready.vue"
+  language="vue"
+  title="Ready"
+  desc="当 manual=false 自动请求模式时，每次 ready 从 false 变为 true 时，都会自动发起请求，会带上参数 options.defaultParams">
+</demo>
+
+### Ready (manual = true)
+
+<demo src="./demo/demo-ready-manual-true.vue"
+  language="vue"
+  title="Ready"
+  desc="当 manual=true 手动请求模式时，只要 ready=false，则通过 run 触发的请求都不会执行">
+</demo>
+
 ## Basic API
 
 ```javascript
@@ -123,22 +139,23 @@ const {
 
 所有的 Options 均是可选的。
 
-| 参数                        | 说明                                                                                                                                                                                              | 类型                                    | 默认值  |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------- |
-| manual                      | <ul><li> 默认 `false`。 即在初始化时自动执行 service。</li><li>如果设置为 `true`，则需要手动调用 `run` 触发执行。 </li></ul>                                                                      | `boolean`                               | false   |
-| initialData                 | 默认的 data                                                                                                                                                                                       | `any`                                   | -       |
-| formatResult                | 格式化请求结果                                                                                                                                                                                    | `(response: any) => any`                | -       |
-| onSuccess                   | <ul><li> service resolve 时触发，参数为 `data` 和 `params` </li><li> 如果有 `formatResult` ，则 `data` 为格式化后数据。</li></ul>                                                                 | `(data: any, params: any[]) => void`    | -       |
-| onError                     | service 报错时触发，参数为 `error` 和 `params`。                                                                                                                                                  | `(error: Error, params: any[]) => void` | -       |
-| defaultParams               | 如果 `manual=false` ，自动执行 `run` 的时候，默认带上的参数                                                                                                                                       | `any[]`                                 | -       |
-| loadingDelay                | 设置显示 loading 的延迟时间，避免闪烁                                                                                                                                                             | `number`                                | -       |
-| pollingInterval             | 轮询间隔，单位为毫秒。设置后，将进入轮询模式，定时触发 `run`                                                                                                                                      | `number`                                | -       |
-| pollingSinceLastFinished    | <ul><li> 轮询开始的时间，默认是 `true`，即等到上次请求结束，再经过`pollingInterval`ms 才开始执行 </li><li> 如果设置为 `false` , 会每隔`pollingInterval`开始执行，不管上次请求结束时间。</li></ul> | `boolean`                               | `true`  |
-| pollingWhenHidden           | <ul><li> 在页面隐藏时，是否继续轮询。默认为 `true`，即不会停止轮询 </li><li> 如果设置为 `false` , 在页面隐藏时会暂时停止轮询，页面重新显示时继续上次轮询 </li></ul>                               | `boolean`                               | `true`  |
-| refreshOnWindowFocus        | <ul><li> 在屏幕重新获取焦点或重新显示时，是否重新发起请求。默认为 `false`，即不会重新发起请求。 </li><li>如果设置为 `true`，在屏幕重新聚焦或重新显示时，会重新发起请求。</li></ul>                | `boolean`                               | `false` |
-| debounceInterval            | 防抖间隔, 单位为毫秒，设置后，请求进入防抖模式。                                                                                                                                                  | `number`                                | -       |
-| loadingWhenDebounceStart    | 是否在 debounce 过的`run`函数执行的第一时间将 loading 置为`true`                                                                                                                                  | `boolean`                               | `true`  |
-| throttleInterval            | 节流间隔, 单位为毫秒，设置后，请求进入节流模式。                                                                                                                                                  | `number`                                | -       |
-| throwOnError                | 如果 service 报错，我们会帮你捕获并打印日志，如果你需要自己处理异常，可以设置 throwOnError 为 true                                                                                                | `boolean`                               | `false` |
-| refreshOnWindowFocus `v0.9` | 如在屏幕重新聚焦或重新显示时，会重新发起请求。                                                                                                                                                    | `boolean`                               | `false` |
-| refreshDeps `v0.9`          | watch 到 refreshDeps 变化，会触发 service 重新执行。                                                                                                                                              | `WatchSource[]`                         | `[]`    |
+| 参数                        | 说明                                                                                                                                                                                              | 类型                                    | 默认值      |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ----------- |
+| manual                      | <ul><li> 默认 `false`。 即在初始化时自动执行 service。</li><li>如果设置为 `true`，则需要手动调用 `run` 触发执行。 </li></ul>                                                                      | `boolean`                               | false       |
+| initialData                 | 默认的 data                                                                                                                                                                                       | `any`                                   | -           |
+| formatResult                | 格式化请求结果                                                                                                                                                                                    | `(response: any) => any`                | -           |
+| onSuccess                   | <ul><li> service resolve 时触发，参数为 `data` 和 `params` </li><li> 如果有 `formatResult` ，则 `data` 为格式化后数据。</li></ul>                                                                 | `(data: any, params: any[]) => void`    | -           |
+| onError                     | service 报错时触发，参数为 `error` 和 `params`。                                                                                                                                                  | `(error: Error, params: any[]) => void` | -           |
+| defaultParams               | 如果 `manual=false` ，自动执行 `run` 的时候，默认带上的参数                                                                                                                                       | `any[]`                                 | -           |
+| loadingDelay                | 设置显示 loading 的延迟时间，避免闪烁                                                                                                                                                             | `number`                                | -           |
+| pollingInterval             | 轮询间隔，单位为毫秒。设置后，将进入轮询模式，定时触发 `run`                                                                                                                                      | `number`                                | -           |
+| pollingSinceLastFinished    | <ul><li> 轮询开始的时间，默认是 `true`，即等到上次请求结束，再经过`pollingInterval`ms 才开始执行 </li><li> 如果设置为 `false` , 会每隔`pollingInterval`开始执行，不管上次请求结束时间。</li></ul> | `boolean`                               | `true`      |
+| pollingWhenHidden           | <ul><li> 在页面隐藏时，是否继续轮询。默认为 `true`，即不会停止轮询 </li><li> 如果设置为 `false` , 在页面隐藏时会暂时停止轮询，页面重新显示时继续上次轮询 </li></ul>                               | `boolean`                               | `true`      |
+| refreshOnWindowFocus        | <ul><li> 在屏幕重新获取焦点或重新显示时，是否重新发起请求。默认为 `false`，即不会重新发起请求。 </li><li>如果设置为 `true`，在屏幕重新聚焦或重新显示时，会重新发起请求。</li></ul>                | `boolean`                               | `false`     |
+| debounceInterval            | 防抖间隔, 单位为毫秒，设置后，请求进入防抖模式。                                                                                                                                                  | `number`                                | -           |
+| loadingWhenDebounceStart    | 是否在 debounce 过的`run`函数执行的第一时间将 loading 置为`true`                                                                                                                                  | `boolean`                               | `true`      |
+| throttleInterval            | 节流间隔, 单位为毫秒，设置后，请求进入节流模式。                                                                                                                                                  | `number`                                | -           |
+| throwOnError                | 如果 service 报错，我们会帮你捕获并打印日志，如果你需要自己处理异常，可以设置 throwOnError 为 true                                                                                                | `boolean`                               | `false`     |
+| refreshOnWindowFocus `v0.9` | 如在屏幕重新聚焦或重新显示时，会重新发起请求。                                                                                                                                                    | `boolean`                               | `false`     |
+| refreshDeps `v0.9`          | watch 到 refreshDeps 变化，会触发 service 重新执行。                                                                                                                                              | `WatchSource[]`                         | `[]`        |
+| ready `v0.12.4`             | 当前请求是否准备好了                                                                                                                                                                              | `Ref<Boolean>`                          | `ref(true)` |

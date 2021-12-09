@@ -282,4 +282,59 @@ describe('useRequest - options', () => {
     await sleep(100);
     expect(loading.value).toEqual(true);
   });
+
+  it('should ready work when manual = false', async () => {
+    const ready = ref(false);
+    const { loading } = useRequest(getFullName, {
+      ready,
+      manual: false,
+    });
+    expect(loading.value).toEqual(false);
+
+    await nextTickInFakeTimers();
+    ready.value = true;
+
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(true);
+  });
+
+  it('should ready work when manual = false', async () => {
+    const ready = ref(true);
+    const { loading } = useRequest(getFullName, {
+      ready,
+      manual: false,
+    });
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(true);
+  });
+
+  it('should ready work when manual = true', async () => {
+    const ready = ref(false);
+    const { loading, run } = useRequest(getFullName, {
+      ready,
+      manual: true,
+    });
+
+    expect(loading.value).toEqual(false);
+    run();
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(false);
+
+    ready.value = true;
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(false);
+
+    run();
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(true);
+
+    jest.advanceTimersByTime(getFullNameTime);
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(false);
+
+    ready.value = false;
+    run();
+    await nextTickInFakeTimers();
+    expect(loading.value).toEqual(false);
+  });
 });
