@@ -21,8 +21,7 @@ export function useRequest<R = any, P extends any[] = any>(
 ): UseRequestResult<R, P> {
   let contextConfig = {} as Partial<UseRequestOptions<R, P>>;
   if (getCurrentInstance()) {
-    contextConfig =
-      inject<Partial<UseRequestOptions<R, P>>>(RequestConfig, {});
+    contextConfig = inject<Partial<UseRequestOptions<R, P>>>(RequestConfig, {});
   }
   const finalOptions = { ...DefaultOptions, ...contextConfig, ...options };
 
