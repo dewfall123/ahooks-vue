@@ -132,12 +132,10 @@ export function useTable<T>(
     return list as T[];
   });
 
-  watch(
-    () => data,
-    () => {
-      search.value.text = '';
-    },
-  );
+  watch([data], () => {
+    search.value.text = '';
+    page.value.index = 1;
+  });
 
   watch(
     () => page.value.size,

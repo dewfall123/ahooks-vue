@@ -64,15 +64,13 @@ describe('useTable', () => {
 
     expect(total.value).toEqual(1);
     expect(
-      pagedData.value.every((item) =>
-        JSON.stringify(item).includes(searchText),
-      ),
+      pagedData.value.every(item => JSON.stringify(item).includes(searchText)),
     );
 
     search.value.text === 'Jim Green';
     await nextTick(() => {
       expect(
-        pagedData.value.every((item) =>
+        pagedData.value.every(item =>
           JSON.stringify(item).includes('Jim Green'),
         ),
       );
@@ -81,7 +79,7 @@ describe('useTable', () => {
     search.value.text = '39';
     search.value.keys = ['age'];
     await nextTick(() => {
-      expect(pagedData.value.every((item) => item.age === 39));
+      expect(pagedData.value.every(item => item.age === 39));
     });
   });
 });

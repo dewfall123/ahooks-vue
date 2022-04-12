@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <svg
     t="1603888743183"
     class="icon"
