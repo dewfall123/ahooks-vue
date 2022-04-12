@@ -31,7 +31,7 @@ export async function useLocalforage<T = any>(
   }
 
   function setState() {
-    localStorage.setItem(key, JSON.stringify(state.value));
+    localforage.setItem(key, state.value);
   }
 
   watch(
