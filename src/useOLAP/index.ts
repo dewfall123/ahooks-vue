@@ -13,7 +13,9 @@ import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export {
+
+// eslint-disable-next-line prettier/prettier
+export type {
   SourceData,
   Columns,
   PassedInCubeOptions,
