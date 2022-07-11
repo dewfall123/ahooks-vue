@@ -13,7 +13,7 @@ import { useFilters } from './useFilters';
 import { useCubeSettings } from './useCubeSettings';
 import { useCubeData } from './useCubeData';
 
-export type {
+export {
   SourceData,
   Columns,
   PassedInCubeOptions,
@@ -70,7 +70,10 @@ export function useOLAP<T>(
   );
 
   return {
-    cubeD1, cubeD2, chartCubeD1, chartCubeD2,
+    cubeD1,
+    cubeD2,
+    chartCubeD1,
+    chartCubeD2,
     columns: setting.columns,
     cubeSettings,
     cubeOptions,
