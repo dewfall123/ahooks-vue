@@ -7562,7 +7562,7 @@ vitepress-for-component@^0.16.8:
 
 vue-demi@^0.13.2:
   version "0.13.2"
-  resolved "http://npm.vivo.com.cn/vue-demi/-/vue-demi-0.13.2.tgz#f6081c2feb5b698549729a81683ce029b8da289e"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.2.tgz#f6081c2feb5b698549729a81683ce029b8da289e"
   integrity sha512-41ukrclEbMddAyP7PvxMSYqnOSzPV6r7GNnyTSKSCNTaz19GehxmTiXyP9kwHSUv2+Dr6hHqiUiF7L1VAw2KdQ==
 
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.4.1:
