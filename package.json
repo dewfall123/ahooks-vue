@@ -1,6 +1,6 @@
 {
   "name": "ahooks-vue",
-  "version": "0.12.9",
+  "version": "0.13.0",
   "description": "ahooks-vue",
   "types": "dist/src/index.d.ts",
   "repository": "https://github.com/dewfall123/ahooks-vue.git",
@@ -77,7 +77,7 @@
   "dependencies": {
     "lodash": "^4.17.20",
     "qs": "^6.10.1",
-    "vue-demi": "^0.6.0"
+    "vue-demi": "^0.13.2"
   },
   "peerDependencies": {
     "axios": "*"
