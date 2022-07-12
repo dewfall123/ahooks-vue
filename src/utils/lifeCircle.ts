@@ -1,10 +1,16 @@
 import { getCurrentInstance, onMounted } from 'vue-demi';
 
 export function safeOnMounted(hook: () => any) {
-  let instance = getCurrentInstance();
-  // @ts-ignore
-  instance = instance?.proxy || instance;
-  if (instance?.isMounted || (instance as any)._isMounted) {
+  const instance = getCurrentInstance();
+
+  // fix 兼容vue2.7
+  if (
+    // @ts-ignore
+    instance?.proxy?._isMounted ||
+    instance?.isMounted ||
+    // @ts-ignore
+    instance._isMounted
+  ) {
     hook();
   } else {
     onMounted(hook);

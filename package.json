@@ -1,6 +1,6 @@
 {
   "name": "ahooks-vue",
-  "version": "0.13.1",
+  "version": "0.13.3",
   "description": "ahooks-vue",
   "types": "dist/src/index.d.ts",
   "repository": "https://github.com/dewfall123/ahooks-vue.git",
