@@ -7,7 +7,6 @@ export * from './useInViewport';
 export * from './useKeyPress';
 export * from './useLocalforage';
 export * from './useLocalStorageState';
-export * from './useOLAP';
 export * from './usePaginatedRequest';
 export * from './useRequest';
 export * from './useSize';
