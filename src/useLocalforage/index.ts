@@ -1,4 +1,4 @@
-import { Ref, ref, watch } from 'vue-demi';
+import { Ref, ref, watch, toRaw } from 'vue-demi';
 import localforage from 'localforage';
 
 export type LocalforageKey = string;
@@ -31,7 +31,7 @@ export async function useLocalforage<T = any>(
   }
 
   function setState() {
-    localforage.setItem(key, state.value);
+    localforage.setItem(key, toRaw(state.value));
   }
 
   watch(
