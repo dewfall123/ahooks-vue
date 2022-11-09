@@ -132,6 +132,9 @@ export function useRequest<R = any, P extends any[] = any>(
         const formattedResult = formatResult(res);
         data.value = formattedResult;
 
+        // fix #21
+        error.value = undefined;
+
         lastSuccessParams.value = cloneDeep(args);
         onSuccess(formattedResult, args);
         return formattedResult;
