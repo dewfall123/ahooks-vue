@@ -7,7 +7,14 @@ import {
   watch,
 } from 'vue-demi';
 import { DefaultOptions } from './constants';
-import { UseRequestOptions, UseRequestResult, CombineService } from './types';
+import {
+  BaseUseRequestOptions,
+  UseRequestResult,
+  CombineService,
+  UseRequestOptionsWithFormatResult,
+  UseRequestOptionsWidthInitalData,
+  UseRequestOptions,
+} from './types';
 import { cloneDeep, debounce, throttle } from 'lodash';
 import { useDocumentVisibility } from '../useDocumentVisibility';
 
@@ -15,10 +22,27 @@ export const RequestConfig = Symbol('useRequestConfig');
 
 export * from './types';
 
+export function useRequest<R = any, P extends any[] = any, SR = any>(
+  service: CombineService<SR, P>,
+  options: UseRequestOptionsWithFormatResult<R, P, SR> &
+    UseRequestOptionsWidthInitalData<R, P>,
+): UseRequestResult<R, P>;
+export function useRequest<R = any, P extends any[] = any, SR = any>(
+  service: CombineService<SR, P>,
+  options: UseRequestOptionsWithFormatResult<R, P, SR>,
+): UseRequestResult<R | undefined, P>;
+export function useRequest<R = any, P extends any[] = any>(
+  service: CombineService<R, P>,
+  options: UseRequestOptionsWidthInitalData<R, P>,
+): UseRequestResult<R, P>;
+export function useRequest<R = any, P extends any[] = any>(
+  service: CombineService<R, P>,
+  options: Partial<BaseUseRequestOptions<R, P>>,
+): UseRequestResult<R | undefined, P>;
 export function useRequest<R = any, P extends any[] = any>(
   service: CombineService<R, P>,
   options: Partial<UseRequestOptions<R, P>> = {},
-): UseRequestResult<R, P> {
+): UseRequestResult<R | undefined, P> {
   let contextConfig = {} as Partial<UseRequestOptions<R, P>>;
   if (getCurrentInstance()) {
     contextConfig = inject<Partial<UseRequestOptions<R, P>>>(RequestConfig, {});

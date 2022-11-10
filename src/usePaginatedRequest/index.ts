@@ -38,6 +38,10 @@ export function usePaginatedRequest<Item = any>(
     PaginationResult<Item>,
     PaginatedParams
   >(service, {
+    initialData: {
+      total: 0,
+      list: [],
+    },
     defaultParams: [
       {
         current: pagination.current,
