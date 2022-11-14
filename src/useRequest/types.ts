@@ -18,11 +18,11 @@ export interface UseRequestResult<R = any, P extends any[] = any[]> {
   lastSuccessParams: Ref<P | undefined>;
   cancel: () => void;
   refresh: () => Promise<any>;
-  run: (...args: P) => Promise<any>;
+  run: (...args: P) => Promise<R | undefined>;
 }
 
-export interface UseRequestOptions<R = any, P extends any[] = any[]> {
-  formatResult: (res: any) => R;
+export interface BaseUseRequestOptions<R = any, P extends any[] = any[]> {
+  // formatResult: (res: any) => R;
   manual: boolean; // 是否需要手动触发
   onSuccess: (data: R, params: P) => void; // 成功回调
   onError: (e: Error, params: P) => void; // 失败回调
@@ -39,10 +39,30 @@ export interface UseRequestOptions<R = any, P extends any[] = any[]> {
   loadingWhenDebounceStart: boolean; // 在debounce等待阶段，是否把loading设置为true
   throttleInterval: number;
 
-  initialData: R;
+  // initialData: R;
   requestMethod: (service: any) => Promise<any>;
   ready: Ref<boolean>;
   throwOnError: boolean;
   refreshDeps: Array<WatchSource>; // 如果 deps 变化后，重新请求
   refreshOnWindowFocus: boolean;
 }
+export interface UseRequestOptionsWithFormatResult<
+  R = any,
+  P extends any[] = any[],
+  SR = any
+> extends Partial<BaseUseRequestOptions<R, P>> {
+  formatResult: (res: SR) => R;
+}
+export interface UseRequestOptionsWidthInitalData<
+  R = any,
+  P extends any[] = any[]
+> extends Partial<BaseUseRequestOptions<R, P>> {
+  initialData: R;
+}
+
+export type UseRequestOptions<
+  R = any,
+  P extends any[] = any[]
+> = BaseUseRequestOptions<R, P> &
+  UseRequestOptionsWithFormatResult<R, P, any> &
+  UseRequestOptionsWidthInitalData<R, P>;
