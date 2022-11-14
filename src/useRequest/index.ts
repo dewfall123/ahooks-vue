@@ -29,7 +29,7 @@ export function useRequest<R = any, P extends any[] = any, SR = any>(
     UseRequestOptionsWithInitialData<R, P>,
 ): UseRequestResult<R, P>;
 
-// 仅有formateResult 
+// 仅有formateResult
 export function useRequest<R = any, P extends any[] = any, SR = any>(
   service: CombineService<SR, P>,
   options: UseRequestOptionsWithFormatResult<R, P, SR>,
