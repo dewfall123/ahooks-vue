@@ -12,7 +12,7 @@ import {
   UseRequestResult,
   CombineService,
   UseRequestOptionsWithFormatResult,
-  UseRequestOptionsWidthInitalData,
+  UseRequestOptionsWithInitialData,
   UseRequestOptions,
 } from './types';
 import { cloneDeep, debounce, throttle } from 'lodash';
@@ -22,27 +22,35 @@ export const RequestConfig = Symbol('useRequestConfig');
 
 export * from './types';
 
+// 同时有formateResult initialData
 export function useRequest<R = any, P extends any[] = any, SR = any>(
   service: CombineService<SR, P>,
   options: UseRequestOptionsWithFormatResult<R, P, SR> &
-    UseRequestOptionsWidthInitalData<R, P>,
+    UseRequestOptionsWithInitialData<R, P>,
 ): UseRequestResult<R, P>;
+
+// 仅有formateResult 
 export function useRequest<R = any, P extends any[] = any, SR = any>(
   service: CombineService<SR, P>,
   options: UseRequestOptionsWithFormatResult<R, P, SR>,
 ): UseRequestResult<R | undefined, P>;
+
+// 仅有initialData
 export function useRequest<R = any, P extends any[] = any>(
   service: CombineService<R, P>,
-  options: UseRequestOptionsWidthInitalData<R, P>,
+  options: UseRequestOptionsWithInitialData<R, P>,
 ): UseRequestResult<R, P>;
+
+// 无formateResult initialData
 export function useRequest<R = any, P extends any[] = any>(
   service: CombineService<R, P>,
   options: Partial<BaseUseRequestOptions<R, P>>,
 ): UseRequestResult<R | undefined, P>;
-export function useRequest<R = any, P extends any[] = any>(
+
+export function useRequest<R = any, P extends any[] = any, SR = any>(
   service: CombineService<R, P>,
-  options: Partial<UseRequestOptions<R, P>> = {},
-): UseRequestResult<R | undefined, P> {
+  options: Partial<UseRequestOptions<R, P, SR>> = {},
+) {
   let contextConfig = {} as Partial<UseRequestOptions<R, P>>;
   if (getCurrentInstance()) {
     contextConfig = inject<Partial<UseRequestOptions<R, P>>>(RequestConfig, {});

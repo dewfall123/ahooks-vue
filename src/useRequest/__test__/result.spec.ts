@@ -18,7 +18,7 @@ describe('useRequest - result', () => {
   });
 
   it('should loading + data + error work', async () => {
-    const { loading, data, error } = useRequest(getFullName);
+    const { loading, data, error } = useRequest(getFullName, {});
 
     expect(loading.value).toEqual(true);
     expect(data.value).toEqual(undefined);

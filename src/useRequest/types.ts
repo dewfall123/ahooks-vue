@@ -46,6 +46,7 @@ export interface BaseUseRequestOptions<R = any, P extends any[] = any[]> {
   refreshDeps: Array<WatchSource>; // 如果 deps 变化后，重新请求
   refreshOnWindowFocus: boolean;
 }
+
 export interface UseRequestOptionsWithFormatResult<
   R = any,
   P extends any[] = any[],
@@ -53,7 +54,8 @@ export interface UseRequestOptionsWithFormatResult<
 > extends Partial<BaseUseRequestOptions<R, P>> {
   formatResult: (res: SR) => R;
 }
-export interface UseRequestOptionsWidthInitalData<
+
+export interface UseRequestOptionsWithInitialData<
   R = any,
   P extends any[] = any[]
 > extends Partial<BaseUseRequestOptions<R, P>> {
@@ -62,7 +64,8 @@ export interface UseRequestOptionsWidthInitalData<
 
 export type UseRequestOptions<
   R = any,
-  P extends any[] = any[]
+  P extends any[] = any[],
+  SR = any
 > = BaseUseRequestOptions<R, P> &
-  UseRequestOptionsWithFormatResult<R, P, any> &
-  UseRequestOptionsWidthInitalData<R, P>;
+  UseRequestOptionsWithFormatResult<R, P, SR> &
+  UseRequestOptionsWithInitialData<R, P>;
